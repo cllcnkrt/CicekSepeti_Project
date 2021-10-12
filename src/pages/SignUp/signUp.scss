@@ -1,0 +1,129 @@
+@import "../../style/_variables.scss";
+
+.signUp {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    background-color: $bg;
+    flex: 1;
+
+    &__left {
+        flex: 0.4;
+
+        width: 100%;
+        height: 100%;
+
+        img {
+            height: 100vh;
+            min-width: 100%;
+            object-fit: contain;
+        }
+    }
+
+    &__right {
+        width: 100%;
+
+
+        .container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+
+
+            &__logo {
+                margin: 80px auto 40px auto;
+
+            }
+
+            &__form {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin: 0px auto;
+                background-color: $white;
+                width: 450px;
+                height: 440px;
+                border-radius: 8px;
+                box-shadow: 0px 3px 12px #1E36480A;
+
+                &-banner {
+                    margin-top: 20px;
+                    text-align: center;
+                    padding: 30px;
+
+                    h1 {
+                        font: normal normal bold 32px Nunito;
+                        color: $gray-300;
+                        margin-bottom: 10px;
+                    }
+
+                    h3 {
+                        font: normal normal normal 15px/20px Nunito;
+                    }
+                }
+
+                &-inputs {
+                    display: flex;
+                    flex-direction: column;
+                    margin: 10px;
+
+                    label {
+                        margin-bottom: 5px;
+                    }
+
+                    input {
+                        width: 100%;
+                        outline: none;
+                        border: none;
+                        background-color: $gray-100;
+                        border-radius: 8px;
+                        height: 40px;
+                        width: 300px;
+                        margin: auto;
+                        padding: 10px;
+                    }
+
+                    input:focus {
+                        background-color: $light-blue;
+                    }
+                }
+
+                button {
+                    background-color: $dark-blue;
+                    color: $white;
+                    height: 40px;
+                    width: 300px;
+                    font-size: 18px;
+                    border-radius: 8px;
+                    border: none;
+                    font: normal normal bold 18px/24px Nunito;
+                    margin-top: 10px;
+                    cursor: pointer;
+                }
+
+                .form-input-login {
+                    margin-top: 20px;
+                    font: normal normal normal 15px/20px Nunito;
+
+                    a {
+                        font: normal normal bold 15px/20px Nunito;
+                        text-decoration: none;
+                        color: $dark-blue;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width:768px) {
+    .signUp__left {
+        display: none;
+    }
+
+    .signUp__right {
+        width: 100vw;
+        height: 100vh;
+    }
+}

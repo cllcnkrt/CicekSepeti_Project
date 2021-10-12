@@ -1,9 +1,7 @@
 import { combineReducers } from 'redux';
 
-import CartReducer from './cart';
-import CharactersReducer from './characters';
+import CategoryReducer from './category';
 
 export default combineReducers({
-  characters: CharactersReducer,
-  cart: CartReducer,
+  category: CategoryReducer,
 });
