@@ -6,19 +6,24 @@ import React from 'react';
 
 import image from '../../assets/images/Group52.png';
 import logo from '../../assets/logo/Group6607.svg';
+import useForm from './useForm';
+import validate from './validateInfo';
 
 function SignUp() {
+  const { handleChange, form, handleSubmit, errors, isSubmitting } =
+    useForm(validate);
+  console.log(form, isSubmitting, errors);
   return (
-    <div className="signIn">
-      <div className="signIn__left">
+    <div className="signUp">
+      <div className="signUp__left">
         <img src={image} alt="left-img" />
       </div>
-      <div className="signIn__right">
+      <div className="signUp__right">
         <div className="container">
           <div className="container__logo">
             <img src={logo} alt="logo" />
           </div>
-          <form className="container__form">
+          <form className="container__form" onSubmit={handleSubmit}>
             <div className="container__form-banner">
               <h1>Üye Ol</h1>
               <h3>Fırsatlardan yararlanmak için üye ol!</h3>
@@ -31,10 +36,10 @@ function SignUp() {
                 id="email"
                 type="email"
                 name="email"
-                className="form-input"
                 placeholder="Email@example.com"
-                value={}
-                onChange={}
+                className={errors.email ? 'form-input wrong' : 'form-input'}
+                value={form.email}
+                onChange={handleChange}
               />
             </div>
             <div className="container__form-inputs">
@@ -46,9 +51,9 @@ function SignUp() {
                 type="password"
                 name="password"
                 placeholder="•••••"
-                className='form-input'
-                value={}
-                onChange={}
+                className={errors.password ? 'form-input wrong' : 'form-input'}
+                value={form.password}
+                onChange={handleChange}
               />
             </div>
             <button type="submit">Üye Ol</button>

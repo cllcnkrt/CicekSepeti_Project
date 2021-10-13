@@ -32,8 +32,11 @@
 
 
             &__logo {
-                margin: 80px auto 40px auto;
+                margin: 70px auto 20px auto;
 
+                img {
+                    width: 175px;
+                }
             }
 
             &__form {
@@ -60,6 +63,7 @@
 
                     h3 {
                         font: normal normal normal 15px/20px Nunito;
+                        color: $gray-300;
                     }
                 }
 
@@ -138,4 +142,10 @@
     background-color: $light-pink;
     border: 1px solid $dark-pink;
     color: $dark-pink;
+}
+
+.correct {
+    background-color: $light-blue;
+    border: 1px solid $dark-blue;
+    color: $dark-blue;
 }

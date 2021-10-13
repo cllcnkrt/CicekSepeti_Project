@@ -36,8 +36,8 @@ function SignIn() {
                 id="email"
                 type="email"
                 name="email"
-                className={errors.email ? 'form-input wrong' : 'form-input'}
                 placeholder="Email@example.com"
+                className={errors.email ? 'form-input wrong' : 'form-input'}
                 value={form.email}
                 onChange={handleChange}
               />
