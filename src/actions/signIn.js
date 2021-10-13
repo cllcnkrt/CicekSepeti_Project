@@ -15,14 +15,12 @@ const fetchPending = () => ({
   type: CATEGORIES.FETCH_CATEGORIES_PENDING,
 });
 
-const fetchCATEGORIES = () => async (dispatch) => {
+const fetchCATEGORIES = (form) => async (dispatch) => {
   dispatch(fetchPending());
   return axios
-    .get('---')
-    .then((data) => dispatch(fetchSuccess(data.results)))
+    .post('---', form)
+    .then((data) => dispatch(fetchSuccess(data)))
     .catch((error) => dispatch(fetchFailure(error)));
 };
 
 export default fetchCATEGORIES;
-
-/* düzenleme olucak */

@@ -1,17 +1,31 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import './signUp.scss';
 
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { Link, useHistory } from 'react-router-dom';
 
-import image from '../../assets/images/Group52.png';
-import logo from '../../assets/logo/Group6607.svg';
+import image from '../../assets/images/login.png';
+import logo from '../../assets/logo/logo.svg';
 import useForm from './useForm';
 import validate from './validateInfo';
 
 function SignUp() {
-  const { handleChange, form, handleSubmit, errors, isSubmitting } =
-    useForm(validate);
+  const history = useHistory();
+  const signUp = useSelector((state) => state.signUp);
+  /*  useEffect(() => {
+    const isUser =
+      window.localStorage.getItem('access_token') || signUp.signUp !== null;
+    if (isUser) {
+      history.push('/');
+    }
+  }, [history, signUp.signUp]); */
+  const { handleChange, form, handleSubmit, errors, isSubmitting } = useForm(
+    validate,
+    'signUp'
+  );
   console.log(form, isSubmitting, errors);
   return (
     <div className="signUp">
@@ -58,7 +72,7 @@ function SignUp() {
             </div>
             <button type="submit">Üye Ol</button>
             <span className="form-input-login">
-              Hesabın var mı? <a href="/signIn">Giriş Yap</a>
+              Hesabın var mı? <Link href="/signIn">Giriş Yap</Link>
             </span>
           </form>
         </div>

@@ -1,6 +1,9 @@
+import fetchSignUp from 'actions/signUpActions';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 
-const useForm = (validate) => {
+const useForm = (validate, type) => {
+  const dispatch = useDispatch();
   const [form, setForm] = useState({
     email: '',
     password: '',
@@ -20,6 +23,10 @@ const useForm = (validate) => {
     e.preventDefault();
     setErrors(validate(form));
     setIsSubmitting(true);
+
+    if (type === 'signUp') {
+      dispatch(fetchSignUp(form));
+    }
   };
 
   return { handleChange, form, handleSubmit, errors, isSubmitting };

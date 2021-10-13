@@ -4,8 +4,8 @@ import './signIn.scss';
 
 import React from 'react';
 
-import image from '../../assets/images/Group52.png';
-import logo from '../../assets/logo/Group6607.svg';
+import image from '../../assets/images/login.png';
+import logo from '../../assets/logo/logo.svg';
 import useForm from './useForm';
 import validate from './validateInfo';
 

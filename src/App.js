@@ -1,11 +1,33 @@
+/* eslint-disable no-unused-vars */
 import './app.scss';
 
-import SignIn from 'pages/SignIn/SignIn';
+import Home from 'pages/Home';
+import SignUp from 'pages/SignUp';
+import {
+  BrowserRouter as Router,
+  Redirect,
+  Route,
+  Switch,
+} from 'react-router-dom';
 
+const isUser = window.localStorage.getItem('access_token');
+console.log(isUser);
 const App = () => (
-  <div>
-    <SignIn />
-  </div>
+  <Router>
+    <Switch>
+      {isUser ? (
+        <Redirect from="/signup" exact to="/" />
+      ) : (
+        <Route path="/signup">
+          <SignUp />
+        </Route>
+      )}
+
+      <Route exact path="/">
+        <Home />
+      </Route>
+    </Switch>
+  </Router>
 );
 
 export default App;
