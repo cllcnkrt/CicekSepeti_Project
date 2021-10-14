@@ -1,5 +1,5 @@
 import axios from 'axios';
-import CATEGORIES from 'constants/category';
+import CATEGORIES from 'constants/categoryConstants';
 
 const fetchSuccess = (data) => ({
   type: CATEGORIES.FETCH_CATEGORIES_SUCCESS,
@@ -15,14 +15,12 @@ const fetchPending = () => ({
   type: CATEGORIES.FETCH_CATEGORIES_PENDING,
 });
 
-const fetchCATEGORIES = () => async (dispatch) => {
+const fetchCategories = () => async (dispatch) => {
   dispatch(fetchPending());
   return axios
-    .get('---')
-    .then((data) => dispatch(fetchSuccess(data.results)))
+    .get('http://bootcampapi.techcs.io/api/fe/v1/detail/category/all')
+    .then((res) => dispatch(fetchSuccess(res.data)))
     .catch((error) => dispatch(fetchFailure(error)));
 };
 
-export default fetchCATEGORIES;
-
-/* düzenleme olucak */
+export default fetchCategories;

@@ -1,91 +1,53 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import './home.scss';
 
-import React from 'react';
+import fetchCategories from 'actions/categoryActions';
+import fetchProducts from 'actions/productActions';
+import Card from 'components/Card/Card';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 
 import banner from '../../assets/images/Banner1.png';
-import image from '../../assets/images/Image5.png';
 import Header from '../../components/Header';
 
 function Home() {
+  const dispatch = useDispatch();
+  const categories = useSelector((state) => state.categories);
+  const products = useSelector((state) => state.products);
+
+  useEffect(() => {
+    dispatch(fetchCategories());
+    dispatch(fetchProducts());
+  }, [dispatch]);
+
+  console.log('products :>> ', products);
+
   return (
     <div className="home">
       <Header />
-      <div className="home__banner">
-        <img src={banner} alt="" />
-      </div>
-      <nav className="home__nav">nav</nav>
-
-      <section className="home__products">
-        <div className="product">
-          <div className="product__image-container">
-            <img src={image} alt="product" />
-          </div>
-
-          <div className="product-content">
-            <div className="product-title">
-              <p className="product-brand">Levis</p>
-              <p className="product-color">Renk: Mavi</p>
-            </div>
-            <p className="product-price">19.20TL</p>
-          </div>
-        </div>
-
-        <div className="product">
-          <div className="product__image-container">
-            <img src={image} alt="product" />
-          </div>
-
-          <div className="product-content">
-            <div className="product-title">
-              <p className="product-brand">Levis</p>
-              <p className="product-color">Renk: Mavi</p>
-            </div>
-            <p className="product-price">19.20TL</p>
-          </div>
-        </div>
-
-        <div className="product">
-          <div className="product__image-container">
-            <img src={image} alt="product" />
-          </div>
-
-          <div className="product-content">
-            <div className="product-title">
-              <p className="product-brand">Levis</p>
-              <p className="product-color">Renk: Mavi</p>
-            </div>
-            <p className="product-price">19.20TL</p>
-          </div>
-        </div>
-
-        <div className="product">
-          <div className="product__image-container">
-            <img src={image} alt="product" />
-          </div>
-
-          <div className="product-content">
-            <div className="product-title">
-              <p className="product-brand">Levis</p>
-              <p className="product-color">Renk: Mavi</p>
-            </div>
-            <p className="product-price">19.20TL</p>
-          </div>
-        </div>
-
-        <div className="product">
-          <div className="product__image-container">
-            <img src={image} alt="product" />
-          </div>
-
-          <div className="product-content">
-            <div className="product-title">
-              <p className="product-brand">Levis</p>
-              <p className="product-color">Renk: Mavi</p>
-            </div>
-            <p className="product-price">19.20TL</p>
-          </div>
-        </div>
-      </section>
+      <img className="banner" src={banner} alt="" />
+      <nav className="nav">
+        <ul>
+          <li>
+            <NavLink activeClassName="active" to="/">
+              Hepsi
+            </NavLink>
+          </li>
+          {categories.categories.map((category) => (
+            <li key={category.id}>
+              <NavLink activeClassName="active" to="/abc">
+                {category.title}
+              </NavLink>
+            </li>
+          ))}
+        </ul>
+      </nav>
+      <main className="main">
+        {products.products.map((product) => (
+          <Card key={product.id} product={product} />
+        ))}
+      </main>
     </div>
   );
 }

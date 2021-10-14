@@ -1,34 +1,43 @@
 @import "../../style/_variables.scss";
 
 .header {
-    height: 60px;
     background-color: $white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    width: 100%;
 
-    &__logo {
-        margin: 0px 0 0 200px ;
-    }
+    .wrapper {
+        width: 80%;
+        height: 60px;
+        display: flex;
+        margin: 0 auto;
+        align-items: center;
+        background-color: $white;
+        justify-content: space-between;
 
-    &__buttons {
-        margin: 0px 195px 0 0;
-        
+        &__logo {}
 
-        img {
-            margin-right: 5px;
-        }
+        &__buttons {
 
-        button {
-            background-color: $light-blue;
-            font: normal normal bold 15px/20px Nunito;
-            color: $dark-blue;
-            border: none;
-            border-radius: 8px;
-            width: 120px;
-            padding: 8px;
-            margin-right: 10px;
-            cursor: pointer;
+
+
+            img {
+                margin-right: 5px;
+            }
+
+            button {
+                background-color: $light-blue;
+                font: normal normal bold 15px/20px Nunito;
+                color: $dark-blue;
+                border: none;
+                border-radius: 8px;
+                width: 120px;
+                padding: 8px;
+                margin-right: 10px;
+                cursor: pointer;
+            }
+
+            .right {
+                margin-right: 0 !important;
+            }
         }
     }
 }

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import CATEGORIES from 'constants/category';
+import CATEGORIES from 'constants/categoryConstants';
 
 const fetchSuccess = (data) => ({
   type: CATEGORIES.FETCH_CATEGORIES_SUCCESS,

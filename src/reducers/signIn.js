@@ -1,4 +1,4 @@
-import SIGNIN from 'constants/category';
+import SIGNIN from 'constants/signIn';
 
 const initialState = {
   SIGNIN: {},
