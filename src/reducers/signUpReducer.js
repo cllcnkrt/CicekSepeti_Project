@@ -1,4 +1,4 @@
-import SIGNUP from 'constants/signUp';
+import SIGNUP from 'constants/signUpConstants';
 
 const initialState = {
   signUp: null,

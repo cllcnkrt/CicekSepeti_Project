@@ -1,3 +1,4 @@
+import fetchSignIn from 'actions/signInActions';
 import fetchSignUp from 'actions/signUpActions';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -26,6 +27,8 @@ const useForm = (validate, type) => {
 
     if (type === 'signUp') {
       dispatch(fetchSignUp(form));
+    } else if (type === 'signIn') {
+      dispatch(fetchSignIn(form));
     }
   };
 

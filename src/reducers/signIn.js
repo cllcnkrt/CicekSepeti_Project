@@ -1,4 +1,4 @@
-import SIGNIN from 'constants/signIn';
+import SIGNIN from 'constants/signInConstants';
 
 const initialState = {
   SIGNIN: {},

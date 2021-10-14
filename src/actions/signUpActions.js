@@ -1,5 +1,5 @@
 import axios from 'axios';
-import SIGNUP from 'constants/signUp';
+import SIGNUP from 'constants/signUpConstants';
 
 const fetchSuccess = (data) => ({
   type: SIGNUP.FETCH_SIGNUP_SUCCESS,

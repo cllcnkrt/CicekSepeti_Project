@@ -6,12 +6,14 @@ import React from 'react';
 
 import image from '../../assets/images/login.png';
 import logo from '../../assets/logo/logo.svg';
-import useForm from './useForm';
-import validate from './validateInfo';
+import useForm from '../../helpers/useForm';
+import validate from '../../helpers/validateInfo';
 
 function SignIn() {
-  const { handleChange, form, handleSubmit, errors, isSubmitting } =
-    useForm(validate);
+  const { handleChange, form, handleSubmit, errors, isSubmitting } = useForm(
+    validate,
+    'signIn'
+  );
   console.log(form, isSubmitting, errors);
   return (
     <div className="signIn">
@@ -69,5 +71,3 @@ function SignIn() {
 }
 
 export default SignIn;
-
-/* anchor tag i link ile degisecek" */

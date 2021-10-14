@@ -9,8 +9,8 @@ import { Link, useHistory } from 'react-router-dom';
 
 import image from '../../assets/images/login.png';
 import logo from '../../assets/logo/logo.svg';
-import useForm from './useForm';
-import validate from './validateInfo';
+import useForm from '../../helpers/useForm';
+import validate from '../../helpers/validateInfo';
 
 function SignUp() {
   const history = useHistory();
@@ -82,5 +82,3 @@ function SignUp() {
 }
 
 export default SignUp;
-
-/* anchor tag i link ile degisecek" */

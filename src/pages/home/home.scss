@@ -31,6 +31,10 @@
                     font: normal normal 600 16px/22px Nunito;
                     color: $gray-300;
                 }
+
+                .title {
+                    text-transform: capitalize;
+                }
             }
         }
 
@@ -46,15 +50,13 @@
         margin-bottom: 50px;
     }
 
-
-
 }
-
 
 .active {
     position: relative;
 
     &::before {
+        color: $dark-blue;
         left: 0;
         right: 0;
         position: absolute;
@@ -63,7 +65,7 @@
         width: 100%;
         height: 2px;
         transition: all 350ms ease-in-out;
-        background: red;
+        background: $dark-blue;
     }
 
 }

@@ -21,8 +21,6 @@ function Home() {
     dispatch(fetchProducts());
   }, [dispatch]);
 
-  console.log('products :>> ', products);
-
   return (
     <div className="home">
       <Header />
@@ -36,7 +34,7 @@ function Home() {
           </li>
           {categories.categories.map((category) => (
             <li key={category.id}>
-              <NavLink activeClassName="active" to="/abc">
+              <NavLink className="title" activeClassName="active" to="/">
                 {category.title}
               </NavLink>
             </li>

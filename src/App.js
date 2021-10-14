@@ -2,6 +2,7 @@
 import './app.scss';
 
 import Home from 'pages/Home';
+import ProductDetail from 'pages/ProductDetail/ProductDetail';
 import SignUp from 'pages/SignUp';
 import {
   BrowserRouter as Router,
@@ -22,7 +23,9 @@ const App = () => (
           <SignUp />
         </Route>
       )}
-
+      <Route path="/detail">
+        <ProductDetail />
+      </Route>
       <Route exact path="/">
         <Home />
       </Route>
