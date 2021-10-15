@@ -36,7 +36,7 @@ const App = () => (
       <Route path="/giris">
         <SignIn />
       </Route>
-      <Route path="/urun-detay">
+      <Route path="/urun-detay/:id">
         <ProductDetail />
       </Route>
       <Route path="/hesabım">
