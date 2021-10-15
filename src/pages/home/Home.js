@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import './home.scss';
 
-import Navbar from 'components/Navbar/Navbar';
+import Navbar from 'components/Navbar';
 import Products from 'components/Products';
 import React from 'react';
 

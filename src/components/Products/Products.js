@@ -11,9 +11,9 @@ import useQuery from '../../helpers/useQuery';
 function Products() {
   const dispatch = useDispatch();
   const query = useQuery();
+  const currentQuery = query.get('category');
   const products = useSelector((state) => state.products);
   const [selectedProducts, setSelectedProducts] = useState([]);
-  const currentQuery = query.get('category');
 
   useEffect(() => {
     dispatch(fetchProducts());

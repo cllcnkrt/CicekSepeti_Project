@@ -13,10 +13,12 @@ function Header() {
     <div className="header">
       <div className="wrapper">
         <div className="wrapper__logo">
-          <img src={logo} alt="wrapper-logo" />
+          <Link to="/">
+            <img src={logo} alt="wrapper-logo" />
+          </Link>
         </div>
         <div className="wrapper__buttons">
-          <Link to="/hesabım">
+          <Link to="/urun-ekleme">
             <button type="button">
               <img src={addIcon} alt="add-icon" />
               Ürün Ekle
