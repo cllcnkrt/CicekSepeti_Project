@@ -138,13 +138,7 @@
 }
 
 .wrong {
-    background-color: $light-pink;
+    background-color: $light-pink !important;
     outline: 1px solid $dark-pink !important;
-    color: $dark-pink;
-}
-
-.correct {
-    background-color: $light-blue;
-    border: 1px solid $dark-blue;
-    color: $dark-blue;
+    color: $dark-pink !important;
 }

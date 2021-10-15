@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import './signUp.scss';
 
@@ -15,18 +13,18 @@ import validate from '../../helpers/validateInfo';
 function SignUp() {
   const history = useHistory();
   const signUp = useSelector((state) => state.signUp);
-  /*  useEffect(() => {
+  useEffect(() => {
     const isUser =
       window.localStorage.getItem('access_token') || signUp.signUp !== null;
     if (isUser) {
       history.push('/');
     }
-  }, [history, signUp.signUp]); */
-  const { handleChange, form, handleSubmit, errors, isSubmitting } = useForm(
+  }, [history, signUp.signUp]);
+  const { handleChange, form, handleSubmit, errors } = useForm(
     validate,
     'signUp'
   );
-  console.log(form, isSubmitting, errors);
+
   return (
     <div className="signUp">
       <div className="signUp__left">
@@ -72,7 +70,7 @@ function SignUp() {
             </div>
             <button type="submit">Üye Ol</button>
             <span className="form-input-login">
-              Hesabın var mı? <Link href="/signIn">Giriş Yap</Link>
+              Hesabın var mı? <Link to="/giris">Giriş Yap</Link>
             </span>
           </form>
         </div>

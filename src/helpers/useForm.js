@@ -10,7 +10,6 @@ const useForm = (validate, type) => {
     password: '',
   });
   const [errors, setErrors] = useState({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -23,7 +22,6 @@ const useForm = (validate, type) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors(validate(form));
-    setIsSubmitting(true);
 
     if (type === 'signUp') {
       dispatch(fetchSignUp(form));
@@ -32,7 +30,7 @@ const useForm = (validate, type) => {
     }
   };
 
-  return { handleChange, form, handleSubmit, errors, isSubmitting };
+  return { handleChange, form, handleSubmit, errors };
 };
 
 export default useForm;

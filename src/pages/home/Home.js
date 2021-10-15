@@ -15,7 +15,10 @@ function Home() {
   const dispatch = useDispatch();
   const categories = useSelector((state) => state.categories);
   const products = useSelector((state) => state.products);
-
+  const filtered = products.products.filter(
+    (item) => item.category.title === 'gömlek'
+  );
+  console.log('filtered :>> ', filtered);
   useEffect(() => {
     dispatch(fetchCategories());
     dispatch(fetchProducts());

@@ -9,12 +9,12 @@ const initialState = {
 const signUpReducer = (state = initialState, action) => {
   switch (action.type) {
     case SIGNUP.FETCH_SIGNUP_PENDING:
-      return { ...state, isFetching: true, SIGNUP: {}, isError: false };
+      return { ...state, isFetching: true, signUp: {}, isError: false };
     case SIGNUP.FETCH_SIGNUP_SUCCESS: {
       window.localStorage.setItem('access_token', action.payload);
       return {
         ...state,
-        SIGNUP: action.payload,
+        signUp: action.payload,
         isFetching: false,
         isError: false,
       };

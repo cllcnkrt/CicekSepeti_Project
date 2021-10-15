@@ -1,8 +1,10 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable import/no-extraneous-dependencies */
 import './signIn.scss';
 
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { Link, useHistory } from 'react-router-dom';
 
 import image from '../../assets/images/login.png';
 import logo from '../../assets/logo/logo.svg';
@@ -10,11 +12,22 @@ import useForm from '../../helpers/useForm';
 import validate from '../../helpers/validateInfo';
 
 function SignIn() {
-  const { handleChange, form, handleSubmit, errors, isSubmitting } = useForm(
+  const history = useHistory();
+  const signIn = useSelector((state) => state.signIn);
+
+  useEffect(() => {
+    const isUser =
+      window.localStorage.getItem('access_token') || signIn.signIn !== null;
+
+    if (isUser) {
+      history.push('/');
+    }
+  }, [history, signIn.signIn]);
+  const { handleChange, form, handleSubmit, errors } = useForm(
     validate,
     'signIn'
   );
-  console.log(form, isSubmitting, errors);
+
   return (
     <div className="signIn">
       <div className="signIn__left">
@@ -61,7 +74,7 @@ function SignIn() {
             </div>
             <button type="submit">Giriş Yap</button>
             <span className="form-input-login">
-              Hesabın var mı? <a href="#">Üye Ol</a>
+              Hesabın var mı? <Link to="/yeni-uyelik">Üye Ol</Link>
             </span>
           </form>
         </div>

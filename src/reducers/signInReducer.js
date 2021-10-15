@@ -1,7 +1,7 @@
 import SIGNIN from 'constants/signInConstants';
 
 const initialState = {
-  SIGNIN: {},
+  signIn: null,
   isFetching: false,
   isError: false,
 };
@@ -9,7 +9,7 @@ const initialState = {
 const signInReducer = (state = initialState, action) => {
   switch (action.type) {
     case SIGNIN.FETCH_SIGNIN_PENDING:
-      return { ...state, isFetching: true, SIGNIN: {}, isError: false };
+      return { ...state, isFetching: true, SIGNIN: null, isError: false };
     case SIGNIN.FETCH_SIGNIN_SUCCESS:
       return {
         ...state,

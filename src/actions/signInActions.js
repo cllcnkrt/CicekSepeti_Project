@@ -19,7 +19,7 @@ const fetchSignIn = (form) => async (dispatch) => {
   dispatch(fetchPending());
   return axios
     .post('http://bootcampapi.techcs.io/api/fe/v1/authorization/signin', form)
-    .then((data) => dispatch(fetchSuccess(data)))
+    .then((res) => dispatch(fetchSuccess(res)))
     .catch((error) => dispatch(fetchFailure(error)));
 };
 

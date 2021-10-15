@@ -130,3 +130,10 @@
         height: 100vh;
     }
 }
+
+.wrong {
+    background-color: $light-pink !important;
+    outline: 1px solid $dark-pink !important;
+    color: $dark-pink !important;
+
+}
