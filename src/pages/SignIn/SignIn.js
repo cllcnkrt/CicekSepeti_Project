@@ -16,8 +16,7 @@ function SignIn() {
   const signIn = useSelector((state) => state.signIn);
 
   useEffect(() => {
-    const isUser =
-      window.localStorage.getItem('access_token') || signIn.signIn !== null;
+    const isUser = window.localStorage.getItem('access_token');
 
     if (isUser) {
       history.push('/');
@@ -70,7 +69,9 @@ function SignIn() {
                 value={form.password}
                 onChange={handleChange}
               />
-              <p>Şifremi Unuttum</p>
+              <Link className="p" to="/sifre-yenile">
+                Şifremi Unuttum
+              </Link>
             </div>
             <button type="submit">Giriş Yap</button>
             <span className="form-input-login">

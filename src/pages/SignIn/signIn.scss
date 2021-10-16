@@ -87,10 +87,11 @@
                         padding: 10px;
                     }
 
-                    p {
+                    .p {
                         text-align: right;
                         font: normal normal normal 12px/16px Nunito;
                         color: $gray-200;
+                        margin-top: 5px;
                     }
 
                     input:focus {
@@ -107,7 +108,6 @@
                     border-radius: 8px;
                     border: none;
                     font: normal normal bold 18px/24px Nunito;
-                    margin-top: 10px;
                     cursor: pointer;
                 }
 

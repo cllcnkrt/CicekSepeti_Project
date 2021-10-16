@@ -14,8 +14,7 @@ function SignUp() {
   const history = useHistory();
   const signUp = useSelector((state) => state.signUp);
   useEffect(() => {
-    const isUser =
-      window.localStorage.getItem('access_token') || signUp.signUp !== null;
+    const isUser = window.localStorage.getItem('access_token');
     if (isUser) {
       history.push('/');
     }

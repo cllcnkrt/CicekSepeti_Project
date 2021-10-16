@@ -33,7 +33,6 @@ function Header() {
             </Link>
           ) : (
             <Link to="/giris">
-              {' '}
               <button type="button" className="right">
                 <img src={accountIcon} alt="add-icon" />
                 Giriş Yap

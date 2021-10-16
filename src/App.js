@@ -2,6 +2,7 @@
 import './app.scss';
 
 import Account from 'pages/Account';
+import ForgetPassword from 'pages/ForgetPassword';
 import Home from 'pages/Home';
 import ProductAdd from 'pages/productAdd/ProductAdd';
 import ProductDetail from 'pages/ProductDetail/ProductDetail';
@@ -33,9 +34,6 @@ const App = () => (
           <SignIn />
         </Route>
       )}
-      <Route path="/giris">
-        <SignIn />
-      </Route>
       <Route path="/urun-detay/:id">
         <ProductDetail />
       </Route>
@@ -44,6 +42,9 @@ const App = () => (
       </Route>
       <Route path="/urun-ekleme">
         <ProductAdd />
+      </Route>
+      <Route path="/sifre-yenile">
+        <ForgetPassword />
       </Route>
       <Route exact path="/">
         <Home />
