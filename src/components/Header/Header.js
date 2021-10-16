@@ -18,12 +18,14 @@ function Header() {
           </Link>
         </div>
         <div className="wrapper__buttons">
-          <Link to="/urun-ekleme">
-            <button type="button">
-              <img src={addIcon} alt="add-icon" />
-              Ürün Ekle
-            </button>
-          </Link>
+          {isUser && (
+            <Link to="/urun-ekleme">
+              <button type="button">
+                <img src={addIcon} alt="add-icon" />
+                Ürün Ekle
+              </button>
+            </Link>
+          )}
           {isUser ? (
             <Link to="/hesabım">
               <button type="button" className="right">

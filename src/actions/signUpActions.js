@@ -1,9 +1,10 @@
 import axios from 'axios';
 import SIGNUP from 'constants/signUpConstants';
 
-const fetchSuccess = (data) => ({
+const fetchSuccess = (data, form) => ({
   type: SIGNUP.FETCH_SIGNUP_SUCCESS,
   payload: data,
+  form,
 });
 
 const fetchFailure = (error) => ({
@@ -19,7 +20,7 @@ const fetchSignUp = (form) => async (dispatch) => {
   dispatch(fetchPending());
   return axios
     .post('http://bootcampapi.techcs.io/api/fe/v1/authorization/signup', form)
-    .then((res) => dispatch(fetchSuccess(res.data.access_token)))
+    .then((res) => dispatch(fetchSuccess(res.data.access_token, form)))
     .catch((error) => dispatch(fetchFailure(error)));
 };
 

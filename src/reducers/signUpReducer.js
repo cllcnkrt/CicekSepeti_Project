@@ -1,7 +1,8 @@
 import SIGNUP from 'constants/signUpConstants';
 
 const initialState = {
-  signUp: null,
+  accessToken: '',
+  signUp: {},
   isFetching: false,
   isError: false,
 };
@@ -12,9 +13,11 @@ const signUpReducer = (state = initialState, action) => {
       return { ...state, isFetching: true, signUp: {}, isError: false };
     case SIGNUP.FETCH_SIGNUP_SUCCESS: {
       window.localStorage.setItem('access_token', action.payload);
+      window.localStorage.setItem('user-info', action.form.email);
       return {
         ...state,
-        signUp: action.payload,
+        accessToken: action.payload,
+        signUp: action.form.email,
         isFetching: false,
         isError: false,
       };
