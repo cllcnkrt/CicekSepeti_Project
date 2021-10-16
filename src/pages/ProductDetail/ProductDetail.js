@@ -17,7 +17,6 @@ function ProductDetail() {
   useEffect(() => {
     dispatch(fetchDetails(id));
   }, [dispatch, id]);
-  console.log('productDetails :>> ', productDetails);
   return (
     <div className="productDetail">
       <Header />
@@ -46,7 +45,13 @@ function ProductDetail() {
             </p>
           </div>
           <div className="productWrapper__right-price">
-            {productDetails.productDetails.price}
+            {productDetails?.productDetails?.price
+              ?.toLocaleString('tr-TR', {
+                style: 'currency',
+                currency: 'TRY',
+              })
+              .slice(1)}
+            <span> TL</span>
           </div>
           <div className="productWrapper__right-buttons">
             <button type="button" className="productWrapper__right-BtnL">
