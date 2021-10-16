@@ -3,7 +3,6 @@
 import './signIn.scss';
 
 import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 
 import image from '../../assets/images/login.png';
@@ -13,7 +12,6 @@ import validate from '../../helpers/validateInfo';
 
 function SignIn() {
   const history = useHistory();
-  const signIn = useSelector((state) => state.signIn);
 
   useEffect(() => {
     const isUser = window.localStorage.getItem('access_token');
@@ -21,7 +19,7 @@ function SignIn() {
     if (isUser) {
       history.push('/');
     }
-  }, [history, signIn.signIn]);
+  }, [history]);
   const { handleChange, form, handleSubmit, errors } = useForm(
     validate,
     'signIn'

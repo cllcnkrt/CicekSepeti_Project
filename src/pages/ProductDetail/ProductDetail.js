@@ -1,37 +1,53 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import './productDetail.scss';
 
 import Header from 'components/Header';
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 
-import image from '../../assets/images/image6.png';
+import fetchDetails from '../../actions/productDetailsActions';
 
-function productDetail() {
+function ProductDetail() {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const productDetails = useSelector((state) => state.productDetails);
+  const { id } = useParams();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchDetails(id));
+  }, [dispatch, id]);
+  console.log('productDetails :>> ', productDetails);
   return (
     <div className="productDetail">
       <Header />
       <div className="productWrapper">
         <div className="productWrapper__left">
           <div className="productWrapper__left-image">
-            <img src={image} alt="" />
+            <img src={productDetails.productDetails.imageUrl} alt="" />
           </div>
         </div>
         <div className="productWrapper__right">
           <h1 className="productWrapper__right-title">
-            Beli Uzun Trençkot Kareli
+            {productDetails.productDetails.title}
           </h1>
           <div className="productWrapper__right-info">
             <p className="productWrapper__right-infoTitle">
-              <span className="right-infoTitle">Marka:</span> Luis Vitton
+              <span className="right-infoTitle">Marka:</span>
+              {productDetails.productDetails.brand?.title}
             </p>
             <p className="productWrapper__right-infoTitle">
-              <span className="right-infoTitle">Renk:</span> Bej Rengi
+              <span className="right-infoTitle">Renk:</span>{' '}
+              {productDetails.productDetails.color?.title}
             </p>
             <p className="productWrapper__right-infoTitle">
-              <span className="right-infoTitle">Kullanım Durumu:</span> Az
-              kullanılmış
+              <span className="right-infoTitle">Kullanım Durumu:</span>{' '}
+              {productDetails.productDetails.status?.title}
             </p>
           </div>
-          <div className="productWrapper__right-price">319,90 TL</div>
+          <div className="productWrapper__right-price">
+            {productDetails.productDetails.price}
+          </div>
           <div className="productWrapper__right-buttons">
             <button type="button" className="productWrapper__right-BtnL">
               Satın Al
@@ -43,10 +59,7 @@ function productDetail() {
           <div className="productWrapper__right-desc">
             <h3 className="productWrapper__right-descTitle">Açıklama</h3>
             <p className="productWrapper__right-descContent">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias
-              laudantium doloremque aliquam inventore delectus nulla commodi,
-              consequatur necessitatibus blanditiis maxime eos impedit corrupti
-              nobis at soluta facilis corporis consequuntur natus?
+              {productDetails.productDetails.description}
             </p>
           </div>
         </div>
@@ -55,4 +68,4 @@ function productDetail() {
   );
 }
 
-export default productDetail;
+export default ProductDetail;

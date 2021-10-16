@@ -21,7 +21,7 @@ function Navbar() {
       <ul>
         <li>
           <NavLink
-            activeClassName={currentQuery === null ? `active` : ''}
+            activeClassName={currentQuery === null ? `navbarActive` : ''}
             to="/"
           >
             Hepsi
@@ -32,7 +32,7 @@ function Navbar() {
             <NavLink
               activeClassName={
                 currentQuery !== null && category.title === currentQuery
-                  ? 'active'
+                  ? 'navbarActive'
                   : ''
               }
               to={`/?category=${category.title}`}
