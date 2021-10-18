@@ -8,14 +8,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useLocation } from 'react-router-dom';
 
 import avatar from '../../assets/icons/mailAccount.svg';
-import offerImg from '../../assets/images/offer-img.png';
 
 function Account() {
   const userInfo = window.localStorage.getItem('user-info');
   const location = useLocation();
   const givenOffers = useSelector((state) => state.givenOffers);
   const receivedOffers = useSelector((state) => state.receivedOffers);
-  console.log('givenOffers :>> ', givenOffers);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchReceivedOffers());
@@ -54,14 +52,14 @@ function Account() {
           ? receivedOffers?.receivedOffers.map((item) => (
               <div className="offerBody__card">
                 <div className="offerBody__card-left">
-                  <img src={offerImg} alt="" />
+                  <img src={item.product.imageUrl} alt="" />
                   <div className="offerBody__card-left-desc">
-                    <h1>{item.title}</h1>
+                    <h1>{item.product.title}</h1>
                     <div className="offerBody__card-left-desc-price">
                       <p>Alınan Teklif: </p>{' '}
                       <span>
                         {' '}
-                        {item.price
+                        {item.offeredPrice
                           .toLocaleString('tr-TR', {
                             style: 'currency',
                             currency: 'TRY',
@@ -85,13 +83,14 @@ function Account() {
           : givenOffers?.givenOffers.map((item) => (
               <div className="offerBody__card">
                 <div className="offerBody__card-left">
-                  <img src={offerImg} alt="" />
+                  <img src={item.product.imageUrl} alt="" />
                   <div className="offerBody__card-left-desc">
-                    <h1>{item.title}</h1>
+                    <h1>{item.product.title}</h1>
                     <div className="offerBody__card-left-desc-price">
-                      <p>Alınan Teklif: </p>{' '}
+                      <p>Verilen Teklif: </p>{' '}
                       <span>
-                        {item.price
+                        {' '}
+                        {item.offeredPrice
                           .toLocaleString('tr-TR', {
                             style: 'currency',
                             currency: 'TRY',

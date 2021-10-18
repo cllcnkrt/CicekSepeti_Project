@@ -1,4 +1,5 @@
 import './style/custom.scss';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';

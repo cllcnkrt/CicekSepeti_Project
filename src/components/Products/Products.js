@@ -24,7 +24,6 @@ function Products() {
     );
     setSelectedProducts(filtered);
   }, [currentQuery, products.products]);
-  console.log('selectedProducts :>> ', products.products);
   return (
     <div className="products">
       {selectedProducts.length > 0

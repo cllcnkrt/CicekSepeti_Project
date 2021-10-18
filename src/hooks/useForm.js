@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import fetchSignIn from 'actions/signInActions';
 import fetchSignUp from 'actions/signUpActions';
 import { useState } from 'react';
@@ -13,7 +14,6 @@ const useForm = (validate, type) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    console.log(e);
     setForm({
       ...form,
       [name]: value,

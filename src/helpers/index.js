@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 export const textCapitalize = (str) => {
   const words = str.split(' ');
   return words

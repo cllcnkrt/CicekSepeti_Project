@@ -63,6 +63,29 @@
 
             &-price {
                 font: normal normal bold 25px/23px Nunito;
+
+            }
+
+            .offered-product {
+                display: flex;
+                border-radius: 8px;
+                align-items: center;
+                background: #F2F2F2 0% 0% no-repeat padding-box;
+                margin-top: 15px;
+                height: 30px;
+                width: 200px;
+
+                p {
+                    margin-left: 5px;
+                    font: normal normal normal 15px/20px Nunito;
+                    color: $gray-200;
+                }
+
+                span {
+                    font: normal normal bold 15px/20px Nunito;
+                    color: $gray-300;
+                    margin-left: 5px;
+                }
             }
 
             &-buttons {

@@ -17,8 +17,13 @@ const fetchPending = () => ({
 
 const fetchGivenOffers = () => async (dispatch) => {
   dispatch(fetchPending());
+
   return axios
-    .get('https://bootcampapi.techcs.io/api/fe/v1/account/given-offers')
+    .get('https://bootcampapi.techcs.io/api/fe/v1/account/given-offers', {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+      },
+    })
     .then((res) => dispatch(fetchSuccess(res.data)))
     .catch((error) => dispatch(fetchFailure(error)));
 };
