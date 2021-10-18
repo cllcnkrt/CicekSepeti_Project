@@ -15,18 +15,16 @@ function Products() {
   const currentQuery = query.get('category');
   const products = useSelector((state) => state.products);
   const [selectedProducts, setSelectedProducts] = useState([]);
-
   useEffect(() => {
     dispatch(fetchProducts());
   }, [dispatch]);
-
   useEffect(() => {
     const filtered = products.products.filter(
       (item) => item.category.title === currentQuery
     );
     setSelectedProducts(filtered);
   }, [currentQuery, products.products]);
-
+  console.log('selectedProducts :>> ', products.products);
   return (
     <div className="products">
       {selectedProducts.length > 0

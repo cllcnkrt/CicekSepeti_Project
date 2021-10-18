@@ -15,7 +15,7 @@ function Navbar() {
   useEffect(() => {
     dispatch(fetchCategories());
   }, [dispatch]);
-  console.log(currentQuery);
+
   return (
     <nav className="nav">
       <ul>

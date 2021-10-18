@@ -6,7 +6,7 @@
     min-width: 200px;
     display: flex;
     flex-direction: column;
-
+    justify-content: space-between;
     background-color: $white;
     border-radius: 8px;
     overflow: hidden;
@@ -26,14 +26,16 @@
         display: flex;
         justify-content: space-between;
 
+
         .card-brand {
             text-transform: capitalize;
             font: normal normal bold 15px/22px Nunito;
-            color: $dark-blue
+            color: $dark-blue;
         }
 
         .card-color {
             font: normal normal normal 13px/22px Nunito;
+
 
             .color {
                 font: normal normal bold 13px/22px Nunito !important;
