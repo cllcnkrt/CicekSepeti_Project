@@ -3,6 +3,8 @@ import './card.scss';
 
 import React from 'react';
 
+import { textCapitalize } from '../../helpers';
+
 function Card({ product }) {
   return (
     <div className="card">
@@ -12,7 +14,8 @@ function Card({ product }) {
       <div className="card-content">
         <h1 className="card-brand">{product.brand.title}</h1>
         <div className="card-color">
-          <span className="color">Renk:</span> {product.color.title}
+          <span className="color">Renk:</span>{' '}
+          {textCapitalize(product.color.title)}
         </div>
       </div>
       <div className="card-price">

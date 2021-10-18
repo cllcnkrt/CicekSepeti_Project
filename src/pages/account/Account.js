@@ -14,8 +14,8 @@ function Account() {
   const userInfo = window.localStorage.getItem('user-info');
   const location = useLocation();
   const givenOffers = useSelector((state) => state.givenOffers);
-  const receivedOffers = useSelector((state) => state.receiveders);
-
+  const receivedOffers = useSelector((state) => state.receivedOffers);
+  console.log('givenOffers :>> ', givenOffers);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchReceivedOffers());
@@ -51,7 +51,7 @@ function Account() {
       </div>
       <div className="offerBody">
         {location.pathname === '/hesabım/alınan-teklifler'
-          ? receivedOffers.receivedOffers.map((item) => (
+          ? receivedOffers?.receivedOffers.map((item) => (
               <div className="offerBody__card">
                 <div className="offerBody__card-left">
                   <img src={offerImg} alt="" />
@@ -82,7 +82,7 @@ function Account() {
                 </div>
               </div>
             ))
-          : givenOffers.givenOffers.map((item) => (
+          : givenOffers?.givenOffers.map((item) => (
               <div className="offerBody__card">
                 <div className="offerBody__card-left">
                   <img src={offerImg} alt="" />

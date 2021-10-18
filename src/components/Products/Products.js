@@ -7,7 +7,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import useQuery from '../../helpers/useQuery';
+import useQuery from '../../hooks/useQuery';
 
 function Products() {
   const dispatch = useDispatch();
@@ -29,13 +29,13 @@ function Products() {
     <div className="products">
       {selectedProducts.length > 0
         ? selectedProducts.map((product) => (
-            <Link to={`urun-detay/${product.id}`}>
-              <Card key={product.id} product={product} />
+            <Link key={product.id} to={`urun-detay/${product.id}`}>
+              <Card product={product} />
             </Link>
           ))
         : products.products.map((product) => (
-            <Link to={`urun-detay/${product.id}`}>
-              <Card key={product.id} product={product} />
+            <Link key={product.id} to={`urun-detay/${product.id}`}>
+              <Card product={product} />
             </Link>
           ))}
     </div>

@@ -5,7 +5,8 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
-import useQuery from '../../helpers/useQuery';
+import { textCapitalize } from '../../helpers';
+import useQuery from '../../hooks/useQuery';
 
 function Navbar() {
   const dispatch = useDispatch();
@@ -37,7 +38,7 @@ function Navbar() {
               }
               to={`/?category=${category.title}`}
             >
-              {category.title}
+              {textCapitalize(category.title)}
             </NavLink>
           </li>
         ))}

@@ -4,7 +4,7 @@ import './app.scss';
 import Account from 'pages/Account';
 import ForgetPassword from 'pages/ForgetPassword';
 import Home from 'pages/Home';
-import ProductAdd from 'pages/productAdd/ProductAdd';
+import ProductAdd from 'pages/ProductAdd/ProductAdd';
 import ProductDetail from 'pages/ProductDetail/ProductDetail';
 import SignIn from 'pages/SignIn';
 import SignUp from 'pages/SignUp';

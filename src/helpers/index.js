@@ -1,4 +1,12 @@
-export default function validateInfo(form) {
+/* eslint-disable import/prefer-default-export */
+export const textCapitalize = (str) => {
+  const words = str.split(' ');
+  return words
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+};
+
+export function validateInfo(form) {
   const errors = {};
 
   if (!form.email) {

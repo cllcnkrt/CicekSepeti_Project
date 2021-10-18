@@ -8,12 +8,12 @@ import { Link } from 'react-router-dom';
 
 import image from '../../assets/images/login.png';
 import logo from '../../assets/logo/logo.svg';
-import useForm from '../../helpers/useForm';
-import validate from '../../helpers/validateInfo';
+import { validateInfo } from '../../helpers';
+import useForm from '../../hooks/useForm';
 
 function ForgetPassword() {
   const { handleChange, form, handleSubmit, errors } = useForm(
-    validate,
+    validateInfo,
     'signIn'
   );
 

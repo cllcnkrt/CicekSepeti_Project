@@ -11,7 +11,7 @@
         display: flex;
         width: 80%;
         max-height: 100%;
-        min-height: 100%;
+        min-height: 50vh;
         margin-top: 20px;
         border-radius: 8px;
         background-color: $white;
@@ -23,8 +23,9 @@
 
             &-image {
                 width: 100%;
-                
+
                 min-width: 150px;
+
                 img {
                     max-width: 100%;
                     padding: 10px;
@@ -67,26 +68,27 @@
             &-buttons {
                 display: flex;
                 margin: 20px 0 20px 0;
+                height: 40px;
 
                 .productWrapper__right-BtnL {
-                    width: 170px;
-                    height: 30px;
+                    width: 200px;
                     background-color: $dark-blue;
                     color: $white;
                     margin-right: 10px;
                     border-radius: 8px;
                     border: none;
                     cursor: pointer;
+                    font: normal normal bold 18px/24px Nunito;
                 }
 
                 .productWrapper__right-BtnR {
-                    width: 170px;
-                    height: 30px;
+                    width: 200px;
                     border-radius: 8px;
                     border: none;
                     background-color: $light-blue;
                     color: $dark-blue;
                     cursor: pointer;
+                    font: normal normal bold 18px/24px Nunito;
                 }
             }
 

@@ -27,7 +27,7 @@ function Header() {
             </Link>
           )}
           {isUser ? (
-            <Link to="/hesabım">
+            <Link to="/hesabım/alınan-teklifler">
               <button type="button" className="right">
                 <img src={accountIcon} alt="add-icon" />
                 Hesabım

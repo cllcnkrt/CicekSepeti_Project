@@ -7,8 +7,8 @@ import { Link, useHistory } from 'react-router-dom';
 
 import image from '../../assets/images/login.png';
 import logo from '../../assets/logo/logo.svg';
-import useForm from '../../helpers/useForm';
-import validate from '../../helpers/validateInfo';
+import { validateInfo } from '../../helpers';
+import useForm from '../../hooks/useForm';
 
 function SignUp() {
   const history = useHistory();
@@ -20,7 +20,7 @@ function SignUp() {
     }
   }, [history, signUp.signUp]);
   const { handleChange, form, handleSubmit, errors } = useForm(
-    validate,
+    validateInfo,
     'signUp'
   );
 

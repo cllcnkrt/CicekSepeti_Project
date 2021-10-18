@@ -13,6 +13,7 @@ const useForm = (validate, type) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    console.log(e);
     setForm({
       ...form,
       [name]: value,

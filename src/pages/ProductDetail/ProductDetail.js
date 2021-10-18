@@ -1,3 +1,4 @@
+/* eslint-disable no-debugger */
 /* eslint-disable react-hooks/rules-of-hooks */
 import './productDetail.scss';
 
@@ -7,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
 import fetchDetails from '../../actions/productDetailsActions';
+import { textCapitalize } from '../../helpers';
 
 function ProductDetail() {
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -17,6 +19,7 @@ function ProductDetail() {
   useEffect(() => {
     dispatch(fetchDetails(id));
   }, [dispatch, id]);
+
   return (
     <div className="productDetail">
       <Header />
@@ -32,16 +35,19 @@ function ProductDetail() {
           </h1>
           <div className="productWrapper__right-info">
             <p className="productWrapper__right-infoTitle">
-              <span className="right-infoTitle">Marka:</span>
-              {productDetails.productDetails.brand?.title}
+              <span className="right-infoTitle">Marka:</span>{' '}
+              {productDetails.productDetails.brand?.title &&
+                textCapitalize(productDetails.productDetails.brand?.title)}
             </p>
             <p className="productWrapper__right-infoTitle">
               <span className="right-infoTitle">Renk:</span>{' '}
-              {productDetails.productDetails.color?.title}
+              {productDetails.productDetails.color?.title &&
+                textCapitalize(productDetails.productDetails.color?.title)}
             </p>
             <p className="productWrapper__right-infoTitle">
               <span className="right-infoTitle">Kullanım Durumu:</span>{' '}
-              {productDetails.productDetails.status?.title}
+              {productDetails.productDetails.status &&
+                textCapitalize(productDetails.productDetails.status.title)}
             </p>
           </div>
           <div className="productWrapper__right-price">
