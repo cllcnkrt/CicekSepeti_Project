@@ -1,20 +1,25 @@
 import axios from 'axios';
-import SIGNIN from 'constants/signInConstants';
 import { toast } from 'react-toastify';
 
+import {
+  FETCH_SIGNIN_FAILURE,
+  FETCH_SIGNIN_PENDING,
+  FETCH_SIGNIN_SUCCESS,
+} from '../constants';
+
 const fetchSuccess = (data, form) => ({
-  type: SIGNIN.FETCH_SIGNIN_SUCCESS,
+  type: FETCH_SIGNIN_SUCCESS,
   payload: data,
   form,
 });
 
 const fetchFailure = (error) => ({
-  type: SIGNIN.FETCH_SIGNIN_FAILURE,
+  type: FETCH_SIGNIN_FAILURE,
   payload: error,
 });
 
 const fetchPending = () => ({
-  type: SIGNIN.FETCH_SIGNIN_PENDING,
+  type: FETCH_SIGNIN_PENDING,
 });
 
 const fetchSignIn = (form) => async (dispatch) => {

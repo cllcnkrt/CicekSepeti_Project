@@ -1,4 +1,8 @@
-import DETAILS from 'constants/productDetailsConstants';
+import {
+  FETCH_DETAILS_FAILURE,
+  FETCH_DETAILS_PENDING,
+  FETCH_DETAILS_SUCCESS,
+} from '../constants';
 
 const initialState = {
   productDetails: {},
@@ -8,16 +12,16 @@ const initialState = {
 
 const productDetailsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case DETAILS.FETCH_DETAILS_PENDING:
+    case FETCH_DETAILS_PENDING:
       return { ...state, isFetching: true, productDetails: {}, isError: false };
-    case DETAILS.FETCH_DETAILS_SUCCESS:
+    case FETCH_DETAILS_SUCCESS:
       return {
         ...state,
         productDetails: action.payload,
         isFetching: false,
         isError: false,
       };
-    case DETAILS.FETCH_DETAILS_FAILURE:
+    case FETCH_DETAILS_FAILURE:
       return { ...state, isError: true, isFetching: false };
     default:
       return state;

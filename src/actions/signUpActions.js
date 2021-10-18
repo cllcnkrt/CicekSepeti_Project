@@ -1,19 +1,24 @@
 import axios from 'axios';
-import SIGNUP from 'constants/signUpConstants';
+
+import {
+  FETCH_SIGNUP_FAILURE,
+  FETCH_SIGNUP_PENDING,
+  FETCH_SIGNUP_SUCCESS,
+} from '../constants';
 
 const fetchSuccess = (data, form) => ({
-  type: SIGNUP.FETCH_SIGNUP_SUCCESS,
+  type: FETCH_SIGNUP_SUCCESS,
   payload: data,
   form,
 });
 
 const fetchFailure = (error) => ({
-  type: SIGNUP.FETCH_SIGNUP_FAILURE,
+  type: FETCH_SIGNUP_FAILURE,
   payload: error,
 });
 
 const fetchPending = () => ({
-  type: SIGNUP.FETCH_SIGNUP_PENDING,
+  type: FETCH_SIGNUP_PENDING,
 });
 
 const fetchSignUp = (form) => async (dispatch) => {

@@ -1,18 +1,23 @@
 import axios from 'axios';
-import CATEGORIES from 'constants/categoryConstants';
+
+import {
+  FETCH_CATEGORIES_FAILURE,
+  FETCH_CATEGORIES_PENDING,
+  FETCH_CATEGORIES_SUCCESS,
+} from '../constants';
 
 const fetchSuccess = (data) => ({
-  type: CATEGORIES.FETCH_CATEGORIES_SUCCESS,
+  type: FETCH_CATEGORIES_SUCCESS,
   payload: data,
 });
 
 const fetchFailure = (error) => ({
-  type: CATEGORIES.FETCH_CATEGORIES_FAILURE,
+  type: FETCH_CATEGORIES_FAILURE,
   payload: error,
 });
 
 const fetchPending = () => ({
-  type: CATEGORIES.FETCH_CATEGORIES_PENDING,
+  type: FETCH_CATEGORIES_PENDING,
 });
 
 const fetchCategories = () => async (dispatch) => {

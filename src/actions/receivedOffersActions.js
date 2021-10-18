@@ -1,18 +1,23 @@
 import axios from 'axios';
-import RECEIVED_OFFERS from 'constants/receivedOffersConstants';
+
+import {
+  FETCH_RECEIVED_OFFERS_FAILURE,
+  FETCH_RECEIVED_OFFERS_PENDING,
+  FETCH_RECEIVED_OFFERS_SUCCESS,
+} from '../constants';
 
 const fetchSuccess = (data) => ({
-  type: RECEIVED_OFFERS.FETCH_RECEIVED_OFFERS_SUCCESS,
+  type: FETCH_RECEIVED_OFFERS_SUCCESS,
   payload: data,
 });
 
 const fetchFailure = (error) => ({
-  type: RECEIVED_OFFERS.FETCH_RECEIVED_OFFERS_FAILURE,
+  type: FETCH_RECEIVED_OFFERS_FAILURE,
   payload: error,
 });
 
 const fetchPending = () => ({
-  type: RECEIVED_OFFERS.FETCH_RECEIVED_OFFERS_PENDING,
+  type: FETCH_RECEIVED_OFFERS_PENDING,
 });
 
 const fetchReceivedOffers = () => async (dispatch) => {

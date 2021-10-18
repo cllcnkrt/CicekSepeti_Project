@@ -1,4 +1,8 @@
-import CATEGORIES from 'constants/categoryConstants';
+import {
+  FETCH_CATEGORIES_FAILURE,
+  FETCH_CATEGORIES_PENDING,
+  FETCH_CATEGORIES_SUCCESS,
+} from '../constants';
 
 const initialState = {
   categories: [],
@@ -8,16 +12,16 @@ const initialState = {
 
 const categoryReducer = (state = initialState, action) => {
   switch (action.type) {
-    case CATEGORIES.FETCH_CATEGORIES_PENDING:
+    case FETCH_CATEGORIES_PENDING:
       return { ...state, isFetching: true, categories: [], isError: false };
-    case CATEGORIES.FETCH_CATEGORIES_SUCCESS:
+    case FETCH_CATEGORIES_SUCCESS:
       return {
         ...state,
         categories: action.payload,
         isFetching: false,
         isError: false,
       };
-    case CATEGORIES.FETCH_CATEGORIES_FAILURE:
+    case FETCH_CATEGORIES_FAILURE:
       return { ...state, isError: true, isFetching: false };
     default:
       return state;

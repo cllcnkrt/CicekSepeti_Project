@@ -1,4 +1,8 @@
-import RECEIVED_OFFERS from 'constants/receivedOffersConstants';
+import {
+  FETCH_RECEIVED_OFFERS_FAILURE,
+  FETCH_RECEIVED_OFFERS_PENDING,
+  FETCH_RECEIVED_OFFERS_SUCCESS,
+} from '../constants';
 
 const initialState = {
   receivedOffers: [],
@@ -8,16 +12,16 @@ const initialState = {
 
 const receivedOffersReducer = (state = initialState, action) => {
   switch (action.type) {
-    case RECEIVED_OFFERS.FETCH_RECEIVED_OFFERS_PENDING:
+    case FETCH_RECEIVED_OFFERS_PENDING:
       return { ...state, isFetching: true, receivedOffers: [], isError: false };
-    case RECEIVED_OFFERS.FETCH_RECEIVED_OFFERS_SUCCESS:
+    case FETCH_RECEIVED_OFFERS_SUCCESS:
       return {
         ...state,
         receivedOffers: action.payload,
         isFetching: false,
         isError: false,
       };
-    case RECEIVED_OFFERS.FETCH_RECEIVED_OFFERS_FAILURE:
+    case FETCH_RECEIVED_OFFERS_FAILURE:
       return { ...state, isError: true, isFetching: false };
     default:
       return state;

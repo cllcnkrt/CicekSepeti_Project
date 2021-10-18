@@ -1,19 +1,23 @@
 import axios from 'axios';
 
-import DETAILS from '../constants/productDetailsConstants';
+import {
+  FETCH_DETAILS_FAILURE,
+  FETCH_DETAILS_PENDING,
+  FETCH_DETAILS_SUCCESS,
+} from '../constants';
 
 const fetchSuccess = (data) => ({
-  type: DETAILS.FETCH_DETAILS_SUCCESS,
+  type: FETCH_DETAILS_SUCCESS,
   payload: data,
 });
 
 const fetchFailure = (error) => ({
-  type: DETAILS.FETCH_DETAILS_FAILURE,
+  type: FETCH_DETAILS_FAILURE,
   payload: error,
 });
 
 const fetchPending = () => ({
-  type: DETAILS.FETCH_DETAILS_PENDING,
+  type: FETCH_DETAILS_PENDING,
 });
 
 const fetchDetails = (id) => async (dispatch) => {

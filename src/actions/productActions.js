@@ -1,18 +1,23 @@
 import axios from 'axios';
-import PRODUCTS from 'constants/productsConstants';
+
+import {
+  FETCH_PRODUCTS_FAILURE,
+  FETCH_PRODUCTS_PENDING,
+  FETCH_PRODUCTS_SUCCESS,
+} from '../constants';
 
 const fetchSuccess = (data) => ({
-  type: PRODUCTS.FETCH_PRODUCTS_SUCCESS,
+  type: FETCH_PRODUCTS_SUCCESS,
   payload: data,
 });
 
 const fetchFailure = (error) => ({
-  type: PRODUCTS.FETCH_PRODUCTS_FAILURE,
+  type: FETCH_PRODUCTS_FAILURE,
   payload: error,
 });
 
 const fetchPending = () => ({
-  type: PRODUCTS.FETCH_PRODUCTS_PENDING,
+  type: FETCH_PRODUCTS_PENDING,
 });
 
 const fetchProducts = () => async (dispatch) => {

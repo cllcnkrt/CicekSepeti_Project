@@ -1,4 +1,8 @@
-import SIGNUP from 'constants/signUpConstants';
+import {
+  FETCH_SIGNUP_FAILURE,
+  FETCH_SIGNUP_PENDING,
+  FETCH_SIGNUP_SUCCESS,
+} from '../constants';
 
 const initialState = {
   accessToken: '',
@@ -9,9 +13,9 @@ const initialState = {
 
 const signUpReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SIGNUP.FETCH_SIGNUP_PENDING:
+    case FETCH_SIGNUP_PENDING:
       return { ...state, isFetching: true, signUp: {}, isError: false };
-    case SIGNUP.FETCH_SIGNUP_SUCCESS: {
+    case FETCH_SIGNUP_SUCCESS: {
       window.localStorage.setItem('access_token', action.payload);
       window.localStorage.setItem('user-info', action.form.email);
       return {
@@ -23,7 +27,7 @@ const signUpReducer = (state = initialState, action) => {
       };
     }
 
-    case SIGNUP.FETCH_SIGNUP_FAILURE:
+    case FETCH_SIGNUP_FAILURE:
       return { ...state, isError: action.payload.message, isFetching: false };
     default:
       return state;
