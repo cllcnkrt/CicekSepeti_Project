@@ -4,11 +4,12 @@ import './productDetail.scss';
 
 import fetchGivenOffers from 'actions/givenOffersActions';
 import Header from 'components/Header';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
 import fetchDetails from '../../actions/productDetailsActions';
+import ConfirmModal from '../../components/ConfimModal';
 import { textCapitalize } from '../../helpers';
 
 function ProductDetail() {
@@ -17,15 +18,17 @@ function ProductDetail() {
   );
   const { id } = useParams();
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchGivenOffers());
-    dispatch(fetchDetails(id));
-  }, [dispatch, id]);
   const givenOffers = useSelector((state) => state.givenOffers.givenOffers);
   const offerable = givenOffers.filter(
     (item) => productDetails.id === item.product.id
   )[0];
-  console.log(offerable);
+  const [openModal, setOpenModal] = useState(false);
+
+  useEffect(() => {
+    dispatch(fetchGivenOffers());
+    dispatch(fetchDetails(id));
+  }, [dispatch, id]);
+
   return (
     <div className="productDetail">
       <Header />
@@ -82,9 +85,9 @@ function ProductDetail() {
           )}
           <div className="productWrapper__right-buttons">
             <button
-              disabled
               type="button"
               className="productWrapper__right-BtnL"
+              onClick={() => setOpenModal(true)}
             >
               Satın Al
             </button>
@@ -100,6 +103,13 @@ function ProductDetail() {
           </div>
         </div>
       </div>
+      {openModal && (
+        <ConfirmModal
+          closeModal={setOpenModal}
+          buttonLeft="Vazgeç"
+          buttonRight="Satın Al"
+        />
+      )}
     </div>
   );
 }

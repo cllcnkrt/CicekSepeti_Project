@@ -1,0 +1,68 @@
+@import "../../style/_variables.scss";
+
+
+.confirmModal {
+    width: 100vw;
+    height: 100vh;
+    background: rgba(75, 156, 226, 0.7);
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__container {
+        width: 355px;
+        height: 171px;
+        border-radius: 8px;
+        background-color: $white;
+        display: flex;
+        flex-direction: column;
+        padding: 25px;
+
+        &-title {
+            display: inline-block;
+            text-align: center;
+            padding: 8px;
+
+            h1 {
+                font: normal normal bold 25px/23px Nunito;
+            }
+        }
+
+        &-body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin: 5px;
+
+            p {
+                font: normal normal normal 15px/23px Nunito;
+            }
+        }
+
+        &-footer {
+            flex: 20%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            button {
+                width: 150px;
+                height: 45px;
+                margin: 8px;
+                border: none;
+                background-color: $dark-blue;
+                color: $white;
+                border-radius: 8px;
+                font-size: 20px;
+                cursor: pointer;
+            }
+
+            .cancelBtn {
+                background-color: $light-blue;
+                color: $dark-blue;
+            }
+        }
+    }
+}
