@@ -2,8 +2,10 @@
 import './confirmModal.scss';
 
 import React from 'react';
+import { useDispatch } from 'react-redux';
 
-function ConfirmModal({ closeConfirmModal, buttonLeft, buttonRight }) {
+function ConfirmModal({ closeConfirmModal, buttonLeft, buttonRight, action }) {
+  const dispatch = useDispatch();
   return (
     <div className="confirmModal">
       <div className="confirmModal__container">
@@ -21,7 +23,15 @@ function ConfirmModal({ closeConfirmModal, buttonLeft, buttonRight }) {
           >
             {buttonLeft}
           </button>
-          <button type="button">{buttonRight}</button>
+          <button
+            type="button"
+            onClick={() => {
+              dispatch(action);
+              closeConfirmModal(false);
+            }}
+          >
+            {buttonRight}
+          </button>
         </div>
       </div>
     </div>

@@ -3,6 +3,7 @@
 import './productDetail.scss';
 
 import fetchGivenOffers from 'actions/givenOffersActions';
+import fetchPurchase from 'actions/purchaseActions';
 import Header from 'components/Header';
 import OfferModal from 'components/OfferModal';
 import React, { useEffect, useState } from 'react';
@@ -24,7 +25,7 @@ function ProductDetail() {
     (item) => productDetails.id === item.product.id
   )[0];
   const [openConfirmModal, setOpenConfirmModal] = useState(false);
-  const [openOfferModal, setOpenOfferModal] = useState(true);
+  const [openOfferModal, setOpenOfferModal] = useState(false);
   useEffect(() => {
     dispatch(fetchGivenOffers());
     dispatch(fetchDetails(id));
@@ -113,6 +114,7 @@ function ProductDetail() {
           closeConfirmModal={setOpenConfirmModal}
           buttonLeft="Vazgeç"
           buttonRight="Satın Al"
+          action={() => fetchPurchase(id)}
         />
       )}
       {openOfferModal && (

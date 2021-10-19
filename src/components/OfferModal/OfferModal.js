@@ -2,6 +2,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import './offerModal.scss';
 
+import usePercent from 'hooks/usePercent';
 import React, { useState } from 'react';
 
 import checked from '../../assets/icons/checked.svg';
@@ -11,6 +12,8 @@ import unChecked from '../../assets/icons/unChecked.svg';
 function OfferModal({ closeOfferModal, image, title, price }) {
   const [selectedOffer, setSelectedOffer] = useState(0);
   const [input, setInput] = useState('');
+  const { percentPrice } = usePercent(price, selectedOffer);
+
   return (
     <div className="offerModal">
       <div className="offerModal__container">
@@ -84,7 +87,7 @@ function OfferModal({ closeOfferModal, image, title, price }) {
           <input
             type="number"
             placeholder="Teklif Belirle"
-            value={input}
+            value={percentPrice || input}
             onChange={(e) => setInput(e.target.value)}
             onClick={() => setSelectedOffer(0)}
           />

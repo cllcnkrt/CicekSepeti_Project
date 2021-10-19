@@ -1,3 +1,6 @@
+/* eslint-disable react-hooks/rules-of-hooks */
+import fetchPurchase from 'actions/purchaseActions';
+
 export const textCapitalize = (str) => {
   const words = str.split(' ');
   return words
@@ -22,3 +25,7 @@ export function validateInfo(form) {
   }
   return errors;
 }
+
+export const handlePurchaseButton = (dispatch) => {
+  dispatch(fetchPurchase());
+};
