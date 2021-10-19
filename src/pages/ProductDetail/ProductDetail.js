@@ -4,6 +4,7 @@ import './productDetail.scss';
 
 import fetchGivenOffers from 'actions/givenOffersActions';
 import Header from 'components/Header';
+import OfferModal from 'components/OfferModal';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
@@ -22,8 +23,8 @@ function ProductDetail() {
   const offerable = givenOffers.filter(
     (item) => productDetails.id === item.product.id
   )[0];
-  const [openModal, setOpenModal] = useState(false);
-
+  const [openConfirmModal, setOpenConfirmModal] = useState(false);
+  const [openOfferModal, setOpenOfferModal] = useState(true);
   useEffect(() => {
     dispatch(fetchGivenOffers());
     dispatch(fetchDetails(id));
@@ -87,11 +88,15 @@ function ProductDetail() {
             <button
               type="button"
               className="productWrapper__right-BtnL"
-              onClick={() => setOpenModal(true)}
+              onClick={() => setOpenConfirmModal(true)}
             >
               Satın Al
             </button>
-            <button type="button" className="productWrapper__right-BtnR">
+            <button
+              type="button"
+              className="productWrapper__right-BtnR"
+              onClick={() => setOpenOfferModal(true)}
+            >
               Teklif ver
             </button>
           </div>
@@ -103,11 +108,19 @@ function ProductDetail() {
           </div>
         </div>
       </div>
-      {openModal && (
+      {openConfirmModal && (
         <ConfirmModal
-          closeModal={setOpenModal}
+          closeConfirmModal={setOpenConfirmModal}
           buttonLeft="Vazgeç"
           buttonRight="Satın Al"
+        />
+      )}
+      {openOfferModal && (
+        <OfferModal
+          closeOfferModal={setOpenOfferModal}
+          image={productDetails?.imageUrl}
+          title={productDetails?.brand?.title}
+          price={productDetails?.price}
         />
       )}
     </div>

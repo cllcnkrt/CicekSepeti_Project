@@ -3,7 +3,7 @@ import './confirmModal.scss';
 
 import React from 'react';
 
-function ConfirmModal({ closeModal, buttonLeft, buttonRight }) {
+function ConfirmModal({ closeConfirmModal, buttonLeft, buttonRight }) {
   return (
     <div className="confirmModal">
       <div className="confirmModal__container">
@@ -17,7 +17,7 @@ function ConfirmModal({ closeModal, buttonLeft, buttonRight }) {
           <button
             className="cancelBtn "
             type="button"
-            onClick={() => closeModal(false)}
+            onClick={() => closeConfirmModal(false)}
           >
             {buttonLeft}
           </button>
