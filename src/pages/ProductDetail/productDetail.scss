@@ -113,6 +113,19 @@
                     cursor: pointer;
                     font: normal normal bold 18px/24px Nunito;
                 }
+
+                .soldProduct {
+                    width: 235px;
+                    height: 45px;
+                    color: $dark-orange;
+                    background: $light-orange;
+                    border-radius: 8px;
+                    padding: 8px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font: normal normal bold 18px/24px Nunito;
+                }
             }
 
             &-descTitle {

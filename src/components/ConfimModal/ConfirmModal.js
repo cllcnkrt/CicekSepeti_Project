@@ -26,7 +26,7 @@ function ConfirmModal({ closeConfirmModal, buttonLeft, buttonRight, action }) {
           <button
             type="button"
             onClick={() => {
-              dispatch(action);
+              dispatch(action());
               closeConfirmModal(false);
             }}
           >

@@ -30,7 +30,8 @@ function ProductDetail() {
     dispatch(fetchGivenOffers());
     dispatch(fetchDetails(id));
   }, [dispatch, id]);
-
+  console.log('aaaaaa', productDetails);
+  console.log(id);
   return (
     <div className="productDetail">
       <Header />
@@ -86,20 +87,26 @@ function ProductDetail() {
             </div>
           )}
           <div className="productWrapper__right-buttons">
-            <button
-              type="button"
-              className="productWrapper__right-BtnL"
-              onClick={() => setOpenConfirmModal(true)}
-            >
-              Satın Al
-            </button>
-            <button
-              type="button"
-              className="productWrapper__right-BtnR"
-              onClick={() => setOpenOfferModal(true)}
-            >
-              Teklif ver
-            </button>
+            {productDetails.isSold ? (
+              <div className="soldProduct">Bu Ürün Satışta değil</div>
+            ) : (
+              <>
+                <button
+                  type="button"
+                  className="productWrapper__right-BtnL"
+                  onClick={() => setOpenConfirmModal(true)}
+                >
+                  Satın Al
+                </button>
+                <button
+                  type="button"
+                  className="productWrapper__right-BtnR"
+                  onClick={() => setOpenOfferModal(true)}
+                >
+                  Teklif ver
+                </button>
+              </>
+            )}
           </div>
           <div className="productWrapper__right-desc">
             <h3 className="productWrapper__right-descTitle">Açıklama</h3>
@@ -109,6 +116,7 @@ function ProductDetail() {
           </div>
         </div>
       </div>
+
       {openConfirmModal && (
         <ConfirmModal
           closeConfirmModal={setOpenConfirmModal}
@@ -123,6 +131,7 @@ function ProductDetail() {
           image={productDetails?.imageUrl}
           title={productDetails?.brand?.title}
           price={productDetails?.price}
+          id={productDetails.id}
         />
       )}
     </div>

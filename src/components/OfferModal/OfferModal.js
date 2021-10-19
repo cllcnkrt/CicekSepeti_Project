@@ -2,17 +2,27 @@
 /* eslint-disable react/no-unescaped-entities */
 import './offerModal.scss';
 
-import usePercent from 'hooks/usePercent';
+import fetchSendOffer from 'actions/sendOfferActions';
+/* import usePercent from 'hooks/usePercent'; */
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 import checked from '../../assets/icons/checked.svg';
 import closeBtn from '../../assets/icons/closeBtn.svg';
 import unChecked from '../../assets/icons/unChecked.svg';
 
-function OfferModal({ closeOfferModal, image, title, price }) {
-  const [selectedOffer, setSelectedOffer] = useState(0);
-  const [input, setInput] = useState('');
-  const { percentPrice } = usePercent(price, selectedOffer);
+function OfferModal({ closeOfferModal, image, title, price, id }) {
+  const [selectedOffer, setSelectedOffer] = useState('');
+  /*   const { percentPrice } = usePercent(price, selectedOffer); */
+  const dispatch = useDispatch();
+  const [sendData, setSendData] = useState({
+    offeredPrice: 0,
+  });
+
+  const calcPercentPrice = (percent) => {
+    setSendData({ ...sendData, offeredPrice: (price * percent) / 100 });
+    setSelectedOffer(percent);
+  };
 
   return (
     <div className="offerModal">
@@ -52,7 +62,7 @@ function OfferModal({ closeOfferModal, image, title, price }) {
                 ? 'offerModal__container-options-20 checkedOffer'
                 : 'offerModal__container-options-20 '
             }
-            onClick={() => setSelectedOffer(20)}
+            onClick={() => calcPercentPrice(20)}
             role="none"
           >
             <img src={selectedOffer === 20 ? checked : unChecked} alt="Check" />
@@ -64,7 +74,7 @@ function OfferModal({ closeOfferModal, image, title, price }) {
                 ? 'offerModal__container-options-30 checkedOffer'
                 : 'offerModal__container-options-30'
             }
-            onClick={() => setSelectedOffer(30)}
+            onClick={() => calcPercentPrice(30)}
             role="none"
           >
             <img src={selectedOffer === 30 ? checked : unChecked} alt="Check" />
@@ -76,7 +86,7 @@ function OfferModal({ closeOfferModal, image, title, price }) {
                 ? 'offerModal__container-options-40 checkedOffer'
                 : 'offerModal__container-options-40'
             }
-            onClick={() => setSelectedOffer(40)}
+            onClick={() => calcPercentPrice(40)}
             role="none"
           >
             <img src={selectedOffer === 40 ? checked : unChecked} alt="Check" />
@@ -87,13 +97,25 @@ function OfferModal({ closeOfferModal, image, title, price }) {
           <input
             type="number"
             placeholder="Teklif Belirle"
-            value={percentPrice || input}
-            onChange={(e) => setInput(e.target.value)}
-            onClick={() => setSelectedOffer(0)}
+            value={sendData.offeredPrice > 0 ? sendData.offeredPrice : ''}
+            onChange={(e) =>
+              setSendData({ ...sendData, offeredPrice: e.target.value })
+            }
+            onClick={() => {
+              setSelectedOffer('');
+              setSendData({ ...sendData, offeredPrice: '' });
+            }}
           />
           <div className="currency">TL</div>
         </div>
-        <button className="OfferConfirmbutton" type="button">
+        <button
+          className="OfferConfirmbutton"
+          type="button"
+          onClick={() => {
+            dispatch(fetchSendOffer(id, sendData));
+            closeOfferModal(false);
+          }}
+        >
           Onayla
         </button>
       </div>
