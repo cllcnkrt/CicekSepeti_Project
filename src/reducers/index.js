@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 
+import AcceptOfferReducer from './acceptOfferReducer';
 import CategoryReducer from './categoryReducer';
 import GivenOffersReducer from './givenOffersReducer';
 import ProductDetailsReducer from './productDetailsReducer';
@@ -20,4 +21,5 @@ export default combineReducers({
   receivedOffers: ReceivedOffersReducer,
   purchase: PurchaseReducer,
   sendOffer: sendOfferReducer,
+  acceptOfferReducer: AcceptOfferReducer,
 });

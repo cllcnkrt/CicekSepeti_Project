@@ -114,6 +114,12 @@
             }
 
             &-right {
+                p {
+                    margin-right: 25px;
+                    font: normal normal bold 20px/23px Nunito;
+                    color: $green;
+                }
+
                 button {
                     border: none;
                     border-radius: 8px;

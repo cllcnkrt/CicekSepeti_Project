@@ -9,10 +9,10 @@ import { Link } from 'react-router-dom';
 import image from '../../assets/images/login.png';
 import logo from '../../assets/logo/logo.svg';
 import { validateInfo } from '../../helpers';
-import useForm from '../../hooks/useForm';
+import useAuth from '../../hooks/useAuth';
 
 function ForgetPassword() {
-  const { handleChange, form, handleSubmit, errors } = useForm(
+  const { handleChange, form, handleSubmit, errors } = useAuth(
     validateInfo,
     'signIn'
   );

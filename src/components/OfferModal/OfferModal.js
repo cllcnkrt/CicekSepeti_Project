@@ -3,7 +3,6 @@
 import './offerModal.scss';
 
 import fetchSendOffer from 'actions/sendOfferActions';
-/* import usePercent from 'hooks/usePercent'; */
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
@@ -11,9 +10,8 @@ import checked from '../../assets/icons/checked.svg';
 import closeBtn from '../../assets/icons/closeBtn.svg';
 import unChecked from '../../assets/icons/unChecked.svg';
 
-function OfferModal({ closeOfferModal, image, title, price, id }) {
+function OfferModal({ closeOfferModal, image, title, price, offerId }) {
   const [selectedOffer, setSelectedOffer] = useState('');
-  /*   const { percentPrice } = usePercent(price, selectedOffer); */
   const dispatch = useDispatch();
   const [sendData, setSendData] = useState({
     offeredPrice: 0,
@@ -112,7 +110,7 @@ function OfferModal({ closeOfferModal, image, title, price, id }) {
           className="OfferConfirmbutton"
           type="button"
           onClick={() => {
-            dispatch(fetchSendOffer(id, sendData));
+            dispatch(fetchSendOffer(offerId, sendData));
             closeOfferModal(false);
           }}
         >

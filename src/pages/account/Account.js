@@ -2,19 +2,25 @@ import './account.scss';
 
 import fetchGivenOffers from 'actions/givenOffersActions';
 import fetchReceivedOffers from 'actions/receivedOffersActions';
+import ConfirmModal from 'components/ConfimModal/ConfirmModal';
 import Header from 'components/Header';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useLocation } from 'react-router-dom';
 
+import fetchAcceptOffer from '../../actions/acceptOfferActions';
 import avatar from '../../assets/icons/mailAccount.svg';
 
 function Account() {
   const userInfo = window.localStorage.getItem('user-info');
   const location = useLocation();
-  const givenOffers = useSelector((state) => state.givenOffers);
-  const receivedOffers = useSelector((state) => state.receivedOffers);
+  const givenOffers = useSelector((state) => state.givenOffers.givenOffers);
+  const receivedOffers = useSelector(
+    (state) => state.receivedOffers.receivedOffers
+  );
+  const [openConfirmModal, setOpenConfirmModal] = useState(false);
   const dispatch = useDispatch();
+  const [offeredId, setOfferedId] = useState('');
   useEffect(() => {
     dispatch(fetchReceivedOffers());
     dispatch(fetchGivenOffers());
@@ -49,7 +55,7 @@ function Account() {
       </div>
       <div className="offerBody">
         {location.pathname === '/hesabım/alınan-teklifler'
-          ? receivedOffers?.receivedOffers.map((item) => (
+          ? receivedOffers?.map((item) => (
               <div className="offerBody__card">
                 <div className="offerBody__card-left">
                   <img src={item.product.imageUrl} alt="" />
@@ -71,16 +77,29 @@ function Account() {
                   </div>
                 </div>
                 <div className="offerBody__card-right">
-                  <button className="offerConfirm" type="button">
-                    Onayla
-                  </button>
-                  <button className="offerreject" type="button">
-                    Reddet
-                  </button>
+                  {item.isSold ? (
+                    <p>Satıldı</p>
+                  ) : (
+                    <>
+                      <button
+                        onClick={() => {
+                          setOpenConfirmModal(true);
+                          setOfferedId(item.id);
+                        }}
+                        className="offerConfirm"
+                        type="button"
+                      >
+                        Onayla
+                      </button>
+                      <button className="offerreject" type="button">
+                        Reddet
+                      </button>
+                    </>
+                  )}
                 </div>
               </div>
             ))
-          : givenOffers?.givenOffers.map((item) => (
+          : givenOffers?.map((item) => (
               <div className="offerBody__card">
                 <div className="offerBody__card-left">
                   <img src={item.product.imageUrl} alt="" />
@@ -112,6 +131,16 @@ function Account() {
               </div>
             ))}
       </div>
+      {openConfirmModal && (
+        <ConfirmModal
+          closeConfirmModal={setOpenConfirmModal}
+          title="Onayla"
+          question="Onaylamak istiyor musunuz?"
+          buttonLeft="Vazgeç"
+          buttonRight="Onayla"
+          action={() => fetchAcceptOffer(offeredId)}
+        />
+      )}
     </div>
   );
 }

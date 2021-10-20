@@ -120,6 +120,8 @@ function ProductDetail() {
       {openConfirmModal && (
         <ConfirmModal
           closeConfirmModal={setOpenConfirmModal}
+          title="Satın Al"
+          question="Satın Almak istiyor musunuz?"
           buttonLeft="Vazgeç"
           buttonRight="Satın Al"
           action={() => fetchPurchase(id)}
@@ -131,7 +133,7 @@ function ProductDetail() {
           image={productDetails?.imageUrl}
           title={productDetails?.brand?.title}
           price={productDetails?.price}
-          id={productDetails.id}
+          offerId={productDetails.id}
         />
       )}
     </div>

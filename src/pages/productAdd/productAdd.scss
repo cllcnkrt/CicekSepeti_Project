@@ -1,6 +1,5 @@
 @import "../../style/_variables.scss";
 
-
 .productAdd {
     display: flex;
     flex-direction: column;
@@ -8,68 +7,365 @@
     background-color: $bg;
     height: 100vh;
 
+
     &__body {
         width: 80%;
-        min-height: 60vh;
-        background-color: blue;
+        min-height: 80vh;
+        background-color: $white;
         display: flex;
-        margin-top: 20px;
-
+        margin-top: 10px;
+        border-radius: 8px;
 
         &-left {
             width: 100%;
             max-width: 100%;
-            max-height: 100%;
+            max-height: 80%;
             flex: 0.6;
-            background-color: lime;
-            margin: 20px 0 20px 20px;
+            margin: 10px 10px 0 10px;
 
-            .productAdd-form-inputs {
+
+            h1 {
+                padding: 10px;
+                font: normal normal bold 25px/23px Nunito;
+                color: $gray-300;
+            }
+
+            &-info {
+                padding: 10px;
+
+                &__productName {
+                    label {
+                        font: normal normal normal 15px/20px Nunito;
+                        color: $gray-300;
+                    }
+
+
+
+                    &-input {
+                        background: #F4F4F4 0% 0% no-repeat padding-box;
+                        border-radius: 8px;
+                        margin: 5px 0px 0px 0px;
+                        border-radius: 8px;
+
+
+                        input {
+                            border: none;
+                            outline: none;
+                            border-radius: 8px;
+                            width: 100%;
+                            height: 40px;
+                            background-color: $gray-100;
+                            padding: 10px;
+                            font: normal normal normal 16px/22px Nunito;
+                            color: #99A0A7;
+
+                        }
+
+
+                    }
+                }
+
+                &__desc {
+
+                    label {
+                        font: normal normal normal 15px/20px Nunito;
+                        color: $gray-300;
+                    }
+
+
+                    &-textarea {
+                        margin-top: 5px;
+                        background-color: $gray-100;
+                        border-radius: 8px;
+
+                        textarea {
+                            resize: none;
+                            outline: none;
+                            border: none;
+                            width: 100%;
+                            height: 80px;
+                            background-color: $gray-100;
+                            border-radius: 8px;
+                            padding: 10px;
+                            font: normal normal normal 16px/22px Nunito;
+                            background: #F4F4F4 0% 0% no-repeat padding-box;
+                        }
+                    }
+                }
+            }
+
+            &-option {
                 display: flex;
-                flex-direction: column;
-                margin: 10px;
+                justify-content: space-between;
+                padding: 10px;
 
                 label {
-                    margin-bottom: 5px;
+                    margin: 5px 0;
                 }
 
-                input {
-                    width: 100%;
+                select {
+                    height: 35px;
                     outline: none;
                     border: none;
-                    background-color: $gray-100;
                     border-radius: 8px;
-                    height: 40px;
-                    width: 300px;
-                    margin: auto;
-                    padding: 10px;
+                    font: normal normal normal 16px/22px Nunito;
+                    color: #99A0A7;
+                    min-width: 100px;
                 }
 
-                .textarea {
+                .option {
+                    background-color: blueviolet;
+
+                    color: lightcoral;
+
+                    select {
+                        background-color: lime;
+                    }
+                }
+
+
+
+                &__left {
+                    flex: 0.5;
+                    margin-right: 20px;
+
+                    select {
+                        background: #F4F4F4 0% 0% no-repeat padding-box;
+                    }
+
+                    &-category {
+                        display: flex;
+                        flex-direction: column;
+
+
+                    }
+
+                    &-color {
+                        display: flex;
+                        flex-direction: column;
+
+                    }
+                }
+
+                &__right {
+                    flex: 0.5;
+
+                    select {
+                        background: #F4F4F4 0% 0% no-repeat padding-box;
+                    }
+
+                    &-brand {
+                        display: flex;
+                        flex-direction: column;
+
+                    }
+
+                    &-status {
+                        display: flex;
+                        flex-direction: column;
+
+                    }
+                }
+            }
+
+            &-price {
+                margin: 5px 0 0 5px;
+                width: 35%;
+
+                &-product {
                     width: 100%;
-                    outline: none;
-                    border: none;
-                    background-color: $gray-100;
-                    border-radius: 8px;
-                    height: 40px;
-                    width: 300px;
-                    margin: auto;
-                    padding: 10px;
+
+                    label {
+                        margin-left: 5px;
+                    }
+
+                    &-input {
+
+                        border-radius: 8px;
+                        position: relative;
+
+                        input {
+                            margin-top: 5px;
+                            margin-left: 5px;
+                            height: 35px;
+                            width: 100%;
+                            background: #F4F4F4 0% 0% no-repeat padding-box;
+                            border: none;
+                            outline: none;
+                            padding: 10px;
+                            border-radius: 8px;
+                            font: normal normal normal 16px/22px Nunito;
+                            color: #99A0A7;
+                            min-width: 140px;
+                        }
+
+                        .priceCurrency {
+                            position: absolute;
+                            right: 5px;
+                            top: 13px;
+                            font: normal normal normal 16px/22px Nunito;
+                            color: #99A0A7;
+
+                        }
+                    }
                 }
 
-                input:focus {
-                    background-color: $light-blue;
-                }
+                &-option {
+                    margin-top: 10px;
+                    margin-left: 8px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    color: #B1B1B1;
 
+                }
             }
         }
 
         &-right {
             flex: 0.4;
             max-width: 100%;
-            max-height: 100%;
-            background-color: aquamarine;
-            margin: 20px 20px 20px 0;
+            max-height: 80%;
+            margin: 20px;
+            border-left: 1px solid $gray-100;
+            padding: 10px;
+            position: relative;
+
+
+            h1 {
+                margin-left: 10px;
+                font: normal normal bold 25px/23px Nunito;
+                margin-bottom: 30px;
+                color: $gray-300;
+            }
+
+            &-container {
+                border: 1px dashed $gray-200;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                border-radius: 8px;
+                height: 180px;
+                padding: 10px;
+                margin-left: 10px;
+
+                &-icon {
+                    margin: 2.5px 0;
+
+                }
+
+                h2 {
+                    margin: 2.5px 0;
+                    font: normal normal 600 14px/15px Nunito;
+                    color: $gray-300;
+                }
+
+                h3 {
+                    margin: 2.5px 0;
+                    font: normal normal normal 14px/15px Nunito;
+                    color: $gray-300;
+                }
+
+                h6 {
+                    font: normal normal normal 12px/14px Nunito;
+                    color: #B1B1B1;
+                }
+
+                input {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    opacity: 0;
+                    width: 120px;
+                    height: 30px;
+                    font-size: 16px;
+                }
+
+                .fileUpload {
+                    position: relative;
+                    background: #F4F4F4 0% 0% no-repeat padding-box;
+                    color: $gray-200;
+                    width: 120px;
+                    height: 30px;
+                    font-size: 15px;
+                    line-height: 10px;
+                    border: none;
+                    border-radius: 8px;
+                    overflow: hidden;
+                    margin: 10px 0;
+
+                    &:hover {
+                        background-color: $light-blue;
+
+                    }
+                }
+            }
+
+            .saveButton {
+                position: absolute;
+                bottom: 10px;
+                right: 10px;
+                width: 200px;
+                height: 35px;
+                border-radius: 8px;
+                outline: none;
+                border: none;
+                background-color: $dark-blue;
+                color: $white;
+                font: normal normal bold 18px/24px Nunito;
+            }
         }
     }
+}
+
+.checkbox {
+    height: 0;
+    width: 0;
+    visibility: hidden;
+}
+
+.price-label {
+    cursor: pointer;
+    text-indent: -9999px;
+    width: 44px;
+    height: 24px;
+    background: #EBEBEB 0% 0% no-repeat padding-box;
+    display: block;
+    border-radius: 50px;
+    position: relative;
+}
+
+.price-label:after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 20px;
+    height: 20px;
+    background-color: $white;
+    border-radius: 100%;
+    transition: 0.5s;
+}
+
+.checkbox:checked+.price-label {
+    background: $dark-blue;
+    transition: 0.4s;
+}
+
+.checkbox:checked+.price-label:after {
+    left: 95%;
+    transform: translateX(-100%);
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+textarea::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+textarea {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
 }

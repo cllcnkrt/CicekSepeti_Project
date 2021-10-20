@@ -1,25 +1,31 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import './signUp.scss';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 
 import image from '../../assets/images/login.png';
 import logo from '../../assets/logo/logo.svg';
 import { validateInfo } from '../../helpers';
-import useForm from '../../hooks/useForm';
+import useAuth from '../../hooks/useAuth';
 
 function SignUp() {
   const history = useHistory();
   const signUp = useSelector((state) => state.signUp);
+  const [form, setForm] = useState({
+    email: '',
+    password: '',
+  });
   useEffect(() => {
     const isUser = window.localStorage.getItem('access_token');
     if (isUser) {
       history.push('/');
     }
   }, [history, signUp.signUp]);
-  const { handleChange, form, handleSubmit, errors } = useForm(
+  const { handleChange, handleSubmit, errors } = useAuth(
+    form,
+    setForm,
     validateInfo,
     'signUp'
   );

@@ -9,7 +9,7 @@ import { Link, useHistory } from 'react-router-dom';
 import image from '../../assets/images/login.png';
 import logo from '../../assets/logo/logo.svg';
 import { validateInfo } from '../../helpers';
-import useForm from '../../hooks/useForm';
+import useAuth from '../../hooks/useAuth';
 
 function SignIn() {
   const history = useHistory();
@@ -22,7 +22,8 @@ function SignIn() {
       history.push('/');
     }
   }, [history, isUser, signIn.accessToken.lenght]);
-  const { handleChange, form, handleSubmit, errors } = useForm(
+
+  const { handleChange, form, handleSubmit, errors } = useAuth(
     validateInfo,
     'signIn'
   );
