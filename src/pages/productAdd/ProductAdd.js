@@ -3,42 +3,48 @@
 import './productAdd.scss';
 
 import Header from 'components/Header';
-import React, { useState } from 'react';
+/* import { productAddValidate } from 'helpers';
+import useProductAdd from 'hooks/useProductAdd'; */
+import React, { useRef, useState } from 'react';
 
 import uploadIcon from '../../assets/icons/uploadIcon.svg';
 
 function ProductAdd() {
+  const [file, setFile] = useState('');
   const [checkbox, setCheckbox] = useState(false);
-  console.log(checkbox);
+  console.log('filee', file);
+  /*  const { handleChange, form, handleSubmit } =
+    useProductAdd(productAddValidate); */
+  const dropArea = useRef();
   return (
     <div className="productAdd">
       <Header />
-      <form className="productAdd__body">
+      <form className="productAdd__body" /* onSubmit={handleSubmit} */>
         <div className="productAdd__body-left">
           <h1>Ürün Detayları</h1>
           <div className="productAdd__body-left-info">
             <div className="productAdd__body-left-info__productName">
-              <label htmlFor="email" className="form-label">
+              <label htmlFor="title" className="form-label">
                 Ürün Adı
               </label>
               <div className="productAdd__body-left-info__productName-input">
                 <input
-                  id="email"
-                  type="email"
-                  name="email"
+                  id="title"
+                  type="text"
+                  name="title"
                   placeholder="Örnek Iphone 12 Pro Max"
                 />
               </div>
             </div>
             <div className="productAdd__body-left-info__desc">
-              <label htmlFor="email" className="form-label">
+              <label htmlFor="description" className="form-label">
                 Açıklama
               </label>
               <div className="productAdd__body-left-info__desc-textarea">
                 <textarea
-                  id="email"
-                  type="email"
-                  name="email"
+                  id="description"
+                  type="text"
+                  name="description"
                   placeholder="Ürün açıklaması girin"
                 />
               </div>
@@ -107,7 +113,13 @@ function ProductAdd() {
         </div>
         <div className="productAdd__body-right">
           <h1>Ürün Görseli</h1>
-          <div className="productAdd__body-right-container">
+          <div
+            className="productAdd__body-right-container"
+            ref={dropArea}
+            onDrop={(e) => {
+              setFile(e.dataTransfer.files[0]);
+            }}
+          >
             <div className="productAdd__body-right-container-icon">
               <img src={uploadIcon} alt="" />
             </div>
@@ -120,7 +132,6 @@ function ProductAdd() {
                 name="image"
                 id="image"
                 multiple={false}
-                /*  onChange={(e) => setSelectedFile(e.target.files[0])} */
                 accept="image/png, image/jpeg, image/jpg"
               />
             </button>

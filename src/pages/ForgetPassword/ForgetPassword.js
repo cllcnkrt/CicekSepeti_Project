@@ -8,12 +8,12 @@ import { Link } from 'react-router-dom';
 
 import image from '../../assets/images/login.png';
 import logo from '../../assets/logo/logo.svg';
-import { validateInfo } from '../../helpers';
+import { authValidate } from '../../helpers';
 import useAuth from '../../hooks/useAuth';
 
 function ForgetPassword() {
   const { handleChange, form, handleSubmit, errors } = useAuth(
-    validateInfo,
+    authValidate,
     'signIn'
   );
 

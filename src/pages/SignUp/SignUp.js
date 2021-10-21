@@ -7,7 +7,7 @@ import { Link, useHistory } from 'react-router-dom';
 
 import image from '../../assets/images/login.png';
 import logo from '../../assets/logo/logo.svg';
-import { validateInfo } from '../../helpers';
+import { authValidate } from '../../helpers';
 import useAuth from '../../hooks/useAuth';
 
 function SignUp() {
@@ -26,7 +26,7 @@ function SignUp() {
   const { handleChange, handleSubmit, errors } = useAuth(
     form,
     setForm,
-    validateInfo,
+    authValidate,
     'signUp'
   );
 
