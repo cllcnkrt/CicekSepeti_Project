@@ -3,6 +3,7 @@ import {
   FETCH_SIGNIN_FAILURE,
   FETCH_SIGNIN_PENDING,
   FETCH_SIGNIN_SUCCESS,
+  SIGNIN_CLEAR,
 } from '../../constants';
 
 const initialState = {
@@ -28,6 +29,14 @@ const signInReducer = (state = initialState, action) => {
       };
     case FETCH_SIGNIN_FAILURE:
       return { ...state, isError: true, isFetching: false };
+    case SIGNIN_CLEAR:
+      return {
+        ...state,
+        isError: false,
+        isFetching: false,
+        signIn: {},
+        accessToken: '',
+      };
     default:
       return state;
   }

@@ -1,14 +1,25 @@
+/* eslint-disable no-undef */
 import './header.scss';
 
+import { SignInClear } from 'actions/Authorization/signInActions';
+import { SignUpClear } from 'actions/Authorization/signUpActions';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { Link, useLocation } from 'react-router-dom';
 
 import accountIcon from '../../assets/icons/account.svg';
 import addIcon from '../../assets/icons/add.svg';
 import logo from '../../assets/logo/logo.svg';
 
 function Header() {
+  const location = useLocation();
   const isUser = window.localStorage.getItem('access_token');
+  const dispatch = useDispatch();
+  const handleExit = () => {
+    window.localStorage.clear();
+    dispatch(SignInClear());
+    dispatch(SignUpClear());
+  };
   return (
     <div className="header">
       <div className="wrapper">
@@ -26,14 +37,32 @@ function Header() {
               </button>
             </Link>
           )}
-          {isUser ? (
-            <Link to="/hesabım/alınan-teklifler">
-              <button type="button" className="right">
-                <img src={accountIcon} alt="add-icon" />
-                Hesabım
-              </button>
-            </Link>
-          ) : (
+          {isUser &&
+            (location.pathname === '/hesabım/alınan-teklifler' ||
+              location.pathname === '/hesabım/verilen-teklifler') && (
+              <Link to="/">
+                <button
+                  type="button"
+                  className="right"
+                  onClick={() => handleExit()}
+                >
+                  Çıkış
+                </button>
+              </Link>
+            )}
+          {isUser &&
+            !(
+              location.pathname === '/hesabım/alınan-teklifler' ||
+              location.pathname === '/hesabım/verilen-teklifler'
+            ) && (
+              <Link to="/hesabım/alınan-teklifler">
+                <button type="button" className="right">
+                  <img src={accountIcon} alt="add-icon" />
+                  Hesabım
+                </button>
+              </Link>
+            )}
+          {!isUser && (
             <Link to="/giris">
               <button type="button" className="right">
                 <img src={accountIcon} alt="add-icon" />

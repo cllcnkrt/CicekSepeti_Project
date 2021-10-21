@@ -5,6 +5,7 @@ import {
   FETCH_SIGNIN_FAILURE,
   FETCH_SIGNIN_PENDING,
   FETCH_SIGNIN_SUCCESS,
+  SIGNIN_CLEAR,
 } from '../../constants';
 
 const fetchSuccess = (data, form) => ({
@@ -21,7 +22,9 @@ const fetchFailure = (error) => ({
 const fetchPending = () => ({
   type: FETCH_SIGNIN_PENDING,
 });
-
+export const SignInClear = () => ({
+  type: SIGNIN_CLEAR,
+});
 const fetchSignIn = (form) => async (dispatch) => {
   dispatch(fetchPending());
   return axios
