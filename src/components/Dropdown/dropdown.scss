@@ -1,0 +1,86 @@
+@import "../../style/_variables.scss";
+
+.dropdown {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    &:hover .dropdown__select-list {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    label {
+        margin: 8px 0;
+    }
+
+    img {
+        margin-right: 5px;
+    }
+
+    &__select {
+        display: flex;
+        justify-content: space-between;
+        background: #F4F4F4 0% 0% no-repeat padding-box;
+        height: 35px;
+        outline: none;
+        border: none;
+        border-radius: 8px;
+        font: normal normal normal 16px/22px Nunito;
+        color: #99A0A7;
+        min-width: 100px;
+        padding: 5px;
+        cursor: pointer;
+
+        &-list {
+            border-radius: 4px;
+            background-color: $white;
+            padding: 10px;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            visibility: hidden;
+            transition: opacity 0.2s linear, visibility 0.2s linear;
+            z-index: 999;
+            width: 100%;
+            height: 200px;
+            overflow: auto;
+            background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
+            background: #FFFFFF 0% 0% no-repeat padding-box;
+            box-shadow: 0px 3px 12px #1E36482E;
+
+            &-item {
+                padding: 10px;
+                cursor: pointer;
+                border-radius: 8px;
+                font: normal normal normal 16px/22px Nunito;
+
+                &:hover {
+                    color: $dark-blue;
+                    background: #F2F2F2 0% 0% no-repeat padding-box;
+                    border-radius: 10px;
+                }
+            }
+        }
+    }
+}
+
+/* width */
+.dropdown__select-list::-webkit-scrollbar {
+    width: 4px;
+    height: 5px;
+}
+
+/* Track */
+.dropdown__select-list::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px $gray-200;
+    border-radius: 10px;
+}
+
+/* Handle */
+.dropdown__select-list::-webkit-scrollbar-thumb {
+    background: $gray-200;
+    border-radius: 4px;
+}
+

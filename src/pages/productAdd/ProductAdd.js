@@ -2,24 +2,59 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import './productAdd.scss';
 
+import fetchBrand from 'actions/brandActions';
+import fetchCategories from 'actions/categoryActions';
+import fetchColor from 'actions/colorActions';
+import fetchStatus from 'actions/statusActions';
+import Dropdown from 'components/Dropdown/Dropdown';
 import Header from 'components/Header';
-/* import { productAddValidate } from 'helpers';
-import useProductAdd from 'hooks/useProductAdd'; */
-import React, { useRef, useState } from 'react';
+import { productAddValidate } from 'helpers';
+import useProductAdd from 'hooks/useProductAdd';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import uploadIcon from '../../assets/icons/uploadIcon.svg';
 
 function ProductAdd() {
-  const [file, setFile] = useState('');
+  const colors = useSelector((state) => state.colors);
+  const brands = useSelector((state) => state.brands);
+  const status = useSelector((state) => state.status);
+  const categories = useSelector((state) => state.categories);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (!colors.isFetching && colors.colors.length === 0) {
+      dispatch(fetchColor());
+    }
+    if (!brands.isFetching && brands.brands.length === 0) {
+      dispatch(fetchBrand());
+    }
+    if (!categories.isFetching && categories.categories.length === 0) {
+      dispatch(fetchCategories());
+    }
+    if (!status.isFetching && status.status.length === 0) {
+      dispatch(fetchStatus());
+    }
+  }, [
+    brands.brands.length,
+    brands.isFetching,
+    categories.categories.length,
+    categories.isFetching,
+    colors.colors.length,
+    colors.isFetching,
+    dispatch,
+    status.isFetching,
+    status.status.length,
+  ]);
   const [checkbox, setCheckbox] = useState(false);
-  console.log('filee', file);
-  /*  const { handleChange, form, handleSubmit } =
-    useProductAdd(productAddValidate); */
-  const dropArea = useRef();
+  const { handleChange, form, handleSubmit, errors } = useProductAdd(
+    productAddValidate,
+    checkbox
+  );
   return (
     <div className="productAdd">
       <Header />
-      <form className="productAdd__body" /* onSubmit={handleSubmit} */>
+      <form className="productAdd__body" onSubmit={handleSubmit}>
         <div className="productAdd__body-left">
           <h1>Ürün Detayları</h1>
           <div className="productAdd__body-left-info">
@@ -33,6 +68,11 @@ function ProductAdd() {
                   type="text"
                   name="title"
                   placeholder="Örnek Iphone 12 Pro Max"
+                  value={form.title}
+                  onChange={handleChange}
+                  className={
+                    errors.title ? 'input-title  wrong' : 'input-title '
+                  }
                 />
               </div>
             </div>
@@ -46,46 +86,42 @@ function ProductAdd() {
                   type="text"
                   name="description"
                   placeholder="Ürün açıklaması girin"
+                  value={form.description}
+                  onChange={handleChange}
+                  className={
+                    errors.description
+                      ? 'textarea-input wrong'
+                      : 'textarea-input'
+                  }
                 />
               </div>
             </div>
           </div>
           <div className="productAdd__body-left-option">
             <div className="productAdd__body-left-option__left">
-              <div className="productAdd__body-left-option__left-category">
-                <label htmlFor="">Kategori</label>
-                <select className="option" name="" id="">
-                  <option value="">kategori </option>
-                  <option value="">kategori 2</option>
-                  <option value="">kategori 3</option>
-                </select>
-              </div>
-              <div className="productAdd__body-left-option__left-color">
-                <label htmlFor="">Renk</label>
-                <select className="option" name="" id="">
-                  <option value="">Renk </option>
-                  <option value="">Renk 2</option>
-                  <option value="">Renk 3</option>
-                </select>
-              </div>
+              <Dropdown
+                title="Kategori"
+                name="category"
+                selectOption={categories.categories}
+              />
+              <Dropdown
+                title="Renk"
+                name="color"
+                selectOption={colors.colors}
+              />
             </div>
+
             <div className="productAdd__body-left-option__right">
-              <div className="productAdd__body-left-option__right-brand">
-                <label htmlFor="">Marka</label>
-                <select className="option" name="" id="">
-                  <option value="">Marka </option>
-                  <option value="">Marka 2</option>
-                  <option value="">Marka 3</option>
-                </select>
-              </div>
-              <div className="productAdd__body-left-option__right-status">
-                <label htmlFor="">Kullanım Durumu</label>
-                <select className="option" name="" id="">
-                  <option value="">Kullanım Durumu</option>
-                  <option value="">Kullanım Durumu 2</option>
-                  <option value="">Kullanım Durumu 3</option>
-                </select>
-              </div>
+              <Dropdown
+                title="Marka"
+                name="brand"
+                selectOption={brands.brands}
+              />
+              <Dropdown
+                title="Kullanım durumu"
+                name="status"
+                selectOption={status.status}
+              />
             </div>
           </div>
           <div className="productAdd__body-left-price">
@@ -93,16 +129,25 @@ function ProductAdd() {
               <label htmlFor="">Fiyat</label>
 
               <div className="productAdd__body-left-price-product-input">
-                <input type="number" placeholder="Bir fiyat girin" />
+                <input
+                  name="price"
+                  type="number"
+                  placeholder="Bir fiyat girin"
+                  value={form.price}
+                  onChange={handleChange}
+                />
                 <span className="priceCurrency">TL</span>
               </div>
             </div>
             <div className="productAdd__body-left-price-option">
               <label htmlFor="">Teklif opsiyonu</label>
               <input
+                name="checkbox"
                 className="checkbox"
                 type="checkbox"
                 id="switch"
+                value={form.checkbox}
+                onChange={handleChange}
                 onClick={() => setCheckbox(!checkbox)}
               />
               <label className="price-label" htmlFor="switch">
@@ -113,13 +158,7 @@ function ProductAdd() {
         </div>
         <div className="productAdd__body-right">
           <h1>Ürün Görseli</h1>
-          <div
-            className="productAdd__body-right-container"
-            ref={dropArea}
-            onDrop={(e) => {
-              setFile(e.dataTransfer.files[0]);
-            }}
-          >
+          <div className="productAdd__body-right-container">
             <div className="productAdd__body-right-container-icon">
               <img src={uploadIcon} alt="" />
             </div>
@@ -132,6 +171,8 @@ function ProductAdd() {
                 name="image"
                 id="image"
                 multiple={false}
+                value={form.imageUrl}
+                onChange={handleChange}
                 accept="image/png, image/jpeg, image/jpg"
               />
             </button>

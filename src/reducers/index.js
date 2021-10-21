@@ -34,5 +34,5 @@ export default combineReducers({
   categories: CategoryReducer,
   brands: BrandReducer,
   colors: ColorReducer,
-  statuses: StatusReducer,
+  status: StatusReducer,
 });

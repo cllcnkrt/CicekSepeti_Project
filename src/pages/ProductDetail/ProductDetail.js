@@ -30,8 +30,7 @@ function ProductDetail() {
     dispatch(fetchGivenOffers());
     dispatch(fetchDetails(id));
   }, [dispatch, id]);
-  console.log('aaaaaa', productDetails);
-  console.log(id);
+
   return (
     <div className="productDetail">
       <Header />

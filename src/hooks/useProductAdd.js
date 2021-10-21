@@ -1,7 +1,7 @@
 import { useState } from 'react';
 /* import { useDispatch } from 'react-redux'; */
 
-const useProductAdd = (productAddValidate) => {
+const useProductAdd = (productAddValidate, checkbox) => {
   /*  const dispatch = useDispatch(); */
   const [form, setForm] = useState({
     title: '',
@@ -10,15 +10,17 @@ const useProductAdd = (productAddValidate) => {
     color: '',
     brand: '',
     status: '',
+    checkbox,
     imageUrl: '',
+    price: '',
   });
 
   const [errors, setErrors] = useState({});
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value, checked } = e.target;
     setForm({
       ...form,
-      [name]: value,
+      [name]: name === 'checkbox' ? checked : value,
     });
   };
   const handleSubmit = (e) => {

@@ -10,7 +10,7 @@
 
     &__body {
         width: 80%;
-        min-height: 80vh;
+        min-height: 550px;
         background-color: $white;
         display: flex;
         margin-top: 10px;
@@ -48,7 +48,7 @@
                         border-radius: 8px;
 
 
-                        input {
+                        .input-title {
                             border: none;
                             outline: none;
                             border-radius: 8px;
@@ -57,7 +57,7 @@
                             background-color: $gray-100;
                             padding: 10px;
                             font: normal normal normal 16px/22px Nunito;
-                            color: #99A0A7;
+                            color: $gray-400;
 
                         }
 
@@ -75,10 +75,10 @@
 
                     &-textarea {
                         margin-top: 5px;
-                        background-color: $gray-100;
+                        background-color: $white;
                         border-radius: 8px;
 
-                        textarea {
+                        .textarea-input {
                             resize: none;
                             outline: none;
                             border: none;
@@ -88,6 +88,7 @@
                             border-radius: 8px;
                             padding: 10px;
                             font: normal normal normal 16px/22px Nunito;
+                            color: $gray-400;
                             background: #F4F4F4 0% 0% no-repeat padding-box;
                         }
                     }
@@ -96,81 +97,26 @@
 
             &-option {
                 display: flex;
+                flex-wrap: wrap;
                 justify-content: space-between;
                 padding: 10px;
-
-                label {
-                    margin: 5px 0;
-                }
-
-                select {
-                    height: 35px;
-                    outline: none;
-                    border: none;
-                    border-radius: 8px;
-                    font: normal normal normal 16px/22px Nunito;
-                    color: #99A0A7;
-                    min-width: 100px;
-                }
-
-                .option {
-                    background-color: blueviolet;
-
-                    color: lightcoral;
-
-                    select {
-                        background-color: lime;
-                    }
-                }
-
-
 
                 &__left {
                     flex: 0.5;
                     margin-right: 20px;
 
-                    select {
-                        background: #F4F4F4 0% 0% no-repeat padding-box;
-                    }
 
-                    &-category {
-                        display: flex;
-                        flex-direction: column;
-
-
-                    }
-
-                    &-color {
-                        display: flex;
-                        flex-direction: column;
-
-                    }
                 }
 
                 &__right {
                     flex: 0.5;
 
-                    select {
-                        background: #F4F4F4 0% 0% no-repeat padding-box;
-                    }
-
-                    &-brand {
-                        display: flex;
-                        flex-direction: column;
-
-                    }
-
-                    &-status {
-                        display: flex;
-                        flex-direction: column;
-
-                    }
                 }
             }
 
             &-price {
                 margin: 5px 0 0 5px;
-                width: 35%;
+                width: 150px;
 
                 &-product {
                     width: 100%;
@@ -318,6 +264,10 @@
     }
 }
 
+button {
+    cursor: pointer;
+}
+
 .checkbox {
     height: 0;
     width: 0;
@@ -368,4 +318,17 @@ textarea {
     /* IE and Edge */
     scrollbar-width: none;
     /* Firefox */
+}
+
+.input-title:focus,
+.textarea-input:focus {
+    background-color: $light-blue;
+    border: 1px solid $dark-blue;
+}
+
+
+.wrong {
+    background-color: $light-pink !important;
+    outline: 1px solid $dark-pink !important;
+    color: $dark-pink !important;
 }

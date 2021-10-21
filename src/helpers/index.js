@@ -1,3 +1,5 @@
+/* eslint-disable guard-for-in */
+/* eslint-disable no-restricted-syntax */
 /* eslint-disable react-hooks/rules-of-hooks */
 import fetchPurchase from 'actions/product/purchaseActions';
 
@@ -29,35 +31,20 @@ export function authValidate(form) {
 export function productAddValidate(form) {
   const errors = {};
 
-  if (!form.title) {
-    errors.title = true;
-  } else if (form.title.length > 100) {
-    errors.title = true;
+  for (const key in form) {
+    if (Object.hasOwnProperty.call(form, key)) {
+      if (form[key].length === 0) {
+        errors[key] = true;
+      }
+      if (
+        (key === 'title' && form[key].length > 100) ||
+        (key === 'description' && form[key].length > 500)
+      ) {
+        errors[key] = true;
+      }
+    }
   }
-  if (!form.description) {
-    errors.description = true;
-  } else if (form.description.length > 500) {
-    errors.description = true;
-  }
-  if (!form.category) {
-    errors.category = true;
-  }
-  if (!form.color) {
-    errors.color = true;
-  }
-  if (!form.brand) {
-    errors.brand = true;
-  }
-  if (!form.status) {
-    errors.status = true;
-  }
-  if (!form.imageUrl) {
-    errors.imageUrl = true;
-  }
-  if (!form.price) {
-    errors.price = true;
-  }
-
+  console.log('errorsssssssssssssssss :>> ', errors);
   return errors;
 }
 
