@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import './products.scss';
 
-import fetchProducts from 'actions/productActions';
+import fetchProducts from 'actions/product/productActions';
 import Card from 'components/Card/Card';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';

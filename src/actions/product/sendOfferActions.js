@@ -4,7 +4,7 @@ import {
   FETCH_SEND_OFFER_FAILURE,
   FETCH_SEND_OFFER_PENDING,
   FETCH_SEND_OFFER_SUCCESS,
-} from '../constants';
+} from '../../constants';
 import fetchDetails from './productDetailsActions';
 
 const fetchSuccess = (data) => ({

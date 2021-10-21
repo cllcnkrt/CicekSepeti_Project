@@ -4,7 +4,7 @@ import {
   FETCH_CANCEL_FAILURE,
   FETCH_CANCEL_PENDING,
   FETCH_CANCEL_SUCCESS,
-} from '../constants';
+} from '../../constants';
 
 const fetchSuccess = (data) => ({
   type: FETCH_CANCEL_SUCCESS,

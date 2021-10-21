@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
-import fetchSignIn from 'actions/signInActions';
-import fetchSignUp from 'actions/signUpActions';
+import fetchSignIn from 'actions/Authorization/signInActions';
+import fetchSignUp from 'actions/Authorization/signUpActions';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 

@@ -2,7 +2,7 @@ import {
   FETCH_ACCEPT_OFFER_FAILURE,
   FETCH_ACCEPT_OFFER_PENDING,
   FETCH_ACCEPT_OFFER_SUCCESS,
-} from '../constants';
+} from '../../constants';
 
 const initialState = {
   isFetching: false,

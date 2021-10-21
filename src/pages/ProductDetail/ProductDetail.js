@@ -2,15 +2,15 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import './productDetail.scss';
 
-import fetchGivenOffers from 'actions/givenOffersActions';
-import fetchPurchase from 'actions/purchaseActions';
+import fetchGivenOffers from 'actions/account/givenOffersActions';
+import fetchPurchase from 'actions/product/purchaseActions';
 import Header from 'components/Header';
 import OfferModal from 'components/OfferModal';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
-import fetchDetails from '../../actions/productDetailsActions';
+import fetchDetails from '../../actions/product/productDetailsActions';
 import ConfirmModal from '../../components/ConfimModal';
 import { textCapitalize } from '../../helpers';
 

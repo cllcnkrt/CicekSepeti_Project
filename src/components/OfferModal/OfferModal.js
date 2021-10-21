@@ -2,7 +2,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import './offerModal.scss';
 
-import fetchSendOffer from 'actions/sendOfferActions';
+import fetchSendOffer from 'actions/product/sendOfferActions';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 

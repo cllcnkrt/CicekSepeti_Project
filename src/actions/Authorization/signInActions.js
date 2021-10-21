@@ -5,7 +5,7 @@ import {
   FETCH_SIGNIN_FAILURE,
   FETCH_SIGNIN_PENDING,
   FETCH_SIGNIN_SUCCESS,
-} from '../constants';
+} from '../../constants';
 
 const fetchSuccess = (data, form) => ({
   type: FETCH_SIGNIN_SUCCESS,

@@ -4,7 +4,7 @@ import {
   FETCH_SIGNUP_FAILURE,
   FETCH_SIGNUP_PENDING,
   FETCH_SIGNUP_SUCCESS,
-} from '../constants';
+} from '../../constants';
 
 const fetchSuccess = (data, form) => ({
   type: FETCH_SIGNUP_SUCCESS,

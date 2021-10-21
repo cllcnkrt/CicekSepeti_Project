@@ -2,7 +2,7 @@ import {
   FETCH_PURCHASE_FAILURE,
   FETCH_PURCHASE_PENDING,
   FETCH_PURCHASE_SUCCESS,
-} from '../constants';
+} from '../../constants';
 
 const initialState = {
   purchase: {},

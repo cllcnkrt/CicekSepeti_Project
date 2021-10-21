@@ -3,7 +3,7 @@ import {
   FETCH_SIGNIN_FAILURE,
   FETCH_SIGNIN_PENDING,
   FETCH_SIGNIN_SUCCESS,
-} from '../constants';
+} from '../../constants';
 
 const initialState = {
   accessToken: '',

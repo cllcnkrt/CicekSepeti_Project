@@ -1,25 +1,38 @@
 import { combineReducers } from 'redux';
 
-import AcceptOfferReducer from './acceptOfferReducer';
+import AcceptOfferReducer from './account/acceptOfferReducer';
+import cancelOfferReducer from './account/cancelOfferReducer';
+import GivenOffersReducer from './account/givenOffersReducer';
+import ReceivedOffersReducer from './account/receivedOffersReducer';
+import rejectOfferReducer from './account/rejectOfferReducer';
+import SignInReducer from './authorization/signInReducer';
+import SignUpReducer from './authorization/signUpReducer';
+import BrandReducer from './brandReducer';
 import CategoryReducer from './categoryReducer';
-import GivenOffersReducer from './givenOffersReducer';
-import ProductDetailsReducer from './productDetailsReducer';
-import ProductsReducer from './productsReducer';
-import PurchaseReducer from './purchaseReducer';
-import ReceivedOffersReducer from './receivedOffersReducer';
-import sendOfferReducer from './sendOfferReducer';
-import SignInReducer from './signInReducer';
-import SignUpReducer from './signUpReducer';
+import ColorReducer from './colorReducer';
+import ProductDetailsReducer from './product/productDetailsReducer';
+import ProductsReducer from './product/productsReducer';
+import PurchaseReducer from './product/purchaseReducer';
+import sendOfferReducer from './product/sendOfferReducer';
+import StatusReducer from './statusReducer';
 
 export default combineReducers({
-  categories: CategoryReducer,
-  signIn: SignInReducer,
-  signUp: SignUpReducer,
-  products: ProductsReducer,
-  productDetails: ProductDetailsReducer,
+  acceptOffer: AcceptOfferReducer,
+  cancelOffer: cancelOfferReducer,
   givenOffers: GivenOffersReducer,
   receivedOffers: ReceivedOffersReducer,
+  rejectOffer: rejectOfferReducer,
+
+  signIn: SignInReducer,
+  signUp: SignUpReducer,
+
+  productDetails: ProductDetailsReducer,
+  products: ProductsReducer,
   purchase: PurchaseReducer,
   sendOffer: sendOfferReducer,
-  acceptOfferReducer: AcceptOfferReducer,
+
+  categories: CategoryReducer,
+  brands: BrandReducer,
+  colors: ColorReducer,
+  statuses: StatusReducer,
 });

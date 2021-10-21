@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import fetchPurchase from 'actions/purchaseActions';
+import fetchPurchase from 'actions/product/purchaseActions';
 
 export const textCapitalize = (str) => {
   const words = str.split(' ');

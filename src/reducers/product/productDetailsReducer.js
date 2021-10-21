@@ -2,7 +2,7 @@ import {
   FETCH_DETAILS_FAILURE,
   FETCH_DETAILS_PENDING,
   FETCH_DETAILS_SUCCESS,
-} from '../constants';
+} from '../../constants';
 
 const initialState = {
   productDetails: {},

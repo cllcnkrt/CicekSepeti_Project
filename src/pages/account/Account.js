@@ -1,14 +1,14 @@
 import './account.scss';
 
-import fetchGivenOffers from 'actions/givenOffersActions';
-import fetchReceivedOffers from 'actions/receivedOffersActions';
+import fetchGivenOffers from 'actions/account/givenOffersActions';
+import fetchReceivedOffers from 'actions/account/receivedOffersActions';
 import ConfirmModal from 'components/ConfimModal/ConfirmModal';
 import Header from 'components/Header';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useLocation } from 'react-router-dom';
 
-import fetchAcceptOffer from '../../actions/acceptOfferActions';
+import fetchAcceptOffer from '../../actions/account/acceptOfferActions';
 import avatar from '../../assets/icons/mailAccount.svg';
 
 function Account() {

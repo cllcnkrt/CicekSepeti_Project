@@ -2,7 +2,7 @@ import {
   FETCH_RECEIVED_OFFERS_FAILURE,
   FETCH_RECEIVED_OFFERS_PENDING,
   FETCH_RECEIVED_OFFERS_SUCCESS,
-} from '../constants';
+} from '../../constants';
 
 const initialState = {
   receivedOffers: [],
