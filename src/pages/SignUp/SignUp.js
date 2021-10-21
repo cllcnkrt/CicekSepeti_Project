@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import './signUp.scss';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 
@@ -12,20 +12,16 @@ import useAuth from '../../hooks/useAuth';
 
 function SignUp() {
   const history = useHistory();
+
   const signUp = useSelector((state) => state.signUp);
-  const [form, setForm] = useState({
-    email: '',
-    password: '',
-  });
+  const isUser = window.localStorage.getItem('access_token');
+
   useEffect(() => {
-    const isUser = window.localStorage.getItem('access_token');
-    if (isUser) {
+    if (isUser || signUp.accessToken.lenght > 0) {
       history.push('/');
     }
-  }, [history, signUp.signUp]);
-  const { handleChange, handleSubmit, errors } = useAuth(
-    form,
-    setForm,
+  }, [history, isUser, signUp.accessToken.lenght, signUp.signUp]);
+  const { handleChange, form, handleSubmit, errors } = useAuth(
     authValidate,
     'signUp'
   );
