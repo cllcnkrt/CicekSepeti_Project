@@ -30,10 +30,11 @@ export function authValidate(form) {
 
 export function productAddValidate(form) {
   const errors = {};
+  console.log('form22 :>> ', form);
 
   for (const key in form) {
     if (Object.hasOwnProperty.call(form, key)) {
-      if (form[key].length === 0) {
+      if (form[key].length === 0 || form[key].id?.length === 0) {
         errors[key] = true;
       }
       if (
@@ -44,7 +45,7 @@ export function productAddValidate(form) {
       }
     }
   }
-  console.log('errorsssssssssssssssss :>> ', errors);
+
   return errors;
 }
 

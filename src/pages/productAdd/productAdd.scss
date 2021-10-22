@@ -7,7 +7,6 @@
     background-color: $bg;
     height: 100vh;
 
-
     &__body {
         width: 80%;
         min-height: 550px;
@@ -15,6 +14,7 @@
         display: flex;
         margin-top: 10px;
         border-radius: 8px;
+
 
         &-left {
             width: 100%;

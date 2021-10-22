@@ -21,6 +21,15 @@ function ProductAdd() {
   const status = useSelector((state) => state.status);
   const categories = useSelector((state) => state.categories);
   const dispatch = useDispatch();
+  const [selectForm, setSelectForm] = useState({
+    color: { id: '', title: '' },
+    brand: { id: '', title: '' },
+    status: { id: '', title: '' },
+    category: { id: '', title: '' },
+  });
+  if (selectForm.color.id !== '') {
+    console.log('color.length', selectForm.color);
+  }
 
   useEffect(() => {
     if (!colors.isFetching && colors.colors.length === 0) {
@@ -47,10 +56,23 @@ function ProductAdd() {
     status.status.length,
   ]);
   const [checkbox, setCheckbox] = useState(false);
-  const { handleChange, form, handleSubmit, errors } = useProductAdd(
-    productAddValidate,
-    checkbox
-  );
+  const { handleChange, form, handleSubmit, errors /*  setForm  */ } =
+    useProductAdd(productAddValidate, checkbox, selectForm);
+  const selectClick = (item, name) => {
+    if (item.title.length > 0 && name === 'category') {
+      setSelectForm({ ...selectForm, category: item });
+    }
+    if (item.title.length > 0 && name === 'brand') {
+      setSelectForm({ ...selectForm, brand: item });
+    }
+    if (item.title.length > 0 && name === 'status') {
+      setSelectForm({ ...selectForm, status: item });
+    }
+    if (item.title.length > 0 && name === 'color') {
+      setSelectForm({ ...selectForm, color: item });
+    }
+  };
+
   return (
     <div className="productAdd">
       <Header />
@@ -71,7 +93,7 @@ function ProductAdd() {
                   value={form.title}
                   onChange={handleChange}
                   className={
-                    errors.title ? 'input-title  wrong' : 'input-title '
+                    errors.title ? 'input-title wrong' : 'input-title '
                   }
                 />
               </div>
@@ -103,11 +125,23 @@ function ProductAdd() {
                 title="Kategori"
                 name="category"
                 selectOption={categories.categories}
+                value={selectForm.category?.title}
+                selectClick={selectClick}
+                className={
+                  errors.category
+                    ? 'dropdown__select wrong'
+                    : 'dropdown__select'
+                }
               />
               <Dropdown
                 title="Renk"
                 name="color"
                 selectOption={colors.colors}
+                value={selectForm.color?.title}
+                selectClick={selectClick}
+                className={
+                  errors.color ? 'dropdown__select wrong' : 'dropdown__select'
+                }
               />
             </div>
 
@@ -116,11 +150,21 @@ function ProductAdd() {
                 title="Marka"
                 name="brand"
                 selectOption={brands.brands}
+                value={selectForm.brand?.title}
+                selectClick={selectClick}
+                className={
+                  errors.brand ? 'dropdown__select wrong' : 'dropdown__select'
+                }
               />
               <Dropdown
                 title="Kullanım durumu"
                 name="status"
                 selectOption={status.status}
+                value={selectForm.status?.title}
+                selectClick={selectClick}
+                className={
+                  errors.status ? 'dropdown__select wrong' : 'dropdown__select'
+                }
               />
             </div>
           </div>
@@ -135,6 +179,7 @@ function ProductAdd() {
                   placeholder="Bir fiyat girin"
                   value={form.price}
                   onChange={handleChange}
+                  className={errors.price && 'wrong'}
                 />
                 <span className="priceCurrency">TL</span>
               </div>
@@ -143,7 +188,7 @@ function ProductAdd() {
               <label htmlFor="">Teklif opsiyonu</label>
               <input
                 name="checkbox"
-                className="checkbox"
+                className={errors.checkbox ? 'checkbox wrong' : 'checkbox '}
                 type="checkbox"
                 id="switch"
                 value={form.checkbox}
@@ -158,7 +203,13 @@ function ProductAdd() {
         </div>
         <div className="productAdd__body-right">
           <h1>Ürün Görseli</h1>
-          <div className="productAdd__body-right-container">
+          <div
+            className={
+              errors.imageUrl
+                ? 'productAdd__body-right-container wrong'
+                : 'productAdd__body-right-container'
+            }
+          >
             <div className="productAdd__body-right-container-icon">
               <img src={uploadIcon} alt="" />
             </div>
@@ -168,7 +219,7 @@ function ProductAdd() {
               Görsel Seçin
               <input
                 type="file"
-                name="image"
+                name="imageUrl"
                 id="image"
                 multiple={false}
                 value={form.imageUrl}

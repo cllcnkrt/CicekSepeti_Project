@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 import {
   FETCH_SIGNUP_FAILURE,
@@ -28,8 +29,34 @@ const fetchSignUp = (form) => async (dispatch) => {
   dispatch(fetchPending());
   return axios
     .post('https://bootcampapi.techcs.io/api/fe/v1/authorization/signup', form)
-    .then((res) => dispatch(fetchSuccess(res.data.access_token, form)))
-    .catch((error) => dispatch(fetchFailure(error)));
+    .then((res) => {
+      toast.success('Üye olundu', {
+        position: 'top-right',
+        autoClose: 1000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'colored',
+      });
+      setTimeout(() => {
+        dispatch(fetchSuccess(res.data.access_token, form));
+      }, 1500);
+    })
+    .catch((error) => {
+      toast.error('Email zaten kullanılıyor', {
+        position: 'top-right',
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'colored',
+      });
+      dispatch(fetchFailure(error));
+    });
 };
 
 export default fetchSignUp;

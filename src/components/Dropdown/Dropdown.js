@@ -2,21 +2,51 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import './dropdown.scss';
 
-import React from 'react';
+import React, { useState } from 'react';
 
 import arrowDown from '../../assets/icons/arrowDown.svg';
 
-function Dropdown({ title, name, selectOption }) {
+function Dropdown({
+  title,
+  name,
+  selectOption,
+  value,
+  selectClick,
+  className,
+}) {
+  const [isOpen, setIsOpen] = useState(false);
   return (
-    <div className="dropdown">
+    <div
+      className="dropdown"
+      role="none"
+      onClick={() => {
+        setIsOpen(true);
+      }}
+    >
       <label htmlFor="">{title}</label>
-      <div className="dropdown__select" name={name} id={name}>
-        <span>{title} seç</span>
+      <div className={className} name={name} id={name}>
+        <span>{value || `${title} seç`}</span>
         <img src={arrowDown} alt="" />
       </div>
-      <div className="dropdown__select-list">
+      <div
+        className={
+          isOpen ? 'dropdown__select-list open' : 'dropdown__select-list '
+        }
+      >
         {selectOption?.map((item) => (
-          <div className="dropdown__select-list-item">{item.title}</div>
+          <div
+            key={item.id}
+            role="none"
+            onClick={(event) => {
+              selectClick(item, name);
+              setIsOpen(false);
+              event.stopPropagation();
+            }}
+            name={name}
+            className="dropdown__select-list-item"
+          >
+            {item.title}
+          </div>
         ))}
       </div>
     </div>
