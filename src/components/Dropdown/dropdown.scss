@@ -83,3 +83,12 @@
     background: $gray-200;
     border-radius: 4px;
 }
+
+
+
+
+@media screen and (max-width: 960px) {
+  .dropdown{
+      min-width: 360px;
+  }
+}

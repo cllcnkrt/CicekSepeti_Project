@@ -202,33 +202,34 @@ function ProductAdd() {
           </div>
         </div>
         <div className="productAdd__body-right">
-          <h1>Ürün Görseli</h1>
-          <div
-            className={
-              errors.imageUrl
-                ? 'productAdd__body-right-container wrong'
-                : 'productAdd__body-right-container'
-            }
-          >
-            <div className="productAdd__body-right-container-icon">
-              <img src={uploadIcon} alt="" />
+          <div className="right__up">
+            <h1>Ürün Görseli</h1>
+            <div
+              className={
+                errors.imageUrl
+                  ? 'productAdd__body-right-container wrong'
+                  : 'productAdd__body-right-container'
+              }
+            >
+              <div className="productAdd__body-right-container-icon">
+                <img src={uploadIcon} alt="" />
+              </div>
+              <h2>Sürükleyip bırakarak yükle </h2>
+              <h3>veya</h3>
+              <button className="fileUpload" type="button">
+                Görsel Seçin
+                <input
+                  type="file"
+                  name="imageUrl"
+                  id="image"
+                  multiple={false}
+                  value={form.imageUrl}
+                  onChange={handleChange}
+                  accept="image/png, image/jpeg, image/jpg"
+                />
+              </button>
+              <h6>PNG ve JPEG Dosya boyutu: max. 400kb </h6>
             </div>
-            <h2>Sürükleyip bırakarak yükle </h2>
-            <h3>veya</h3>
-            <button className="fileUpload" type="button">
-              Görsel Seçin
-              <input
-                type="file"
-                name="imageUrl"
-                id="image"
-                multiple={false}
-                value={form.imageUrl}
-                onChange={handleChange}
-                accept="image/png, image/jpeg, image/jpg"
-              />
-            </button>
-
-            <h6>PNG ve JPEG Dosya boyutu: max. 400kb </h6>
           </div>
           <button className="saveButton" type="submit">
             Kaydet

@@ -44,12 +44,13 @@ const useProductAdd = (productAddValidate, checkbox, getSelectForm) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors(productAddValidate(form));
-
-    /* if (Object.keys(errors).length === 0) {
-    } */
   };
   console.log('formmmmm :>> ', form);
   console.log('errors :>> ', errors);
+  if (Object.keys(errors).length === 0) {
+    console.log('sorun yokkkkkkkkkk');
+  }
+
   return { handleChange, form, handleSubmit, errors };
 };
 
