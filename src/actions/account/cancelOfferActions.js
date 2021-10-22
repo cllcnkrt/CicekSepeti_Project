@@ -5,6 +5,7 @@ import {
   FETCH_CANCEL_PENDING,
   FETCH_CANCEL_SUCCESS,
 } from '../../constants';
+import fetchGivenOffers from './givenOffersActions';
 
 const fetchSuccess = (data) => ({
   type: FETCH_CANCEL_SUCCESS,
@@ -23,9 +24,8 @@ const fetchPending = () => ({
 const fetchCancelOffer = (id) => async (dispatch) => {
   dispatch(fetchPending());
   return axios
-    .put(
+    .delete(
       `https://bootcampapi.techcs.io/api/fe/v1/account/cancel-offer/${id}`,
-      null,
       {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('access_token')}`,
@@ -33,7 +33,8 @@ const fetchCancelOffer = (id) => async (dispatch) => {
       }
     )
     .then((res) => dispatch(fetchSuccess(res.data)))
-    .catch((error) => dispatch(fetchFailure(error)));
+    .catch((error) => dispatch(fetchFailure(error)))
+    .finally(() => dispatch(fetchGivenOffers()));
 };
 
 export default fetchCancelOffer;

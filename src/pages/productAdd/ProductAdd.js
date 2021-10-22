@@ -27,9 +27,6 @@ function ProductAdd() {
     status: { id: '', title: '' },
     category: { id: '', title: '' },
   });
-  if (selectForm.color.id !== '') {
-    console.log('color.length', selectForm.color);
-  }
 
   useEffect(() => {
     if (!colors.isFetching && colors.colors.length === 0) {
@@ -55,9 +52,9 @@ function ProductAdd() {
     status.isFetching,
     status.status.length,
   ]);
-  const [checkbox, setCheckbox] = useState(false);
+  const [isOfferable, setIsOfferable] = useState(false);
   const { handleChange, form, handleSubmit, errors /*  setForm  */ } =
-    useProductAdd(productAddValidate, checkbox, selectForm);
+    useProductAdd(productAddValidate, isOfferable, selectForm);
   const selectClick = (item, name) => {
     if (item.title.length > 0 && name === 'category') {
       setSelectForm({ ...selectForm, category: item });
@@ -72,7 +69,7 @@ function ProductAdd() {
       setSelectForm({ ...selectForm, color: item });
     }
   };
-
+  console.log('isOfferable :>> ', isOfferable);
   return (
     <div className="productAdd">
       <Header />
@@ -187,13 +184,13 @@ function ProductAdd() {
             <div className="productAdd__body-left-price-option">
               <label htmlFor="">Teklif opsiyonu</label>
               <input
-                name="checkbox"
-                className={errors.checkbox ? 'checkbox wrong' : 'checkbox '}
+                name="isOfferable"
+                className={errors.isOfferable ? 'checkbox wrong' : 'checkbox '}
                 type="checkbox"
                 id="switch"
-                value={form.checkbox}
+                value={form.isOfferable}
                 onChange={handleChange}
-                onClick={() => setCheckbox(!checkbox)}
+                onClick={() => setIsOfferable((prev) => !prev)}
               />
               <label className="price-label" htmlFor="switch">
                 option

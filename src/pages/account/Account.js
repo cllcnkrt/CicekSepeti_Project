@@ -121,12 +121,24 @@ function Account() {
                   </div>
                 </div>
                 <div className="offerBody__card-right">
-                  <button className="offerConfirm" type="button">
-                    Onayla
+                  {item.status === 'offered' && !item.product.isSold && (
+                    <p className="orange">Beklemede</p>
+                  )}
+                  {(item.status === 'rejected' ||
+                    (item.status === 'offered' && item.product.isSold)) && (
+                    <p className="red">Reddedildi</p>
+                  )}
+
+                  {item.status === 'accepted' && !item.product.isSold && (
+                    <p className="blue">Onaylandı</p>
+                  )}
+
+                  {/*  <button className="offerConfirm" type="button">
+                    Satın al
                   </button>
                   <button className="offerreject" type="button">
-                    Reddet
-                  </button>
+                    Geri çek
+                  </button> */}
                 </div>
               </div>
             ))}

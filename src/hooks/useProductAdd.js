@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 /* import { useDispatch } from 'react-redux'; */
 
-const useProductAdd = (productAddValidate, checkbox, getSelectForm) => {
+const useProductAdd = (productAddValidate, isOfferable, getSelectForm) => {
   /*  const dispatch = useDispatch(); */
   const [form, setForm] = useState({
     title: '',
     description: '',
-    checkbox,
+    isOfferable,
     imageUrl: '',
     price: '',
     color: '',
@@ -37,7 +37,7 @@ const useProductAdd = (productAddValidate, checkbox, getSelectForm) => {
 
     setForm({
       ...form,
-      [name]: name === 'checkbox' ? checked : value,
+      [name]: name === 'isOfferable' ? checked : value,
     });
   };
 

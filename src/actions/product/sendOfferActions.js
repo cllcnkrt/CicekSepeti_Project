@@ -1,3 +1,4 @@
+import fetchGivenOffers from 'actions/account/givenOffersActions';
 import axios from 'axios';
 
 import {
@@ -31,7 +32,10 @@ const fetchSendOffer = (id, data) => async (dispatch) => {
     })
     .then((res) => dispatch(fetchSuccess(res.data)))
     .catch((error) => dispatch(fetchFailure(error)))
-    .then(() => dispatch(fetchDetails(id)));
+    .finally(() => {
+      dispatch(fetchDetails(id));
+      dispatch(fetchGivenOffers());
+    });
 };
 
 export default fetchSendOffer;

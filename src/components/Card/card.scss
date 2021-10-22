@@ -3,7 +3,6 @@
 .card {
     width: 100%;
     min-height: 100%;
-
     min-width: 200px;
     display: flex;
     flex-direction: column;
@@ -16,10 +15,12 @@
 
     .card-img {
         width: 100%;
+        
 
         img {
             width: 100%;
             object-fit: contain;
+            min-height: 300px;
         }
     }
 

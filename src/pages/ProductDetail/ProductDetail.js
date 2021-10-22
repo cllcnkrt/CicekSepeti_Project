@@ -2,6 +2,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import './productDetail.scss';
 
+import fetchCancelOffer from 'actions/account/cancelOfferActions';
 import fetchGivenOffers from 'actions/account/givenOffersActions';
 import fetchPurchase from 'actions/product/purchaseActions';
 import Header from 'components/Header';
@@ -26,11 +27,11 @@ function ProductDetail() {
   )[0];
   const [openConfirmModal, setOpenConfirmModal] = useState(false);
   const [openOfferModal, setOpenOfferModal] = useState(false);
+  const [openCancelModal, setOpenCancelModal] = useState(false);
   useEffect(() => {
     dispatch(fetchGivenOffers());
     dispatch(fetchDetails(id));
   }, [dispatch, id]);
-
   return (
     <div className="productDetail">
       <Header />
@@ -97,6 +98,15 @@ function ProductDetail() {
                 >
                   Satın Al
                 </button>
+                {offerable?.status === 'offered' && !productDetails.isSold && (
+                  <button
+                    type="button"
+                    className="productWrapper__right-BtnR"
+                    onClick={() => setOpenCancelModal(true)}
+                  >
+                    Teklifi Geri Çek
+                  </button>
+                )}
                 <button
                   type="button"
                   className="productWrapper__right-BtnR"
@@ -133,6 +143,16 @@ function ProductDetail() {
           title={productDetails?.brand?.title}
           price={productDetails?.price}
           offerId={productDetails.id}
+        />
+      )}
+      {openCancelModal && (
+        <ConfirmModal
+          closeConfirmModal={setOpenCancelModal}
+          title="Teklifi Geri Çek"
+          question="Teklifi Geri Çekmek istiyor musunuz?"
+          buttonLeft="Vazgeç"
+          buttonRight="Geri Çek"
+          action={() => fetchCancelOffer(offerable?.id)}
         />
       )}
     </div>

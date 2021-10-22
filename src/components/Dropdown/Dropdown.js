@@ -20,7 +20,7 @@ function Dropdown({
       className="dropdown"
       role="none"
       onClick={() => {
-        setIsOpen(true);
+        setIsOpen(!isOpen);
       }}
     >
       <label htmlFor="">{title}</label>
