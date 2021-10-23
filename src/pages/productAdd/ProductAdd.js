@@ -5,6 +5,7 @@ import './productAdd.scss';
 import fetchBrand from 'actions/brandActions';
 import fetchCategories from 'actions/categoryActions';
 import fetchColor from 'actions/colorActions';
+import { imageUploadClear } from 'actions/imageUploadActions';
 import fetchStatus from 'actions/statusActions';
 import Dropdown from 'components/Dropdown/Dropdown';
 import Header from 'components/Header';
@@ -14,11 +15,14 @@ import useProductAdd from 'hooks/useProductAdd';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+import ProgressBar from '../../components/ProgressBar';
+
 function ProductAdd() {
   const colors = useSelector((state) => state.colors);
   const brands = useSelector((state) => state.brands);
   const status = useSelector((state) => state.status);
   const categories = useSelector((state) => state.categories);
+  const imageUpload = useSelector((state) => state.imageUpload);
   const dispatch = useDispatch();
   const [selectForm, setSelectForm] = useState({
     color: { id: '', title: '' },
@@ -198,9 +202,36 @@ function ProductAdd() {
           </div>
         </div>
 
-        <div className="productAdd__body-right">
+        <div
+          className={
+            imageUpload.imageUpload.url.length === 0
+              ? 'productAdd__body-right '
+              : 'productAdd__body-right showImage'
+          }
+        >
           <div className="right__up">
-            <UploadImage errors={errors} />
+            <h1>Ürün Görseli</h1>
+            {imageUpload.imageUpload.url.length > 0 && (
+              <div className="showingImage showImage">
+                <div
+                  role="none"
+                  className="deleteImageButton"
+                  onClick={() => {
+                    dispatch(imageUploadClear());
+                  }}
+                >
+                  X
+                </div>
+                <img src={imageUpload.imageUpload.url} alt="" />
+              </div>
+            )}
+            {!imageUpload.isFetching &&
+              imageUpload.imageUpload.url.length === 0 && (
+                <UploadImage errors={errors} />
+              )}
+            {imageUpload.isFetching && (
+              <ProgressBar progress={imageUpload.progress} errors={errors} />
+            )}
           </div>
           <button className="saveButton" type="submit">
             Kaydet

@@ -1,0 +1,46 @@
+@import "../../style/_variables.scss";
+
+.progressBar__container {
+    border: 1px dashed $gray-200;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 8px;
+    height: 180px;
+    padding: 10px;
+    margin-left: 10px;
+    background-color: $white;
+    width: 450px;
+
+    .progressBar-percentage {
+        margin-top: 50px;
+    }
+
+    .progressBar {
+        margin-top: 10px;
+        height: 4px;
+        width: 60%;
+        background: #EAEAEA 0% 0% no-repeat padding-box;
+        border-radius: 2px;
+
+        &__outside {
+            height: 100%;
+            width: 20%;
+            background-color: $dark-blue;
+            border-radius: 2px;
+            text-align: right;
+
+            &-inside {
+                padding: 10px;
+                color: black;
+                font-weight: 900;
+            }
+        }
+
+    }
+
+    h4 {
+        font: normal normal normal 12px/23px Nunito;
+        color: #525252;
+    }
+}

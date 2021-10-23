@@ -30,7 +30,6 @@ export function authValidate(form) {
 
 export function productAddValidate(form) {
   const errors = {};
-  console.log('form22 :>> ', form);
 
   for (const key in form) {
     if (Object.hasOwnProperty.call(form, key)) {

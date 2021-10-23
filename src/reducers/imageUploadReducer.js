@@ -3,12 +3,14 @@ import {
   FETCH_IMAGE_UPLOAD_PENDING,
   FETCH_IMAGE_UPLOAD_SUCCESS,
   IMAGE_UPLOAD_CLEAR,
+  IMAGE_UPLOAD_PROGRESS,
 } from '../constants';
 
 const initialState = {
   imageUpload: { url: '' },
   isFetching: false,
   isError: false,
+  progress: 0,
 };
 
 const imageUploadReducer = (state = initialState, action) => {
@@ -26,15 +28,15 @@ const imageUploadReducer = (state = initialState, action) => {
         imageUpload: action.payload,
         isFetching: false,
         isError: false,
+        progress: 0,
       };
     case FETCH_IMAGE_UPLOAD_FAILURE:
       return { ...state, isError: true, isFetching: false };
+    case IMAGE_UPLOAD_PROGRESS:
+      return { ...state, isFetching: true, progress: action.payload };
     case IMAGE_UPLOAD_CLEAR:
       return {
-        ...state,
-        isError: false,
-        isFetching: false,
-        imageUpload: { url: '' },
+        ...initialState,
       };
     default:
       return state;

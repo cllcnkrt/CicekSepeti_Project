@@ -180,6 +180,14 @@
             justify-content: space-between;
             align-items: center;
 
+            h1 {
+                margin-left: 10px;
+                font: normal normal bold 25px/23px Nunito;
+                margin-bottom: 30px;
+                color: $gray-300;
+                align-self: flex-start;
+            }
+
         }
 
         .saveButton {
@@ -195,6 +203,12 @@
             align-self: flex-end;
         }
     }
+}
+
+.showImage {
+    align-items: flex-start !important;
+    padding-left: 20px !important;
+
 }
 
 button {
