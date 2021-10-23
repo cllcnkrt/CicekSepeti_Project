@@ -330,6 +330,17 @@ textarea {
     border: 1px solid $dark-blue;
 }
 
+.showingImage {
+    width: 113px;
+    height: 113px;
+
+    img {
+        width: 100%;
+    }
+    .deleteImageButton{
+        cursor: pointer;
+    }
+}
 
 .wrong {
     background-color: $light-pink !important;

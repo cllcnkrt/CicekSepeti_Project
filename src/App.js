@@ -68,6 +68,7 @@ const App = () => {
         pauseOnFocusLoss={false}
         draggable
         pauseOnHover
+        className="customToast"
       />
     </>
   );

@@ -10,6 +10,7 @@ import SignUpReducer from './authorization/signUpReducer';
 import BrandReducer from './brandReducer';
 import CategoryReducer from './categoryReducer';
 import ColorReducer from './colorReducer';
+import imageUploadReducer from './imageUploadReducer';
 import ProductDetailsReducer from './product/productDetailsReducer';
 import ProductsReducer from './product/productsReducer';
 import PurchaseReducer from './product/purchaseReducer';
@@ -35,4 +36,6 @@ export default combineReducers({
   brands: BrandReducer,
   colors: ColorReducer,
   status: StatusReducer,
+
+  imageUpload: imageUploadReducer,
 });

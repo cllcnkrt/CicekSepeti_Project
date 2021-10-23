@@ -4,6 +4,7 @@ import {
   FETCH_IMAGE_UPLOAD_FAILURE,
   FETCH_IMAGE_UPLOAD_PENDING,
   FETCH_IMAGE_UPLOAD_SUCCESS,
+  IMAGE_UPLOAD_CLEAR,
 } from '../constants';
 
 const fetchSuccess = (data) => ({
@@ -19,7 +20,9 @@ const fetchFailure = (error) => ({
 const fetchPending = () => ({
   type: FETCH_IMAGE_UPLOAD_PENDING,
 });
-
+export const imageUploadClear = () => ({
+  type: IMAGE_UPLOAD_CLEAR,
+});
 const fetchUploadImage = (image) => async (dispatch) => {
   dispatch(fetchPending());
   const formData = new FormData();

@@ -14,17 +14,31 @@ import avatar from '../../assets/icons/mailAccount.svg';
 function Account() {
   const userInfo = window.localStorage.getItem('user-info');
   const location = useLocation();
-  const givenOffers = useSelector((state) => state.givenOffers.givenOffers);
-  const receivedOffers = useSelector(
-    (state) => state.receivedOffers.receivedOffers
-  );
+  const givenOffers = useSelector((state) => state.givenOffers);
+  const receivedOffers = useSelector((state) => state.receivedOffers);
   const [openConfirmModal, setOpenConfirmModal] = useState(false);
   const dispatch = useDispatch();
   const [offeredId, setOfferedId] = useState('');
   useEffect(() => {
-    dispatch(fetchReceivedOffers());
-    dispatch(fetchGivenOffers());
-  }, [dispatch, location.pathname]);
+    if (givenOffers.givenOffers.length === 0 && !givenOffers.isFetching) {
+      dispatch(fetchReceivedOffers());
+    }
+    if (
+      receivedOffers.receivedOffers.length === 0 &&
+      !receivedOffers.isFetching
+    ) {
+      dispatch(fetchGivenOffers());
+    }
+  }, [
+    dispatch,
+    givenOffers.givenOffers.length,
+    givenOffers.isFetching,
+    givenOffers.length,
+    location.pathname,
+    receivedOffers.isFetching,
+    receivedOffers.length,
+    receivedOffers.receivedOffers.length,
+  ]);
   return (
     <div className="account">
       <Header />
@@ -55,7 +69,7 @@ function Account() {
       </div>
       <div className="offerBody">
         {location.pathname === '/hesabım/alınan-teklifler'
-          ? receivedOffers?.map((item) => (
+          ? receivedOffers?.receivedOffers.map((item) => (
               <div className="offerBody__card">
                 <div className="offerBody__card-left">
                   <img src={item.product.imageUrl} alt="" />
@@ -99,7 +113,7 @@ function Account() {
                 </div>
               </div>
             ))
-          : givenOffers?.map((item) => (
+          : givenOffers?.givenOffers.map((item) => (
               <div className="offerBody__card">
                 <div className="offerBody__card-left">
                   <img src={item.product.imageUrl} alt="" />
