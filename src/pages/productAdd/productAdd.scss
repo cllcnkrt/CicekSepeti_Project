@@ -180,90 +180,19 @@
             justify-content: space-between;
             align-items: center;
 
-            h1 {
-                margin-left: 10px;
-                font: normal normal bold 25px/23px Nunito;
-                margin-bottom: 30px;
-                color: $gray-300;
-                align-self: flex-start;
-            }
+        }
 
-            &-container {
-                border: 1px dashed $gray-200;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                border-radius: 8px;
-                height: 180px;
-                padding: 10px;
-                margin-left: 10px;
-                background-color: $white;
-                width: 450px;
-
-                &-icon {
-                    margin: 2.5px 0;
-
-                }
-
-                h2 {
-                    margin: 2.5px 0;
-                    font: normal normal 600 14px/15px Nunito;
-                    color: $gray-300;
-                }
-
-                h3 {
-                    margin: 2.5px 0;
-                    font: normal normal normal 14px/15px Nunito;
-                    color: $gray-300;
-                }
-
-                h6 {
-                    font: normal normal normal 12px/14px Nunito;
-                    color: #B1B1B1;
-                }
-
-                input {
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    opacity: 0;
-                    width: 120px;
-                    height: 30px;
-                    font-size: 16px;
-                }
-
-                .fileUpload {
-                    position: relative;
-                    background: #F4F4F4 0% 0% no-repeat padding-box;
-                    color: $gray-200;
-                    width: 120px;
-                    height: 30px;
-                    font-size: 15px;
-                    line-height: 10px;
-                    border: none;
-                    border-radius: 8px;
-                    overflow: hidden;
-                    margin: 10px 0;
-
-                    &:hover {
-                        background-color: $light-blue;
-
-                    }
-                }
-            }
-
-            .saveButton {
-                margin-top: 30px;
-                width: 200px;
-                height: 35px;
-                border-radius: 8px;
-                outline: none;
-                border: none;
-                background-color: $dark-blue;
-                color: $white;
-                font: normal normal bold 18px/24px Nunito;
-                align-self: flex-end;
-            }
+        .saveButton {
+            margin-top: 30px;
+            width: 200px;
+            height: 35px;
+            border-radius: 8px;
+            outline: none;
+            border: none;
+            background-color: $dark-blue;
+            color: $white;
+            font: normal normal bold 18px/24px Nunito;
+            align-self: flex-end;
         }
     }
 }
@@ -337,7 +266,8 @@ textarea {
     img {
         width: 100%;
     }
-    .deleteImageButton{
+
+    .deleteImageButton {
         cursor: pointer;
     }
 }

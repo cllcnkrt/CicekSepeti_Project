@@ -5,17 +5,18 @@ import './productAdd.scss';
 import fetchBrand from 'actions/brandActions';
 import fetchCategories from 'actions/categoryActions';
 import fetchColor from 'actions/colorActions';
-import fetchUploadImage, { imageUploadClear } from 'actions/imageUploadActions';
+/* import fetchUploadImage, { imageUploadClear } from 'actions/imageUploadActions'; */
 import fetchStatus from 'actions/statusActions';
 import Dropdown from 'components/Dropdown/Dropdown';
 import Header from 'components/Header';
+import UploadImage from 'components/UploadImage';
 import { productAddValidate } from 'helpers';
 import useProductAdd from 'hooks/useProductAdd';
 import React, { useEffect, useState } from 'react';
-import { useDropzone } from 'react-dropzone';
+/* import { useDropzone } from 'react-dropzone'; */
 import { useDispatch, useSelector } from 'react-redux';
 
-import uploadIcon from '../../assets/icons/uploadIcon.svg';
+/* import uploadIcon from '../../assets/icons/uploadIcon.svg'; */
 
 function ProductAdd() {
   const colors = useSelector((state) => state.colors);
@@ -71,13 +72,13 @@ function ProductAdd() {
       setSelectForm({ ...selectForm, color: item });
     }
   };
-  const { getRootProps, getInputProps } = useDropzone({
+  /*   const { getRootProps, getInputProps } = useDropzone({
     accept: 'image/*',
     onDrop: (acceptedFile) => {
       acceptedFile.map((file) => dispatch(fetchUploadImage(file)));
     },
   });
-  const imageUpload = useSelector((state) => state.imageUpload.imageUpload);
+  const imageUpload = useSelector((state) => state.imageUpload.imageUpload); */
 
   return (
     <div className="productAdd">
@@ -210,53 +211,8 @@ function ProductAdd() {
         {/* ------------------------------------------------------------------------ */}
         <div className="productAdd__body-right">
           <div className="right__up">
-            <h1>Ürün Görseli</h1>
-            <div {...getRootProps()}>
-              <input {...getInputProps()} />
-
-              <div
-                className={
-                  errors.imageUrl
-                    ? 'productAdd__body-right-container wrong'
-                    : 'productAdd__body-right-container'
-                }
-              >
-                <div className="productAdd__body-right-container-icon">
-                  <img src={uploadIcon} alt="" />
-                </div>
-                <h2>Sürükleyip bırakarak yükle </h2>
-                <h3>veya</h3>
-                <button className="fileUpload" type="button">
-                  Görsel Seçin
-                  <input
-                    type="file"
-                    name="imageUrl"
-                    id="image"
-                    multiple={false}
-                    value={form.imageUrl}
-                    onChange={handleChange}
-                    accept="image/png, image/jpeg, image/jpg"
-                  />
-                </button>
-                <h6>PNG ve JPEG Dosya boyutu: max. 400kb </h6>
-              </div>
-            </div>
-            {imageUpload.url.length > 0 && (
-              <div className="showingImage">
-                <div
-                  role="none"
-                  className="deleteImageButton"
-                  onClick={() => {
-                    imageUploadClear();
-                  }}
-                >
-                  X
-                </div>
-                <img src={imageUpload.url} alt="" />
-              </div>
-            )}
+            <UploadImage errors={errors} />
           </div>
-
           <button className="saveButton" type="submit">
             Kaydet
           </button>
