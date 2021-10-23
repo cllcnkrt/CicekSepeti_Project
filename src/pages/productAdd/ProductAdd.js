@@ -5,7 +5,6 @@ import './productAdd.scss';
 import fetchBrand from 'actions/brandActions';
 import fetchCategories from 'actions/categoryActions';
 import fetchColor from 'actions/colorActions';
-/* import fetchUploadImage, { imageUploadClear } from 'actions/imageUploadActions'; */
 import fetchStatus from 'actions/statusActions';
 import Dropdown from 'components/Dropdown/Dropdown';
 import Header from 'components/Header';
@@ -13,10 +12,7 @@ import UploadImage from 'components/UploadImage';
 import { productAddValidate } from 'helpers';
 import useProductAdd from 'hooks/useProductAdd';
 import React, { useEffect, useState } from 'react';
-/* import { useDropzone } from 'react-dropzone'; */
 import { useDispatch, useSelector } from 'react-redux';
-
-/* import uploadIcon from '../../assets/icons/uploadIcon.svg'; */
 
 function ProductAdd() {
   const colors = useSelector((state) => state.colors);
@@ -72,13 +68,6 @@ function ProductAdd() {
       setSelectForm({ ...selectForm, color: item });
     }
   };
-  /*   const { getRootProps, getInputProps } = useDropzone({
-    accept: 'image/*',
-    onDrop: (acceptedFile) => {
-      acceptedFile.map((file) => dispatch(fetchUploadImage(file)));
-    },
-  });
-  const imageUpload = useSelector((state) => state.imageUpload.imageUpload); */
 
   return (
     <div className="productAdd">
@@ -208,7 +197,7 @@ function ProductAdd() {
             </div>
           </div>
         </div>
-        {/* ------------------------------------------------------------------------ */}
+
         <div className="productAdd__body-right">
           <div className="right__up">
             <UploadImage errors={errors} />
