@@ -32,6 +32,7 @@ const fetchSendOffer = (id, data) => async (dispatch) => {
     })
     .then((res) => dispatch(fetchSuccess(res.data)))
     .catch((error) => dispatch(fetchFailure(error)))
+
     .finally(() => {
       dispatch(fetchDetails(id));
       dispatch(fetchGivenOffers());

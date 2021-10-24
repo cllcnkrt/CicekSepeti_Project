@@ -11,6 +11,7 @@ import BrandReducer from './brandReducer';
 import CategoryReducer from './categoryReducer';
 import ColorReducer from './colorReducer';
 import imageUploadReducer from './imageUploadReducer';
+import ProductCreateReducer from './product/productCreateReducer';
 import ProductDetailsReducer from './product/productDetailsReducer';
 import ProductsReducer from './product/productsReducer';
 import PurchaseReducer from './product/purchaseReducer';
@@ -31,6 +32,7 @@ export default combineReducers({
   products: ProductsReducer,
   purchase: PurchaseReducer,
   sendOffer: sendOfferReducer,
+  productCreate: ProductCreateReducer,
 
   categories: CategoryReducer,
   brands: BrandReducer,

@@ -6,6 +6,7 @@ import fetchBrand from 'actions/brandActions';
 import fetchCategories from 'actions/categoryActions';
 import fetchColor from 'actions/colorActions';
 import { imageUploadClear } from 'actions/imageUploadActions';
+import fetchProductCreate from 'actions/product/productCreateActions';
 import fetchStatus from 'actions/statusActions';
 import Dropdown from 'components/Dropdown/Dropdown';
 import Header from 'components/Header';
@@ -15,7 +16,10 @@ import useProductAdd from 'hooks/useProductAdd';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+/* import { useHistory } from 'react-router-dom'; */
+import closeImageBtn from '../../assets/icons/closeImageBtn.svg';
 import ProgressBar from '../../components/ProgressBar';
+/* import productCreateClear from '../../reducers/product/productCreateReducer'; */
 
 function ProductAdd() {
   const colors = useSelector((state) => state.colors);
@@ -56,8 +60,11 @@ function ProductAdd() {
     status.status.length,
   ]);
   const [isOfferable, setIsOfferable] = useState(false);
-  const { handleChange, form, handleSubmit, errors /*  setForm  */ } =
-    useProductAdd(productAddValidate, isOfferable, selectForm);
+  const { handleChange, form, handleSubmit, errors, setForm } = useProductAdd(
+    productAddValidate,
+    isOfferable,
+    selectForm
+  );
   const selectClick = (item, name) => {
     if (item.title.length > 0 && name === 'category') {
       setSelectForm({ ...selectForm, category: item });
@@ -72,7 +79,17 @@ function ProductAdd() {
       setSelectForm({ ...selectForm, color: item });
     }
   };
-
+  /*   const productCreate = useSelector((state) => state.productCreate);
+  const history = useHistory(); */
+  /* useEffect(() => {
+    if (productCreate?.productCreate.id) {
+      history.push(`/urun-detay/${productCreate?.productCreate.id}`);
+      dispatch(productCreateClear());
+    }
+  }, [dispatch, history, productCreate?.productCreate.id]); */
+  const handleCreate = () => {
+    dispatch(fetchProductCreate(form));
+  };
   return (
     <div className="productAdd">
       <Header />
@@ -213,27 +230,35 @@ function ProductAdd() {
             <h1>Ürün Görseli</h1>
             {imageUpload.imageUpload.url.length > 0 && (
               <div className="showingImage showImage">
-                <div
+                <img
+                  src={closeImageBtn}
+                  alt="closeImageBtn"
                   role="none"
                   className="deleteImageButton"
                   onClick={() => {
                     dispatch(imageUploadClear());
                   }}
-                >
-                  X
-                </div>
-                <img src={imageUpload.imageUpload.url} alt="" />
+                />
+                <img
+                  src={imageUpload.imageUpload.url}
+                  alt="imageUpload"
+                  className="imageUpload"
+                />
               </div>
             )}
             {!imageUpload.isFetching &&
               imageUpload.imageUpload.url.length === 0 && (
-                <UploadImage errors={errors} />
+                <UploadImage errors={errors} form={form} setForm={setForm} />
               )}
             {imageUpload.isFetching && (
               <ProgressBar progress={imageUpload.progress} errors={errors} />
             )}
           </div>
-          <button className="saveButton" type="submit">
+          <button
+            onClick={() => handleCreate()}
+            className="saveButton"
+            type="submit"
+          >
             Kaydet
           </button>
         </div>

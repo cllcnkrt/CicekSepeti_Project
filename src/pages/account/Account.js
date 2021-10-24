@@ -2,6 +2,7 @@ import './account.scss';
 
 import fetchGivenOffers from 'actions/account/givenOffersActions';
 import fetchReceivedOffers from 'actions/account/receivedOffersActions';
+import fetchRejectOffer from 'actions/account/rejectOfferActions';
 import ConfirmModal from 'components/ConfimModal/ConfirmModal';
 import Header from 'components/Header';
 import React, { useEffect, useState } from 'react';
@@ -17,6 +18,7 @@ function Account() {
   const givenOffers = useSelector((state) => state.givenOffers);
   const receivedOffers = useSelector((state) => state.receivedOffers);
   const [openConfirmModal, setOpenConfirmModal] = useState(false);
+  const [openRejectModal, setOpenRejectModal] = useState(false);
   const dispatch = useDispatch();
   const [offeredId, setOfferedId] = useState('');
   useEffect(() => {
@@ -105,7 +107,11 @@ function Account() {
                       >
                         Onayla
                       </button>
-                      <button className="offerreject" type="button">
+                      <button
+                        onClick={() => setOpenRejectModal(true)}
+                        className="offerreject"
+                        type="button"
+                      >
                         Reddet
                       </button>
                     </>
@@ -165,6 +171,16 @@ function Account() {
           buttonLeft="Vazgeç"
           buttonRight="Onayla"
           action={() => fetchAcceptOffer(offeredId)}
+        />
+      )}
+      {openRejectModal && (
+        <ConfirmModal
+          closeConfirmModal={setOpenRejectModal}
+          title="Reddet"
+          question="Reddetmek istiyor musunuz?"
+          buttonLeft="Vazgeç"
+          buttonRight="Reddet"
+          action={() => fetchRejectOffer(offeredId)}
         />
       )}
     </div>

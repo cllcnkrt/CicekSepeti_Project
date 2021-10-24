@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-/* import { useDispatch } from 'react-redux'; */
+import { useSelector } from 'react-redux';
 
 const useProductAdd = (productAddValidate, isOfferable, getSelectForm) => {
-  /*  const dispatch = useDispatch(); */
+  const imageUpload = useSelector((state) => state.imageUpload.imageUpload.url);
   const [form, setForm] = useState({
     title: '',
     description: '',
@@ -30,6 +30,9 @@ const useProductAdd = (productAddValidate, isOfferable, getSelectForm) => {
     getSelectForm.category.id,
     getSelectForm,
   ]);
+  useEffect(() => {
+    setForm((prev) => ({ ...prev, imageUrl: imageUpload }));
+  }, [imageUpload]);
 
   const [errors, setErrors] = useState({});
   const handleChange = (e) => {
@@ -51,7 +54,7 @@ const useProductAdd = (productAddValidate, isOfferable, getSelectForm) => {
     console.log('sorun yokkkkkkkkkk');
   }
 
-  return { handleChange, form, handleSubmit, errors };
+  return { handleChange, form, handleSubmit, errors, setForm };
 };
 
 export default useProductAdd;
