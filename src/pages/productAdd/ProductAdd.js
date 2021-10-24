@@ -6,7 +6,9 @@ import fetchBrand from 'actions/brandActions';
 import fetchCategories from 'actions/categoryActions';
 import fetchColor from 'actions/colorActions';
 import { imageUploadClear } from 'actions/imageUploadActions';
-import fetchProductCreate from 'actions/product/productCreateActions';
+import fetchProductCreate, {
+  productCreateClear,
+} from 'actions/product/productCreateActions';
 import fetchStatus from 'actions/statusActions';
 import Dropdown from 'components/Dropdown/Dropdown';
 import Header from 'components/Header';
@@ -15,11 +17,10 @@ import { productAddValidate } from 'helpers';
 import useProductAdd from 'hooks/useProductAdd';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
-/* import { useHistory } from 'react-router-dom'; */
 import closeImageBtn from '../../assets/icons/closeImageBtn.svg';
 import ProgressBar from '../../components/ProgressBar';
-/* import productCreateClear from '../../reducers/product/productCreateReducer'; */
 
 function ProductAdd() {
   const colors = useSelector((state) => state.colors);
@@ -79,14 +80,15 @@ function ProductAdd() {
       setSelectForm({ ...selectForm, color: item });
     }
   };
-  /*   const productCreate = useSelector((state) => state.productCreate);
-  const history = useHistory(); */
-  /* useEffect(() => {
+  const productCreate = useSelector((state) => state.productCreate);
+  const history = useHistory();
+  useEffect(() => {
     if (productCreate?.productCreate.id) {
       history.push(`/urun-detay/${productCreate?.productCreate.id}`);
+      dispatch(imageUploadClear());
       dispatch(productCreateClear());
     }
-  }, [dispatch, history, productCreate?.productCreate.id]); */
+  }, [dispatch, history, productCreate?.productCreate.id]);
   const handleCreate = () => {
     dispatch(fetchProductCreate(form));
   };

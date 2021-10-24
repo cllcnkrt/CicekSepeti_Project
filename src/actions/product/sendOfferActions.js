@@ -1,5 +1,7 @@
+/* eslint-disable no-debugger */
 import fetchGivenOffers from 'actions/account/givenOffersActions';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 import {
   FETCH_SEND_OFFER_FAILURE,
@@ -30,8 +32,33 @@ const fetchSendOffer = (id, data) => async (dispatch) => {
         Authorization: `Bearer ${localStorage.getItem('access_token')}`,
       },
     })
-    .then((res) => dispatch(fetchSuccess(res.data)))
-    .catch((error) => dispatch(fetchFailure(error)))
+    .then((res) => {
+      dispatch(fetchSuccess(res.data));
+      toast.success('Teklif verildi', {
+        position: 'top-right',
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'colored',
+      });
+    })
+    .catch((error) => {
+      dispatch(fetchFailure(error));
+
+      toast.error('Teklif verilemiyor', {
+        position: 'top-right',
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'colored',
+      });
+    })
 
     .finally(() => {
       dispatch(fetchDetails(id));

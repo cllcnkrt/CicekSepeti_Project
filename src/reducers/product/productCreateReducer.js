@@ -1,3 +1,4 @@
+/* eslint-disable no-debugger */
 import {
   FETCH_PRODUCT_CREATE_FAILURE,
   FETCH_PRODUCT_CREATE_PENDING,

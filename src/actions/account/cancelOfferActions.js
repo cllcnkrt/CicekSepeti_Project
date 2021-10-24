@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 import {
   FETCH_CANCEL_FAILURE,
@@ -32,7 +33,19 @@ const fetchCancelOffer = (id) => async (dispatch) => {
         },
       }
     )
-    .then((res) => dispatch(fetchSuccess(res.data)))
+    .then((res) => {
+      dispatch(fetchSuccess(res.data));
+      toast.success('Teklif geri çekildi', {
+        position: 'top-right',
+        autoClose: 1000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'colored',
+      });
+    })
     .catch((error) => dispatch(fetchFailure(error)))
     .finally(() => dispatch(fetchGivenOffers()));
 };

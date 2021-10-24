@@ -25,6 +25,7 @@ function ProductDetail() {
   const offerable = givenOffers.filter(
     (item) => productDetails.id === item.product.id
   )[0];
+  console.log('offerable :>> ', offerable);
   const [openConfirmModal, setOpenConfirmModal] = useState(false);
   const [openOfferModal, setOpenOfferModal] = useState(false);
   const [openCancelModal, setOpenCancelModal] = useState(false);
@@ -98,22 +99,33 @@ function ProductDetail() {
                 >
                   Satın Al
                 </button>
-                {offerable?.status === 'offered' && !productDetails.isSold && (
-                  <button
-                    type="button"
-                    className="productWrapper__right-BtnR"
-                    onClick={() => setOpenCancelModal(true)}
-                  >
-                    Teklifi Geri Çek
-                  </button>
-                )}
-                <button
-                  type="button"
-                  className="productWrapper__right-BtnR"
-                  onClick={() => setOpenOfferModal(true)}
-                >
-                  Teklif ver
-                </button>
+                {!productDetails.isSold &&
+                  (offerable?.status === 'offered' ||
+                    offerable?.status === 'rejected' ||
+                    offerable?.status === 'accepted') && (
+                    <button
+                      type="button"
+                      className="productWrapper__right-BtnR"
+                      onClick={() => setOpenCancelModal(true)}
+                    >
+                      Teklifi Geri Çek
+                    </button>
+                  )}
+                {productDetails.isOfferable &&
+                  !productDetails.isSold &&
+                  !(
+                    offerable?.status === 'offered' ||
+                    offerable?.status === 'rejected' ||
+                    offerable?.status === 'accepted'
+                  ) && (
+                    <button
+                      type="button"
+                      className="productWrapper__right-BtnR"
+                      onClick={() => setOpenOfferModal(true)}
+                    >
+                      Teklif ver
+                    </button>
+                  )}
               </>
             )}
           </div>

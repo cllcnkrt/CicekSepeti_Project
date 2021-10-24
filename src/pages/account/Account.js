@@ -3,11 +3,12 @@ import './account.scss';
 import fetchGivenOffers from 'actions/account/givenOffersActions';
 import fetchReceivedOffers from 'actions/account/receivedOffersActions';
 import fetchRejectOffer from 'actions/account/rejectOfferActions';
+import fetchPurchase from 'actions/product/purchaseActions';
 import ConfirmModal from 'components/ConfimModal/ConfirmModal';
 import Header from 'components/Header';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useHistory, useLocation } from 'react-router-dom';
 
 import fetchAcceptOffer from '../../actions/account/acceptOfferActions';
 import avatar from '../../assets/icons/mailAccount.svg';
@@ -19,28 +20,25 @@ function Account() {
   const receivedOffers = useSelector((state) => state.receivedOffers);
   const [openConfirmModal, setOpenConfirmModal] = useState(false);
   const [openRejectModal, setOpenRejectModal] = useState(false);
+  const [openAcceptModal, setOpenAcceptModal] = useState(false);
+  const [purchaseId, setPurchaseId] = useState('');
   const dispatch = useDispatch();
+  const history = useHistory();
   const [offeredId, setOfferedId] = useState('');
+  const handleUrl = (item) => {
+    history.push(`/urun-detay/${item.product.id}`);
+  };
   useEffect(() => {
-    if (givenOffers.givenOffers.length === 0 && !givenOffers.isFetching) {
+    let mounted = true;
+    if (mounted) {
       dispatch(fetchReceivedOffers());
-    }
-    if (
-      receivedOffers.receivedOffers.length === 0 &&
-      !receivedOffers.isFetching
-    ) {
       dispatch(fetchGivenOffers());
     }
-  }, [
-    dispatch,
-    givenOffers.givenOffers.length,
-    givenOffers.isFetching,
-    givenOffers.length,
-    location.pathname,
-    receivedOffers.isFetching,
-    receivedOffers.length,
-    receivedOffers.receivedOffers.length,
-  ]);
+    return () => {
+      mounted = false;
+    };
+  }, [dispatch]);
+
   return (
     <div className="account">
       <Header />
@@ -72,9 +70,14 @@ function Account() {
       <div className="offerBody">
         {location.pathname === '/hesabım/alınan-teklifler'
           ? receivedOffers?.receivedOffers.map((item) => (
-              <div className="offerBody__card">
+              <div key={item.key} className="offerBody__card">
                 <div className="offerBody__card-left">
-                  <img src={item.product.imageUrl} alt="" />
+                  <img
+                    role="none"
+                    onClick={() => handleUrl(item)}
+                    src={item.product.imageUrl}
+                    alt=""
+                  />
                   <div className="offerBody__card-left-desc">
                     <h1>{item.product.title}</h1>
                     <div className="offerBody__card-left-desc-price">
@@ -93,36 +96,52 @@ function Account() {
                   </div>
                 </div>
                 <div className="offerBody__card-right">
-                  {item.isSold ? (
-                    <p>Satıldı</p>
-                  ) : (
-                    <>
-                      <button
-                        onClick={() => {
-                          setOpenConfirmModal(true);
-                          setOfferedId(item.id);
-                        }}
-                        className="offerConfirm"
-                        type="button"
-                      >
-                        Onayla
-                      </button>
-                      <button
-                        onClick={() => setOpenRejectModal(true)}
-                        className="offerreject"
-                        type="button"
-                      >
-                        Reddet
-                      </button>
-                    </>
+                  {item.status === 'accepted' && (
+                    <p className="blue">Onaylandı</p>
                   )}
+                  {item.status === 'rejected' && (
+                    <p className="red">Reddedildi</p>
+                  )}
+                  {item.status === 'offered' &&
+                    item.product.isSold === true &&
+                    item.isSold !== false && <p>Satıldı</p>}
+                  {item.status === 'offered' &&
+                    item.product.isSold === false && (
+                      <>
+                        <button
+                          onClick={() => {
+                            setOpenConfirmModal(true);
+                            setOfferedId(item.id);
+                          }}
+                          className="offerConfirm"
+                          type="button"
+                        >
+                          Onayla
+                        </button>
+                        <button
+                          onClick={() => {
+                            setOpenRejectModal(true);
+                            setOfferedId(item.id);
+                          }}
+                          className="offerreject"
+                          type="button"
+                        >
+                          Reddet
+                        </button>
+                      </>
+                    )}{' '}
                 </div>
               </div>
             ))
           : givenOffers?.givenOffers.map((item) => (
-              <div className="offerBody__card">
+              <div key={item.key} className="offerBody__card">
                 <div className="offerBody__card-left">
-                  <img src={item.product.imageUrl} alt="" />
+                  <img
+                    role="none"
+                    onClick={() => handleUrl(item)}
+                    src={item.product.imageUrl}
+                    alt=""
+                  />
                   <div className="offerBody__card-left-desc">
                     <h1>{item.product.title}</h1>
                     <div className="offerBody__card-left-desc-price">
@@ -144,21 +163,36 @@ function Account() {
                   {item.status === 'offered' && !item.product.isSold && (
                     <p className="orange">Beklemede</p>
                   )}
-                  {(item.status === 'rejected' ||
-                    (item.status === 'offered' && item.product.isSold)) && (
-                    <p className="red">Reddedildi</p>
-                  )}
+                  {(item.status === 'rejected' || item.status === 'offered') &&
+                    item.product.isSold === true && (
+                      <p className="red">Satıldı</p>
+                    )}
 
+                  {item.status === 'accepted' &&
+                    (item.isSold === true || item.isSold === 'sold') && (
+                      <p className="green">Satın alındı</p>
+                    )}
+
+                  {item.status === 'rejected' &&
+                    (item.isSold === false ||
+                      item.product.isSold === false) && (
+                      <p className="red">Reddedildi</p>
+                    )}
                   {item.status === 'accepted' && !item.product.isSold && (
-                    <p className="blue">Onaylandı</p>
+                    <>
+                      <button
+                        onClick={() => {
+                          setOpenAcceptModal(true);
+                          setPurchaseId(item.product.id);
+                        }}
+                        className="offerConfirm"
+                        type="button"
+                      >
+                        Onayla
+                      </button>
+                      <p className="blue">Onaylandı</p>
+                    </>
                   )}
-
-                  {/*  <button className="offerConfirm" type="button">
-                    Satın al
-                  </button>
-                  <button className="offerreject" type="button">
-                    Geri çek
-                  </button> */}
                 </div>
               </div>
             ))}
@@ -171,6 +205,16 @@ function Account() {
           buttonLeft="Vazgeç"
           buttonRight="Onayla"
           action={() => fetchAcceptOffer(offeredId)}
+        />
+      )}
+      {openAcceptModal && (
+        <ConfirmModal
+          closeConfirmModal={setOpenAcceptModal}
+          title="Onayla"
+          question="Onaylamak istiyor musunuz?"
+          buttonLeft="Vazgeç"
+          buttonRight="Onayla"
+          action={() => fetchPurchase(purchaseId)}
         />
       )}
       {openRejectModal && (

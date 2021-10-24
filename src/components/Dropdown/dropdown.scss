@@ -37,7 +37,7 @@
             background-color: $white;
             padding: 10px;
             position: absolute;
-            top: 100%;
+            top: 48%;
             left: 0;
             right: 0;
             visibility: hidden;
@@ -49,6 +49,22 @@
             background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
             background: #FFFFFF 0% 0% no-repeat padding-box;
             box-shadow: 0px 3px 12px #1E36482E;
+
+            .dropdown__title {
+                display: flex;
+                justify-content: space-between;
+                cursor: pointer;
+
+                &-p {
+                    font: normal normal normal 16px/22px Nunito !important;
+                    color: #99A0A7;
+
+                }
+
+                img {
+                    transform: rotate(180deg);
+                }
+            }
 
             &-item {
                 padding: 10px;
@@ -88,7 +104,7 @@
 
 
 @media screen and (max-width: 960px) {
-  .dropdown{
-      min-width: 360px;
-  }
+    .dropdown {
+        min-width: 360px;
+    }
 }

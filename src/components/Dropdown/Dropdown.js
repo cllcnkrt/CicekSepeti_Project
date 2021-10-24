@@ -2,6 +2,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import './dropdown.scss';
 
+import { textCapitalize } from 'helpers';
 import React, { useState } from 'react';
 
 import arrowDown from '../../assets/icons/arrowDown.svg';
@@ -33,6 +34,10 @@ function Dropdown({
           isOpen ? 'dropdown__select-list open' : 'dropdown__select-list '
         }
       >
+        <div className="dropdown__title">
+          <p className="dropdown__title-p">{title} seç</p>
+          <img src={arrowDown} alt="" />
+        </div>
         {selectOption?.map((item) => (
           <div
             key={item.id}
@@ -45,7 +50,7 @@ function Dropdown({
             name={name}
             className="dropdown__select-list-item"
           >
-            {item.title}
+            {textCapitalize(item.title)}
           </div>
         ))}
       </div>

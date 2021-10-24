@@ -5,6 +5,7 @@ import './offerModal.scss';
 import fetchSendOffer from 'actions/product/sendOfferActions';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
 
 import checked from '../../assets/icons/checked.svg';
 import closeBtn from '../../assets/icons/closeBtn.svg';
@@ -93,9 +94,9 @@ function OfferModal({ closeOfferModal, image, title, price, offerId }) {
         </div>
         <div className="offerModal__container-offerPrice">
           <input
-            type="number"
+            type="text"
             placeholder="Teklif Belirle"
-            value={sendData.offeredPrice > 0 ? sendData.offeredPrice : ''}
+            value={sendData.offeredPrice}
             onChange={(e) =>
               setSendData({ ...sendData, offeredPrice: e.target.value })
             }
@@ -110,8 +111,26 @@ function OfferModal({ closeOfferModal, image, title, price, offerId }) {
           className="OfferConfirmbutton"
           type="button"
           onClick={() => {
-            dispatch(fetchSendOffer(offerId, sendData));
-            closeOfferModal(false);
+            if (Number(sendData.offeredPrice)) {
+              dispatch(
+                fetchSendOffer(offerId, {
+                  ...sendData,
+                  offeredPrice: Number(sendData.offeredPrice),
+                })
+              );
+              closeOfferModal(false);
+            } else {
+              toast.error('Lütfen sayı giriniz', {
+                position: 'top-right',
+                autoClose: 2000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: 'colored',
+              });
+            }
           }}
         >
           Onayla

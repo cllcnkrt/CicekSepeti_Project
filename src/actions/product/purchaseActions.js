@@ -1,4 +1,6 @@
+import fetchGivenOffers from 'actions/account/givenOffersActions';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 import {
   FETCH_PURCHASE_FAILURE,
@@ -33,8 +35,33 @@ const fetchPurchase = (id) => async (dispatch) => {
         },
       }
     )
-    .then((res) => dispatch(fetchSuccess(res.data)))
-    .catch((error) => dispatch(fetchFailure(error)))
+    .then((res) => {
+      dispatch(fetchSuccess(res.data));
+      toast.success('Satın alındı', {
+        position: 'top-right',
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'colored',
+      });
+      dispatch(fetchGivenOffers());
+    })
+    .catch((error) => {
+      dispatch(fetchFailure(error));
+      toast.error('Kendi ürününüzü satın alamazsınız!', {
+        position: 'top-right',
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'colored',
+      });
+    })
     .then(() => dispatch(fetchDetails(id)));
 };
 

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 import {
   FETCH_ACCEPT_OFFER_FAILURE,
@@ -22,22 +23,31 @@ const fetchPending = () => ({
 
 const fetchAcceptOffer = (id) => async (dispatch) => {
   dispatch(fetchPending());
-  return (
-    axios
-      .put(
-        `https://bootcampapi.techcs.io/api/fe/v1/account/accept-offer/${id}`,
-        null,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem('access_token')}`,
-          },
-        }
-      )
-      .then(() => dispatch(fetchSuccess()))
-      /* tostify ekle res i kullan */
-      .catch((error) => dispatch(fetchFailure(error)))
-      .then(() => dispatch(fetchReceivedOffers()))
-  );
+  return axios
+    .put(
+      `https://bootcampapi.techcs.io/api/fe/v1/account/accept-offer/${id}`,
+      null,
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+        },
+      }
+    )
+    .then(() => {
+      dispatch(fetchSuccess());
+      toast.success('Teklif kabul edildi', {
+        position: 'top-right',
+        autoClose: 1000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'colored',
+      });
+    })
+    .catch((error) => dispatch(fetchFailure(error)))
+    .finally(() => dispatch(fetchReceivedOffers()));
 };
 
 export default fetchAcceptOffer;

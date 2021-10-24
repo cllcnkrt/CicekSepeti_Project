@@ -68,6 +68,7 @@
             border-radius: 8px;
             min-width: 400px;
 
+
             &-left {
                 display: flex;
 
@@ -77,10 +78,11 @@
                     border-radius: 8px;
                     padding: 8px;
                     margin: 10px;
+                    cursor: pointer;
                 }
 
                 &-desc {
-                    width: 200px;
+                    width: 240px;
                     display: flex;
                     flex-direction: column;
 
@@ -114,9 +116,12 @@
             }
 
             &-right {
+                display: flex;
+                align-items: center;
+
                 p {
                     margin-right: 25px;
-                    font: normal normal bold 20px/23px Nunito;
+                    font: normal normal normal 20px/23px Nunito;
                     color: $dark-green;
                 }
 
@@ -127,6 +132,7 @@
                     width: 100px;
                     height: 30px;
                     cursor: pointer;
+                    color: red;
 
                 }
 
@@ -164,6 +170,7 @@
     position: relative;
     font: normal normal bold 15px/20px Nunito;
     color: $dark-blue !important;
+    cursor: pointer !important;
 
     &::before {
         color: $dark-blue;
@@ -182,6 +189,7 @@
 
 .red {
     color: red !important;
+
 }
 
 .blue {
