@@ -44,3 +44,13 @@
         color: #525252;
     }
 }
+
+@media screen and (max-width: 600px) {
+    .progressBar__container {
+        width: 330px !important;
+    }
+
+    .right__up {
+        margin-bottom: 10px !important;
+    }
+}

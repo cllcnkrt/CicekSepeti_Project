@@ -32,7 +32,9 @@ const fetchProductCreate = (data) => async (dispatch) => {
         'Content-Type': 'application/json',
       },
     })
-    .then((res) => dispatch(fetchSuccess(res.data)))
+    .then((res) => {
+      dispatch(fetchSuccess(res.data));
+    })
     .catch((error) => dispatch(fetchFailure(error)));
 };
 

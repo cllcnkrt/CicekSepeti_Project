@@ -1,5 +1,6 @@
 /* eslint-disable no-debugger */
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 import {
   FETCH_IMAGE_UPLOAD_FAILURE,
@@ -52,8 +53,22 @@ const fetchUploadImage = (image) => async (dispatch) => {
         },
       }
     )
-    .then((res) => dispatch(fetchSuccess(res.data)))
-    .catch((error) => dispatch(fetchFailure(error)));
+    .then((res) => {
+      dispatch(fetchSuccess(res.data));
+    })
+    .catch((error) => {
+      dispatch(fetchFailure(error));
+      toast.error('Lütfen maksimum 400kb değerinde görsel yükleyiniz ', {
+        position: 'top-right',
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'colored',
+      });
+    });
 };
 
 export default fetchUploadImage;

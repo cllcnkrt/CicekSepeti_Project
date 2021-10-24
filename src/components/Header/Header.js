@@ -31,9 +31,9 @@ function Header() {
         <div className="wrapper__buttons">
           {isUser && (
             <Link to="/urun-ekleme">
-              <button type="button">
+              <button type="button" className="addBtn">
                 <img src={addIcon} alt="add-icon" />
-                Ürün Ekle
+                <span className="addProductText">Ürün Ekle</span>
               </button>
             </Link>
           )}

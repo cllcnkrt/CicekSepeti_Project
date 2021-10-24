@@ -106,5 +106,16 @@
 @media screen and (max-width: 960px) {
     .dropdown {
         min-width: 360px;
+
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .dropdown__select {
+        max-width: 98% !important;
+
+        &-list {
+            max-width: 99% !important;
+        }
     }
 }

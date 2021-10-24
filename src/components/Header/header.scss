@@ -16,9 +16,6 @@
         &__logo {}
 
         &__buttons {
-
-
-
             img {
                 margin-right: 5px;
             }
@@ -42,3 +39,20 @@
     }
 }
 
+@media screen and (max-width: 600px) {
+    .wrapper {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        width: 95% !important;
+    }
+
+    .addBtn {
+        width: 40px !important;
+        padding-left: 14px !important;
+    }
+
+    .addProductText {
+        display: none;
+    }
+}

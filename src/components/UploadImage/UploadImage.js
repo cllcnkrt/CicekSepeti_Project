@@ -11,10 +11,13 @@ import uploadIcon from '../../assets/icons/uploadIcon.svg';
 function UploadImage({ errors }) {
   const dispatch = useDispatch();
   const { getRootProps, getInputProps } = useDropzone({
-    accept: 'image/*',
+    accept: 'image/jpg, image/jpeg, image/png',
     onDrop: (acceptedFile) => {
       dispatch(fetchUploadImage(acceptedFile[0]));
     },
+    maxSize: 409600,
+    maxFiles: 1,
+    multiple: false,
   });
   return (
     <div className="uploadImage">

@@ -139,3 +139,28 @@
         }
     }
 }
+
+@media screen and (max-width: 600px) {
+    .productWrapper {
+        flex-direction: column;
+        margin-bottom: 20px;
+
+        &__left {
+            justify-content: center !important;
+            display: flex !important;
+
+            &-image {
+                width: 100% !important;
+
+                img {
+                    width: 100% !important;
+                }
+            }
+
+        }
+
+        &__right {
+            padding-bottom: 10px;
+        }
+    }
+}

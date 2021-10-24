@@ -286,7 +286,7 @@ textarea {
         width: 20px;
         position: absolute;
         right: 0;
-     
+
     }
 
     .imageUpload {
@@ -305,38 +305,73 @@ textarea {
 }
 
 
-@media screen and (max-width: 1170px) {
+@media screen and (max-width: 600px) {
+    .productAdd {
+        min-height: 100vh !important;
+        height: auto !important;
+
+    }
+
     .productAdd__body {
-        flex-direction: column;
+        flex-direction: column !important;
+        width: 90vw !important;
+        margin-bottom: 10px !important;
+    }
+
+    .productAdd__body-right-container {
+        width: 350px;
     }
 
     .productAdd__body-left {
-        padding-right: 20px;
+        padding: 0 !important;
+        margin-bottom: 10px !important;
+        max-width: none !important;
+        max-height: none !important;
+        margin: 0px !important;
+
+        .productAdd__body-left-price {
+
+            display: flex !important;
+            flex-direction: column !important;
+            width: 95% !important;
+            margin: 0 !important;
+            margin-left: 5px !important;
+        }
     }
 
-    .productAdd__body-right {
-        border: none;
-
-    }
-
-    .saveButton {
-        bottom: 50px !important;
-        right: 100px !important;
-
-
+    .productAdd__body-left-price-product {
+        display: flex !important;
+        flex-direction: column !important;
     }
 
     .productAdd__body-left-price-product-input {
-        min-width: 360px;
+        min-width: auto !important;
     }
 
-    .productAdd__body-left-price-option {
-        min-width: 360px;
-    }
-}
+    .productAdd__body-right {
+        margin: 0 !important;
+        padding-left: 0 !important;
 
-@media screen and (max-width: 600px) {
+    }
+
     .productAdd__body-right-container {
-        width: 350px;
+        width: 80vw !important;
+    }
+
+    .saveButton {
+        align-self: center !important;
+        width: 90% !important;
+        height: 45px !important;
+        margin-top: 15px !important;
+        margin-left: 10px !important;
+    }
+
+    .right__up {
+
+
+        h1 {
+            margin-top: 15px !important;
+            margin-bottom: 15px !important;
+        }
     }
 }

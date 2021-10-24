@@ -166,6 +166,7 @@
     /* Firefox */
 }
 
+
 .offerActive {
     position: relative;
     font: normal normal bold 15px/20px Nunito;
@@ -198,4 +199,51 @@
 
 .orange {
     color: $dark-orange !important;
+}
+
+.gray {
+    color: #B1B1B1 !important;
+}
+
+@media screen and (max-width: 600px) {
+
+    .offerNavbar {
+
+        height: 45px !important;
+        margin: 0 !important;
+
+        ul {
+            height: 45px !important;
+        }
+    }
+
+    .offerActive {
+        &::before {
+            bottom: -24px !important;
+        }
+    }
+
+    .offerBody__card {
+        display: flex !important;
+        flex-direction: column !important;
+        max-width: 300xp !important;
+        height: 150px !important;
+
+        background-color: lime !important;
+
+        .offerBody__card-left {
+
+            img {
+                margin: 0px !important;
+
+            }
+        }
+
+        .offerBody__card-right {
+            p {
+                margin-bottom: 10px !important;
+                margin-left: 50px !important;
+            }
+        }
+    }
 }

@@ -165,7 +165,7 @@ function Account() {
                   )}
                   {(item.status === 'rejected' || item.status === 'offered') &&
                     item.product.isSold === true && (
-                      <p className="red">Satıldı</p>
+                      <p className="gray">Tükendi</p>
                     )}
 
                   {item.status === 'accepted' &&

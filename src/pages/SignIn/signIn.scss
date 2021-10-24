@@ -126,14 +126,35 @@
     }
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 992px) {}
+
+/* On screens that are 600px or less, set the background color to olive */
+
+
+@media screen and (max-width:1111px) {
+    .signIn {}
+
     .signIn__left {
         display: none;
     }
 
     .signIn__right {
-        width: 100vw;
-        height: 100vh;
+        width: 100%;
+        height: 100%;
+        flex: 1;
+
+        .container .container {
+
+            img {
+                height: 70%;
+            }
+        }
+
+
+        .container__form {
+            width: 80% !important;
+            max-height: 700px !important;
+        }
     }
 }
 
@@ -141,4 +162,23 @@
     background-color: $light-pink !important;
     outline: 1px solid $dark-pink !important;
     color: $dark-pink !important;
+}
+
+@media screen and (max-width: 600px) {
+    .signIn__right {
+        .container {
+            display: flex;
+            align-items: center;
+
+            .container__logo {
+                margin: 70px 0 20px 0;
+            }
+
+            .container__form {
+                width: 90vw !important;
+                margin: 0px !important;
+                padding: 0 20px !important;
+            }
+        }
+    }
 }
