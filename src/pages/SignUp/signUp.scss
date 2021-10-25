@@ -121,14 +121,42 @@
     }
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 1340px) {
     .signUp__left {
         display: none;
     }
+}
 
-    .signUp__right {
-        width: 100vw;
-        height: 100vh;
+@media screen and (max-width: 600px) {
+    .signUp {
+        .signUp__right {
+            margin: 0 !important;
+
+            .container {
+                display: flex;
+                align-items: center;
+
+
+                .container__logo {
+                    margin: 10px 0 20px 0 !important;
+
+                    img {
+                        width: 150px;
+                    }
+                }
+
+                .container__form {
+                    width: 90vw !important;
+                    margin: 0px !important;
+                    padding: 0 20px !important;
+                }
+            }
+        }
+
+        .signUp__left {
+            display: none;
+        }
+
     }
 }
 

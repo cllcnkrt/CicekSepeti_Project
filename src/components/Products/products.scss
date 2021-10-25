@@ -1,10 +1,17 @@
 @import "../../style/_variables.scss";
 
 .products {
-    margin-top: 30px;
+    margin-top: 10px;
     width: 80%;
     display: grid;
     grid-gap: 10px;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     margin-bottom: 50px;
+}
+
+@media screen and (max-width: 600px) {
+    .products {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)) !important;
+        grid-gap: 10px;
+    }
 }

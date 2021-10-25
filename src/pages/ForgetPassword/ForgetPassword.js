@@ -42,11 +42,7 @@ function ForgetPassword() {
                 onChange={handleChange}
               />
             </div>
-            <button
-              /*      onClick={() => handleSend()} */
-              className="gonder"
-              type="submit"
-            >
+            <button className="gonder" type="submit">
               Gönder
             </button>
             <h2 className="ya-da">Ya da</h2>
