@@ -123,7 +123,7 @@ function Account() {
                             setOpenRejectModal(true);
                             setOfferedId(item.id);
                           }}
-                          className="offerreject"
+                          className="offerReject"
                           type="button"
                         >
                           Reddet
@@ -185,12 +185,12 @@ function Account() {
                           setOpenAcceptModal(true);
                           setPurchaseId(item.product.id);
                         }}
-                        className="offerConfirm"
+                        className="offerConfirm accepted"
                         type="button"
                       >
                         Onayla
                       </button>
-                      <p className="blue">Onaylandı</p>
+                      <p className="blue accept">Onaylandı</p>
                     </>
                   )}
                 </div>

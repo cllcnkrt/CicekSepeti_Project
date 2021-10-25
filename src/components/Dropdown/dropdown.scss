@@ -105,7 +105,7 @@
 
 @media screen and (max-width: 960px) {
     .dropdown {
-        min-width: 360px;
+        min-width: 360px !important;
 
     }
 }
@@ -117,5 +117,26 @@
         &-list {
             max-width: 99% !important;
         }
+    }
+
+    .dropdown {
+        max-width: 300px !important;
+
+    }
+}
+
+@media screen and (max-width: 500px) {
+
+    .dropdown__select {
+        max-width: 310px !important;
+
+    }
+}
+
+@media screen and (max-width: 410px) {
+
+    .dropdown__select {
+        max-width: 200px !important;
+
     }
 }

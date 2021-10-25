@@ -1,17 +1,11 @@
 /* eslint-disable react/prop-types */
 import './progressBar.scss';
 
-import React /* , { useEffect } */ from 'react';
-/* import { useSelector } from 'react-redux'; */
+import React from 'react';
 
 function ProgressBar({ errors, progress }) {
-  /*   const imageUpload = useSelector((state) => state.imageUpload); */
   const progressStyle = { width: `${progress}%` };
-  /*  useEffect(() => {
-    if (imageUpload?.isFetching) {
-      const classname = 'progressBar__container';
-    }
-  }, [imageUpload?.isFetching]); */
+
   return (
     <div
       className={

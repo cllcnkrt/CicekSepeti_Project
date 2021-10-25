@@ -46,27 +46,30 @@
 
 }
 
-@media screen and (max-width: 600px) {
-    ul {
-        flex-wrap: nowrap !important;
-        overflow-x: scroll !important;
+@media screen and (max-width: 760px) {
+    .nav {
 
-        li:not(:first-child) {
-            margin-left: 10px !important;
+
+        ul {
+            flex-wrap: nowrap !important;
+            overflow-x: scroll !important;
+
+            li:not(:first-child) {
+                margin-left: 10px !important;
+            }
+        }
+
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        ul::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Hide scrollbar for IE, Edge and Firefox */
+        ul {
+            -ms-overflow-style: none;
+            /* IE and Edge */
+            scrollbar-width: none;
+            /* Firefox */
         }
     }
-
-    /* Hide scrollbar for Chrome, Safari and Opera */
-    ul::-webkit-scrollbar {
-        display: none;
-    }
-
-    /* Hide scrollbar for IE, Edge and Firefox */
-    ul {
-        -ms-overflow-style: none;
-        /* IE and Edge */
-        scrollbar-width: none;
-        /* Firefox */
-    }
-
 }

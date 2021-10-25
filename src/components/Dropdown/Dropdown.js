@@ -26,7 +26,7 @@ function Dropdown({
     >
       <label htmlFor="">{title}</label>
       <div className={className} name={name} id={name}>
-        <span>{value || `${title} seç`}</span>
+        <span>{textCapitalize(value) || `${title} seç`}</span>
         <img src={arrowDown} alt="" />
       </div>
       <div

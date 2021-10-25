@@ -13,7 +13,11 @@
         background-color: $white;
         justify-content: space-between;
 
-        &__logo {}
+        &__logo {
+            img {
+                height: 33px;
+            }
+        }
 
         &__buttons {
             img {
@@ -39,7 +43,11 @@
     }
 }
 
-@media screen and (max-width: 600px) {
+
+
+
+
+@media screen and (max-width: 450px) {
     .wrapper {
         display: flex !important;
         justify-content: space-between !important;
