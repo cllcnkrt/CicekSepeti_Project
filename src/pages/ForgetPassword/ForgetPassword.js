@@ -5,7 +5,7 @@ import useForgetPassword from 'hooks/useForgetPassword';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import image from '../../assets/images/login.png';
+import image from '../../assets/images/login1.png';
 import logo from '../../assets/logo/logo.svg';
 
 function ForgetPassword() {

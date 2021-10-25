@@ -24,6 +24,7 @@ function Products() {
     );
     setSelectedProducts(filtered);
   }, [currentQuery, products.products]);
+
   return (
     <div className="products">
       {selectedProducts.length > 0
@@ -32,7 +33,7 @@ function Products() {
               <Card product={product} />
             </Link>
           ))
-        : products.products.map((product) => (
+        : products.products.slice(0, 20).map((product) => (
             <Link key={product.id} to={`urun-detay/${product.id}`}>
               <Card product={product} />
             </Link>

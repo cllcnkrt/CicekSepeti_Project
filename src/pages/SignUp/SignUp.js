@@ -5,7 +5,7 @@ import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 
-import image from '../../assets/images/login.png';
+import image from '../../assets/images/login1.png';
 import logo from '../../assets/logo/logo.svg';
 import { authValidate } from '../../helpers';
 import useAuth from '../../hooks/useAuth';

@@ -19,7 +19,6 @@ function UploadImage({ errors }) {
     maxFiles: 1,
     multiple: false,
   });
-  console.log('getInputProps :>> ', getInputProps);
   return (
     <div className="uploadImage">
       <div {...getRootProps()}>

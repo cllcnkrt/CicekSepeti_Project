@@ -14,7 +14,6 @@ const useForgetPassword = (forgetPasswordValidate) => {
     e.preventDefault();
     setError(forgetPasswordValidate(input));
     if (input?.email && error === '') {
-      console.log('email :>> ', error);
       toast.success('Şifreniz belirttiğiniz e-posta adresine gönderildi', {
         position: 'top-right',
         autoClose: 3000,
@@ -30,7 +29,6 @@ const useForgetPassword = (forgetPasswordValidate) => {
   };
   useEffect(() => {
     if (error?.email === true) {
-      console.log('error :>> ', error);
       toast.error('Lütfen e-postanızı giriniz', {
         position: 'top-right',
         autoClose: 3000,

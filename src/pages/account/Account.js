@@ -42,6 +42,7 @@ function Account() {
   return (
     <div className="account">
       <Header />
+
       <div className="account__email">
         <img src={avatar} alt="avatar" />
         <p>{userInfo}</p>
