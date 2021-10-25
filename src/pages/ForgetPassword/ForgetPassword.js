@@ -1,20 +1,16 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable import/no-extraneous-dependencies */
 import './forgetPassword.scss';
 
+import { forgetPasswordValidate } from 'helpers';
+import useForgetPassword from 'hooks/useForgetPassword';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
 import image from '../../assets/images/login.png';
 import logo from '../../assets/logo/logo.svg';
-import { authValidate } from '../../helpers';
-import useAuth from '../../hooks/useAuth';
 
 function ForgetPassword() {
-  const { handleChange, form, handleSubmit, errors } = useAuth(
-    authValidate,
-    'signIn'
+  const { handleChange, input, handleSubmit, error } = useForgetPassword(
+    forgetPasswordValidate
   );
 
   return (
@@ -41,16 +37,18 @@ function ForgetPassword() {
                 type="email"
                 name="email"
                 placeholder="e-posta"
-                className={errors.email ? 'form-input wrong' : 'form-input'}
-                value={form.email}
+                className={error?.email ? 'form-input wrong' : 'form-input'}
+                value={input?.email}
                 onChange={handleChange}
               />
             </div>
-            <Link to="/">
-              <button className="gonder" type="submit">
-                Gönder
-              </button>
-            </Link>
+            <button
+              /*      onClick={() => handleSend()} */
+              className="gonder"
+              type="submit"
+            >
+              Gönder
+            </button>
             <h2 className="ya-da">Ya da</h2>
             <Link to="/yeni-uyelik">
               <button type="submit">Üye Ol</button>

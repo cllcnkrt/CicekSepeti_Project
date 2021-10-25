@@ -48,6 +48,17 @@ export function productAddValidate(form) {
   return errors;
 }
 
+export const forgetPasswordValidate = (input) => {
+  const error = {};
+  if (!input.email) {
+    error.email = true;
+  } else if (!/\S+@\S+\.\S+/.test(input.email)) {
+    error.email = true;
+  }
+
+  return error;
+};
+
 export const handlePurchaseButton = (dispatch) => {
   dispatch(fetchPurchase());
 };
