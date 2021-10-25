@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import './header.scss';
 
 import { SignInClear } from 'actions/Authorization/signInActions';
@@ -6,6 +5,7 @@ import { SignUpClear } from 'actions/Authorization/signUpActions';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 import accountIcon from '../../assets/icons/account.svg';
 import addIcon from '../../assets/icons/add.svg';
@@ -16,6 +16,16 @@ function Header() {
   const isUser = window.localStorage.getItem('access_token');
   const dispatch = useDispatch();
   const handleExit = () => {
+    toast.success('Çıkış yapıldı', {
+      position: 'top-right',
+      autoClose: 2000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'colored',
+    });
     window.localStorage.clear();
     dispatch(SignInClear());
     dispatch(SignUpClear());
