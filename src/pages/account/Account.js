@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useHistory, useLocation } from 'react-router-dom';
 
 import fetchAcceptOffer from '../../actions/account/acceptOfferActions';
+import loadingGif from '../../assets/gif/loading.gif';
 import avatar from '../../assets/icons/mailAccount.svg';
 
 function Account() {
@@ -38,7 +39,13 @@ function Account() {
       mounted = false;
     };
   }, [dispatch]);
-
+  if (givenOffers.isFetching || receivedOffers.isFetching) {
+    return (
+      <div className="loading">
+        <img src={loadingGif} alt="loading" />
+      </div>
+    );
+  }
   return (
     <div className="account">
       <Header />
