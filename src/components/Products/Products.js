@@ -19,7 +19,7 @@ function Products() {
   const [selectedProducts, setSelectedProducts] = useState([]);
 
   const [pageNumber, setPageNumber] = useState(0);
-  const productsPerPage = 20;
+  const productsPerPage = 15;
   const pagesVisited = pageNumber * productsPerPage;
   const pageCountProduct = Math.ceil(
     products.products.length / productsPerPage
