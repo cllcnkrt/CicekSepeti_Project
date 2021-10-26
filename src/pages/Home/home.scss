@@ -1,0 +1,16 @@
+@import "../../style/_variables.scss";
+
+.home {
+    display: flex;
+    flex-direction: column;
+    background-color: $white-100;
+    align-items: center;
+    min-height: 100vh;
+
+    .banner {
+        width: 80%;
+        margin-top: 15px;
+        border-radius: 8px;
+    }
+
+}
