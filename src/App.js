@@ -15,6 +15,8 @@ import { ToastContainer } from 'react-toastify';
 import AuthenticationRoute from 'routes/AuthenticationRoute';
 import ProtectedRoute from 'routes/ProtectedRoute';
 
+import NotFound from './pages/NotFound';
+
 const App = () => {
   const signUp = useSelector((state) => state.signUp);
   const signIn = useSelector((state) => state.signIn);
@@ -56,6 +58,7 @@ const App = () => {
           <Route path="/urun-detay/:id" component={ProductDetail} />
           <Route path="/sifre-yenile" component={ForgetPassword} />
           <Route exact path="/" component={Home} />
+          <Route path="*" component={NotFound} />
         </Switch>
       </Router>
       <ToastContainer

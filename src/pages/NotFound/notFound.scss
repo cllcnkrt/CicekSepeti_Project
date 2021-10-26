@@ -1,0 +1,53 @@
+@import "../../style/_variables.scss";
+
+.NotFound {
+    min-width: 100%;
+    min-height: 100vh;
+    background-color: #f6f6f6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    img {
+        width: 200px;
+        height: 200px;
+        margin-top: 100px;
+    }
+
+    h1 {
+        font: normal normal bold 25px/23px Nunito;
+        margin-top: 50px;
+    }
+
+    .error {
+        .error-p {
+            background-color: $white-200;
+            font: normal normal bold 20px/23px Nunito;
+            width: 200px;
+            height: 30px;
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+    }
+
+    p {
+        margin-top: 25px;
+        font: normal normal normal 20px/23px Nunito;
+    }
+
+    button {
+        margin-top: 20px;
+        border: none;
+        border-radius: 8px;
+        background-color: $dark-blue;
+        width: 315px;
+        height: 45px;
+        color: $white;
+        cursor: pointer;
+        font: normal normal bold 18px/24px Nunito;
+    }
+}
