@@ -6,7 +6,7 @@ import Card from 'components/Card/Card';
 import React, { useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import loadingGif from '../../assets/gif/loading.gif';
 import useQuery from '../../hooks/useQuery';
@@ -41,6 +41,13 @@ function Products() {
 
     setSelectedProducts(filtered);
   }, [currentQuery, products.products]);
+  const location = useLocation();
+  const searchParams = location.search.split('=')[1];
+
+  useEffect(() => {
+    changePage({ selected: 0 });
+  }, [searchParams]);
+
   if (products.isFetching) {
     return <img src={loadingGif} alt="loading" />;
   }
