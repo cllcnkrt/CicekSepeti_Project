@@ -19,6 +19,7 @@ function UploadImage({ errors }) {
     maxFiles: 1,
     multiple: false,
   });
+
   return (
     <div className="uploadImage">
       <div {...getRootProps()}>

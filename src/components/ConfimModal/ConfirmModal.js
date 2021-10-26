@@ -13,6 +13,7 @@ function ConfirmModal({
   action,
 }) {
   const dispatch = useDispatch();
+
   return (
     <div className="confirmModal">
       <div className="confirmModal__container">

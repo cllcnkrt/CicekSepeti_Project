@@ -92,6 +92,7 @@ function ProductAdd() {
   const handleCreate = () => {
     dispatch(fetchProductCreate(form));
   };
+
   return (
     <div className="productAdd">
       <Header />

@@ -15,6 +15,7 @@ function Header() {
   const location = useLocation();
   const isUser = window.localStorage.getItem('access_token');
   const dispatch = useDispatch();
+
   const handleExit = () => {
     toast.success('Çıkış yapıldı', {
       position: 'top-right',
@@ -30,6 +31,7 @@ function Header() {
     dispatch(SignInClear());
     dispatch(SignUpClear());
   };
+
   return (
     <div className="header">
       <div className="wrapper">

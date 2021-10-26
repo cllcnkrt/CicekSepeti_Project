@@ -13,6 +13,7 @@ function Navbar() {
   const categories = useSelector((state) => state.categories);
   const query = useQuery();
   const currentQuery = query.get('category');
+
   useEffect(() => {
     dispatch(fetchCategories());
   }, [dispatch]);

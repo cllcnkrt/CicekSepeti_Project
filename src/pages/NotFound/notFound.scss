@@ -30,6 +30,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            border-radius: 8px;
         }
 
     }
@@ -37,6 +38,7 @@
     p {
         margin-top: 25px;
         font: normal normal normal 20px/23px Nunito;
+        text-align: center;
     }
 
     button {
@@ -50,4 +52,6 @@
         cursor: pointer;
         font: normal normal bold 18px/24px Nunito;
     }
+
+
 }
