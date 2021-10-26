@@ -226,6 +226,7 @@
 
     .offerBody {
         width: 95% !important;
+        overflow-x: hidden !important;
 
         .offerBody__card {
             display: flex !important;

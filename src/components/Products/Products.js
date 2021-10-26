@@ -65,7 +65,7 @@ function Products() {
       </div>
       <div className="paginate">
         <ReactPaginate
-          previousLabel="Previous"
+          previousLabel="Prev"
           nextLabel="Next"
           pageCount={pageCountSelectedProducts || pageCountProduct}
           onPageChange={changePage}
