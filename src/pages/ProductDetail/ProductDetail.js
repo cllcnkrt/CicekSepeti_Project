@@ -29,9 +29,11 @@ function ProductDetail() {
   const [openOfferModal, setOpenOfferModal] = useState(false);
   const [openCancelModal, setOpenCancelModal] = useState(false);
   useEffect(() => {
-    dispatch(fetchGivenOffers());
+    if (givenOffers.length === 0) {
+      dispatch(fetchGivenOffers());
+    }
     dispatch(fetchDetails(id));
-  }, [dispatch, id]);
+  }, [dispatch, givenOffers.length, id]);
   return (
     <div className="productDetail">
       <Header />

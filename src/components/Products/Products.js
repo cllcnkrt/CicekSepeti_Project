@@ -8,6 +8,7 @@ import ReactPaginate from 'react-paginate';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+import loadingGif from '../../assets/gif/loading.gif';
 import useQuery from '../../hooks/useQuery';
 
 function Products() {
@@ -18,11 +19,13 @@ function Products() {
   const [selectedProducts, setSelectedProducts] = useState([]);
 
   const [pageNumber, setPageNumber] = useState(0);
-  const usersPerPage = 5;
-  const pagesVisited = pageNumber * usersPerPage;
-  const pageCountProduct = Math.ceil(products.products.length / usersPerPage);
+  const productsPerPage = 20;
+  const pagesVisited = pageNumber * productsPerPage;
+  const pageCountProduct = Math.ceil(
+    products.products.length / productsPerPage
+  );
   const pageCountSelectedProducts = Math.ceil(
-    selectedProducts.length / usersPerPage
+    selectedProducts.length / productsPerPage
   );
 
   const changePage = ({ selected }) => {
@@ -38,36 +41,41 @@ function Products() {
 
     setSelectedProducts(filtered);
   }, [currentQuery, products.products]);
+  if (products.isFetching) {
+    return <img src={loadingGif} alt="loading" />;
+  }
   return (
     <>
       <div className="products">
         {selectedProducts.length > 0
           ? selectedProducts
-              .slice(pagesVisited, pagesVisited + usersPerPage)
+              .slice(pagesVisited, pagesVisited + productsPerPage)
               .map((product) => (
                 <Link key={product.id} to={`urun-detay/${product.id}`}>
                   <Card product={product} />
                 </Link>
               ))
           : products.products
-              .slice(pagesVisited, pagesVisited + usersPerPage)
+              .slice(pagesVisited, pagesVisited + productsPerPage)
               .map((product) => (
                 <Link key={product.id} to={`urun-detay/${product.id}`}>
                   <Card product={product} />
                 </Link>
               ))}
       </div>
-      <ReactPaginate
-        previousLabel="Previous"
-        nextLabel="Next"
-        pageCount={pageCountSelectedProducts || pageCountProduct}
-        onPageChange={changePage}
-        containerClassName="paginationBttns"
-        previousLinkClassName="previousBttn"
-        nextLinkClassName="nextBttn"
-        disabledClassName="paginationDisabled"
-        activeClassName="paginationActive"
-      />
+      <div className="paginate">
+        <ReactPaginate
+          previousLabel="Previous"
+          nextLabel="Next"
+          pageCount={pageCountSelectedProducts || pageCountProduct}
+          onPageChange={changePage}
+          containerClassName="paginationBttns"
+          previousLinkClassName="previousBttn"
+          nextLinkClassName="nextBttn"
+          disabledClassName="paginationDisabled"
+          activeClassName="paginationActive"
+        />
+      </div>
     </>
   );
 }

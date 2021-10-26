@@ -11,42 +11,71 @@
 
 
 
+
+.paginate {
+
+    .paginationBttns {
+        max-width: 100%;
+        height: 40px;
+        list-style: none;
+        display: flex;
+        justify-content: center;
+
+        ul {
+            li {
+                width: 10px;
+            }
+        }
+    }
+
+    .paginationBttns a {
+        padding: 10px;
+        margin: 8px;
+        border-radius: 8px;
+        color: $dark-blue;
+        cursor: pointer;
+        background-color: $light-blue;
+        font-weight: bold;
+    }
+
+    .paginationBttns a:hover {
+        color: $dark-blue;
+        background-color: $light-blue;
+        border: 2px solid $dark-blue;
+    }
+
+    .paginationActive a {
+        color: $light-blue;
+        background-color: $dark-blue;
+    }
+
+    .paginationDisabled a {
+        color: $dark-blue;
+        background-color: $white-100;
+        border: 1px solid $dark-blue;
+    }
+}
+
+
+
 @media screen and (max-width: 600px) {
     .products {
         grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)) !important;
         grid-gap: 10px;
     }
+
+
 }
 
-
-.paginationBttns {
-    width: 100%;
-    height: 40px;
-    list-style: none;
-    display: flex;
-    justify-content: center;
-}
-
-.paginationBttns a {
-    padding: 10px;
-    margin: 8px;
-    border-radius: 5px;
-    border: 1px solid $dark-blue;
-    color: $light-blue;
-    cursor: pointer;
-}
-
-.paginationBttns a:hover {
-    color: white;
-    background-color: $light-blue;
-}
-
-.paginationActive a {
-    color: white;
-    background-color: $dark-blue;
-}
-
-.paginationDisabled a {
-    color: lime;
-    background-color: red;
+@media screen and (max-width: 800px) {
+    .paginate {
+        ul {
+            li {
+                a {
+                    margin: 4px !important;
+                    padding: 5px !important;
+                }
+            }
+        }
+    }
 }
