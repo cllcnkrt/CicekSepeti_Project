@@ -28,7 +28,7 @@ const useAuth = (authValidate, type) => {
     if (type === 'signUp') {
       if (form.password.length < 8 || form.password.length > 20) {
         toast.error(
-          'Şifre 8 karakterdan az veya 20 karakterden fazla olmamalı ',
+          'Şifre 8 karakterdan az ve 20 karakterden fazla olmamalı ',
           {
             position: 'top-right',
             autoClose: 3000,
