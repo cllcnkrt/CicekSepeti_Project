@@ -1,6 +1,6 @@
 # Çiceksepeti & Patika.dev React Bootcamp Graduation Project
 
-E-commerce app withReactJS. The all informations comes from an API. In the application, there are 8 pages: home, product details, product add, account, sign in, sign up, forget password and error 404. 
+E-commerce app with ReactJS. The all informations comes from an API. In the application, there are 8 pages: home, product details, product add, account, sign in, sign up, forget password and error 404. 
 
 Live Demo: [İkinci el project](https://cicek-sepeti-project-celalcankurt.vercel.app/)
 
@@ -8,12 +8,12 @@ Live Demo: [İkinci el project](https://cicek-sepeti-project-celalcankurt.vercel
 - React js
 - React Hooks
 - React Router Dom
- - React-redux
- - Redux-thunk
+- React-redux
+- Redux-thunk
 - Node-sass
 - React-dropzone
 - React-paginate
- - React-toastify
+- React-toastify
  
 ## Getting Started
 
