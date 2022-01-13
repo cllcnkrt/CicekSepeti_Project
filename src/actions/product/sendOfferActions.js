@@ -27,11 +27,15 @@ const fetchPending = () => ({
 const fetchSendOffer = (id, data) => async (dispatch) => {
   dispatch(fetchPending());
   return axios
-    .post(`https://bootcampapi.techcs.io/api/fe/v1/product/offer/${id}`, data, {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem('access_token')}`,
-      },
-    })
+    .post(
+      `https://cs-bootcamp-api.herokuapp.com/api/fe/v1/product/offer/${id}`,
+      data,
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+        },
+      }
+    )
     .then((res) => {
       dispatch(fetchSuccess(res.data));
       toast.success('Teklif verildi', {

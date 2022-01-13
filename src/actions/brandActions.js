@@ -23,7 +23,7 @@ const fetchPending = () => ({
 const fetchBrand = () => async (dispatch) => {
   dispatch(fetchPending());
   return axios
-    .get('https://bootcampapi.techcs.io/api/fe/v1/detail/brand/all')
+    .get('https://cs-bootcamp-api.herokuapp.com/api/fe/v1/detail/brand/all')
     .then((res) => dispatch(fetchSuccess(res.data)))
     .catch((error) => dispatch(fetchFailure(error)));
 };

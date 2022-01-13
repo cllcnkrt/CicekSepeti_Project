@@ -26,7 +26,7 @@ const fetchCancelOffer = (id) => async (dispatch) => {
   dispatch(fetchPending());
   return axios
     .delete(
-      `https://bootcampapi.techcs.io/api/fe/v1/account/cancel-offer/${id}`,
+      `https://cs-bootcamp-api.herokuapp.com/api/fe/v1/account/cancel-offer/${id}`,
       {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('access_token')}`,

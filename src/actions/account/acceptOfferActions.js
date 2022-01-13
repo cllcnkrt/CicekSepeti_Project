@@ -25,7 +25,7 @@ const fetchAcceptOffer = (id) => async (dispatch) => {
   dispatch(fetchPending());
   return axios
     .put(
-      `https://bootcampapi.techcs.io/api/fe/v1/account/accept-offer/${id}`,
+      `https://cs-bootcamp-api.herokuapp.com/api/fe/v1/account/accept-offer/${id}`,
       null,
       {
         headers: {

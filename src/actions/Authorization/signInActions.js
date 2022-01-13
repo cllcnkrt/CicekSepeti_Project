@@ -28,7 +28,10 @@ export const SignInClear = () => ({
 const fetchSignIn = (form) => async (dispatch) => {
   dispatch(fetchPending());
   return axios
-    .post('https://bootcampapi.techcs.io/api/fe/v1/authorization/signin', form)
+    .post(
+      'https://cs-bootcamp-api.herokuapp.com/api/fe/v1/authorization/signin',
+      form
+    )
     .then((res) => {
       toast.success('Giriş yapıldı', {
         position: 'top-right',

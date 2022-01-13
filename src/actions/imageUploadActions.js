@@ -37,7 +37,7 @@ const fetchUploadImage = (image) => async (dispatch) => {
   formData.append('file', image);
   return axios
     .post(
-      `https://bootcampapi.techcs.io/api/fe/v1/file/upload/image`,
+      `https://cs-bootcamp-api.herokuapp.com/api/fe/v1/file/upload/image`,
       formData,
       {
         headers: {

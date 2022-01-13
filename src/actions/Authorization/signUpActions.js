@@ -28,7 +28,10 @@ export const SignUpClear = () => ({
 const fetchSignUp = (form) => async (dispatch) => {
   dispatch(fetchPending());
   return axios
-    .post('https://bootcampapi.techcs.io/api/fe/v1/authorization/signup', form)
+    .post(
+      'https://cs-bootcamp-api.herokuapp.com/api/fe/v1/authorization/signup',
+      form
+    )
     .then((res) => {
       toast.success('Üye olundu', {
         position: 'top-right',

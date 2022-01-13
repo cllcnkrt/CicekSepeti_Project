@@ -26,7 +26,7 @@ const fetchRejectOffer = (id) => async (dispatch) => {
   dispatch(fetchPending());
   return axios
     .post(
-      `https://bootcampapi.techcs.io/api/fe/v1/account/reject-offer/${id}`,
+      `https://cs-bootcamp-api.herokuapp.com/api/fe/v1/account/reject-offer/${id}`,
       null,
       {
         headers: {
